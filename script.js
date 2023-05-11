@@ -64,16 +64,79 @@ let checkedCheckboxesSumUpTo100Properties = [];      // array filled with checke
 // -----------------------------------------------------------------------------------
 
 const differentiationOkBtnsArray = [differentiationVersionsOkBtn, differentiationPropertiesOkBtn];
+const differentiationRateOkBtnsArray = [differentiationRateVersionsOkBtn, differentiationRatePropertiesOkBtn];
+const sumUpTo100OkBtnsArray = [sumUpTo100VersionsOkBtn, sumUpTo100PropertiesOkBtn];
 
-// const differentiationOkBtn = document.getElementById('differentiation-ok-btn');
+// -----------------------------------------------------------------------------------
 
+let nameDifferentiation = [], propertyDifferentiation = [], dateDifferentiation = [];
+let nameDifferentiationRate = [], propertyDifferentiationRate = [], dateDifferentiationRate = [];
+let nameSumUpTo100 = [], propertySumUpTo100 = [], dateSumUpTo100 = [];
 
-let name = [], date = [];
+// -----------------------------------------------------------------------------------
 
+// Arrays filled with final data for each calculation
+let differentiation = [];
+let differentiationRate = [];
+let sum100 = [];
 
 // -----------------------------------------------------------------------------------
 
 // Functions
+
+
+
+const arrowBtnRadar = document.getElementById('arrow-btn-radar');
+const flipCardRadar = document.getElementById('flip-card-radar');
+
+const arrowBtnBubble = document.getElementById('arrow-btn-bubble');
+const flipCardBubble = document.getElementById('flip-card-bubble');
+
+const arrowBtnDoughnut = document.getElementById('arrow-btn-doughnut');
+const flipCardDoughnut = document.getElementById('flip-card-doughnut');
+
+const arrowBtnPolarArea = document.getElementById('arrow-btn-polar-area');
+const flipCardPolarArea = document.getElementById('flip-card-polar-area');
+
+const arrowBtnBar = document.getElementById('arrow-btn-bar');
+const flipCardBar = document.getElementById('flip-card-bar');
+
+const arrowBtnLine = document.getElementById('arrow-btn-line');
+const flipCardLine = document.getElementById('flip-card-line');
+
+
+
+// // [...cards].forEach((card)=>{
+//     arrow.addEventListener( 'click', function() {
+//         cards.classList.toggle('flipped');
+//   }, false);
+// // });
+
+
+
+const flipCard = function(btnEl, cardFlipEl) {
+
+    // btnEl.forEach(btn => {
+
+        btnEl.addEventListener( 'click', function() {
+
+            cardFlipEl.classList.toggle('flipped');
+    
+        }, false);
+
+    // }, false);
+
+}
+
+flipCard(arrowBtnRadar, flipCardRadar);
+flipCard(arrowBtnBubble, flipCardBubble);
+flipCard(arrowBtnDoughnut, flipCardDoughnut);
+flipCard(arrowBtnPolarArea, flipCardPolarArea);
+flipCard(arrowBtnBar, flipCardBar);
+flipCard(arrowBtnLine, flipCardLine);
+
+
+
 
 const downloadObjectAsJson = function(exportObj, exportName) {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
@@ -406,9 +469,9 @@ fileUpload.addEventListener('click', function() {
 
                     // DEBUGGING
                     // console.log(checkboxesDifferentiationVersionEl);
-                    console.log(checkboxesDifferentiationVersionEl.length);
+                    // console.log(checkboxesDifferentiationVersionEl.length);
                     console.log(checkedCheckboxesDifferentiationVersion);
-                    console.log(typeof checkedCheckboxesDifferentiationVersion);
+                    // console.log(typeof checkedCheckboxesDifferentiationVersion);
 
                 });
 
@@ -496,9 +559,9 @@ fileUpload.addEventListener('click', function() {
 
                     // DEBUGGING
                     // console.log(checkboxesDifferentiationPropertiesEl);
-                    console.log(checkboxesDifferentiationPropertiesEl.length);
+                    // console.log(checkboxesDifferentiationPropertiesEl.length);
                     console.log(checkedCheckboxesDifferentiationProperties);
-                    console.log(typeof checkedCheckboxesDifferentiationProperties);
+                    // console.log(typeof checkedCheckboxesDifferentiationProperties);
 
                 });
 
@@ -557,136 +620,363 @@ fileUpload.addEventListener('click', function() {
 
                         btn.addEventListener('click', function() {
 
-                            name.length = 0;
+                            nameDifferentiation.length = 0;
+                            propertyDifferentiation.length = 0;
+                            dateDifferentiation.length = 0;
                          
                             // Array filled with selected versions
                             // Gets the values of each row and push it into arrays
                             for (let i = 0; i < rowJsonObject.length; i++) {
             
-                                console.log(checkboxesDifferentiationVersionEl[i].checked);
+                                // console.log(checkboxesDifferentiationVersionEl[i].checked);
             
                                 if (checkboxesDifferentiationVersionEl[i].checked && checkboxesDifferentiationVersionEl[i].value === rowJsonObject[i].name) {
-                                        name.push(rowJsonObject[i].name);
-                                        // console.log(name); 
+                                    nameDifferentiation.push(rowJsonObject[i].name);
+                                        // console.log(nameDifferentiation); 
                                 }
                                 
                             };
 
-                            console.log(name);
-    
-                            // // Array filled with selected variables
-                            // for (let i = 0; i < splitProperty.length; i++) {
-            
-                            //     propertyArray.push(new Array());
-                                
-                            //     for (let j = 0; j < rowJsonObject.length; j++) {
+                            console.log(nameDifferentiation);
+
+                            // Array filled with selected variables
+                            for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
+
+                                propertyDifferentiation.push(new Array());
+
+                                for (let j = 0; j < rowJsonObject.length; j++) {
                                     
-                            //         if (name.includes(rowJsonObject[j].name)) {
+                                    if (nameDifferentiation.includes(rowJsonObject[j].name)) {
+
+                                        // console.log(checkedCheckboxesDifferentiationProperties);
             
-                            //             // console.log(name.includes(rowJsonObject[j].name));    
-                                        
-                            //             console.log(rowJsonObject.indexOf(rowJsonObject[j]));
-                            //             console.log(rowJsonObject[j]);
-                            //             console.log(splitProperty);
-                            //             console.log(objectProperties);
+                                        for (let k = 0; k < objectProperties.length; k++) {
             
-                            //             for (let k = 0; k < objectProperties.length; k++) {
+                                            switch(checkedCheckboxesDifferentiationProperties[i]) {
             
-                            //                 switch(splitProperty[i]) {
-            
-                            //                     case objectProperties[k] :
-                            //                         console.log('OKKKKKK');
-                            //                         propertyArray[i].push(rowJsonObject[j][objectProperties[k]]);
-                            //                         break;
-                            //                     // default:
-                            //                     // dayName = 'Invalid day';
+                                                case objectProperties[k] :
+                                                    // console.log('OKKKKKK');
+                                                    propertyDifferentiation[i].push(rowJsonObject[j][objectProperties[k]]);
+                                                    break;
+                                                // default:
                                                         
-                            //                 }
+                                            }
             
-                            //             }
+                                        }
             
-                            //         }
+                                    }
             
-                            //     }
+                                }
             
-                            // }
+                            }
+
+                            console.log(propertyDifferentiation);
                             
-                            
-                            // for (let i = 0; i < splitPropertySum100.length; i++) {
-            
-                            //     propertyArraySum100.push(new Array());
+                            // Array filled with formated dates
+                            for (let i = 0; i < rowJsonObject.length; i++) {
+                                // console.log(rowJsonObject[i].rel_date);
+                                const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
                                 
-                            //     for (let j = 0; j < rowJsonObject.length; j++) {
-                                    
-                            //         if (name.includes(rowJsonObject[j].name)) {
+                                const year = num_date.toLocaleString("default", { year: "numeric" });
+                                const month = num_date.toLocaleString("default", { month: "2-digit" });
+                                const day = num_date.toLocaleString("default", { day: "2-digit" });
             
-                            //             // console.log(name.includes(sum100Array[j].name));    
-                                        
-                            //             console.log(sum100Array.indexOf(sum100Array[j]));
-                            //             console.log(sum100Array[j]);
-                            //             console.log(splitPropertySum100);
-                            //             // console.log(objectProperties);
+                                const dateFormat = month + "/" + day + "/" + year;
             
-                            //             for (let k = 0; k < objectProperties.length; k++) {
-            
-                            //                 switch(splitPropertySum100[i]) {
-            
-                            //                     case objectProperties[k] :
-                            //                         console.log('OKKKKKK');
-                            //                         propertyArraySum100[i].push(rowJsonObject[j][objectProperties[k]]);
-                            //                         break;
-                            //                     // default:
-                            //                     // dayName = 'Invalid day';
-                                                        
-                            //                 }
-                                            
-            
-                            //             }
-            
-                            //         }
-            
-                            //     }
-            
-                            // }
-    
-    
-                            // // Array filled with formated dates
-                            // for (let i = 0; i < rowJsonObject.length; i++) {
-                            //     // console.log(rowJsonObject[i].rel_date);
-                            //     const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
-                                
-                            //     const year = num_date.toLocaleString("default", { year: "numeric" });
-                            //     const month = num_date.toLocaleString("default", { month: "2-digit" });
-                            //     const day = num_date.toLocaleString("default", { day: "2-digit" });
-            
-                            //     const dateFormat = month + "/" + day + "/" + year;
-            
-                            //     date.push(dateFormat);
-                            // };
-            
-                            // console.log(propertyArray);
-                            // console.log(propertyArraySum100);
-                            // console.log(name);
-                            // console.log(date);
-    
-    
-    
-    
-    
-    
+                                dateDifferentiation.push(dateFormat);
+                            };
+
+                            console.log(dateDifferentiation);
                             
                         });
+
+
+
+                        // Displays the chart for the variables
+                // const ctx1= document.getElementById('myChart_property').getContext('2d');
+                const ctx2 = document.getElementById('myChart_differentiation').getContext('2d');
+                // const ctx3= document.getElementById('myChart_differentiation_rate').getContext('2d');
+                // const ctx4= document.getElementById('myChart_sum_100').getContext('2d');
+
+
+                // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+
+                    const myChart_differentiation = new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                          labels: nameDifferentiation,
+                          datasets:
+                            checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                label: 'ok',
+                                data: differentiation[i],
+                                // backgroundColor: colorArray[i],
+                                fill: false
+                            })),
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true
+                            }
+                          }
+                        }
+                      });
+                // }
+
+
+
+                        
                      
-                     });
-
-
-
-
-
+                    });
 
                 // }
 
+
+
+
+                // if (!(checkedCheckboxesDifferentiationRateVersion.length === 0) && !(checkedCheckboxesDifferentiationRateProperties.length === 0)) {
+
+                differentiationRateOkBtnsArray.forEach(btn => {
+
+                    btn.addEventListener('click', function() {
+
+                        nameDifferentiationRate.length = 0;
+                        propertyDifferentiationRate.length = 0;
+                        dateDifferentiationRate.length = 0;
+                     
+                        // Array filled with selected versions
+                        // Gets the values of each row and push it into arrays
+                        for (let i = 0; i < rowJsonObject.length; i++) {
+        
+                            // console.log(checkboxesDifferentiationRateVersionEl[i].checked);
+        
+                            if (checkboxesDifferentiationRateVersionEl[i].checked && checkboxesDifferentiationRateVersionEl[i].value === rowJsonObject[i].name) {
+                                nameDifferentiationRate.push(rowJsonObject[i].name);
+                                    // console.log(nameDifferentiationRate); 
+                            }
+                            
+                        };
+
+                        console.log(nameDifferentiationRate);
+
+                        // Array filled with selected variables
+                        for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
+
+                            propertyDifferentiationRate.push(new Array());
+
+                            for (let j = 0; j < rowJsonObject.length; j++) {
+                                
+                                if (nameDifferentiationRate.includes(rowJsonObject[j].name)) {
+
+                                    // console.log(checkedCheckboxesDifferentiationRateProperties);
+        
+                                    for (let k = 0; k < objectProperties.length; k++) {
+        
+                                        switch(checkedCheckboxesDifferentiationRateProperties[i]) {
+        
+                                            case objectProperties[k] :
+                                                // console.log('OKKKKKK');
+                                                propertyDifferentiationRate[i].push(rowJsonObject[j][objectProperties[k]]);
+                                                break;
+                                            // default:
+                                                    
+                                        }
+        
+                                    }
+        
+                                }
+        
+                            }
+        
+                        }
+
+                        console.log(propertyDifferentiationRate);
+                        
+                        // Array filled with formated dates
+                        for (let i = 0; i < rowJsonObject.length; i++) {
+                            // console.log(rowJsonObject[i].rel_date);
+                            const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
+                            
+                            const year = num_date.toLocaleString("default", { year: "numeric" });
+                            const month = num_date.toLocaleString("default", { month: "2-digit" });
+                            const day = num_date.toLocaleString("default", { day: "2-digit" });
+        
+                            const dateFormat = month + "/" + day + "/" + year;
+        
+                            dateDifferentiationRate.push(dateFormat);
+                        };
+
+                        console.log(dateDifferentiationRate);
+                        
+                    });
+                 
+                });
+
+                // }
+
+
+
+                // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+
+                sumUpTo100OkBtnsArray.forEach(btn => {
+
+                    btn.addEventListener('click', function() {
+
+                        nameSumUpTo100.length = 0;
+                        propertySumUpTo100.length = 0;
+                        dateSumUpTo100.length = 0;
+                     
+                        // Array filled with selected versions
+                        // Gets the values of each row and push it into arrays
+                        for (let i = 0; i < rowJsonObject.length; i++) {
+        
+                            // console.log(checkboxesSumUpTo100VersionEl[i].checked);
+        
+                            if (checkboxesSumUpTo100VersionEl[i].checked && checkboxesSumUpTo100VersionEl[i].value === rowJsonObject[i].name) {
+                                nameSumUpTo100.push(rowJsonObject[i].name);
+                                    // console.log(nameSumUpTo100); 
+                            }
+                            
+                        };
+
+                        console.log(nameSumUpTo100);
+
+                        // Array filled with selected variables
+                        for (let i = 0; i < checkedCheckboxesSumUpTo100Properties.length; i++) {
+
+                            propertySumUpTo100.push(new Array());
+
+                            for (let j = 0; j < rowJsonObject.length; j++) {
+                                
+                                if (nameSumUpTo100.includes(rowJsonObject[j].name)) {
+
+                                    // console.log(checkedCheckboxesSumUpTo100Properties);
+        
+                                    for (let k = 0; k < objectProperties.length; k++) {
+        
+                                        switch(checkedCheckboxesSumUpTo100Properties[i]) {
+        
+                                            case objectProperties[k] :
+                                                // console.log('OKKKKKK');
+                                                propertySumUpTo100[i].push(rowJsonObject[j][objectProperties[k]]);
+                                                break;
+                                            // default:
+                                                    
+                                        }
+        
+                                    }
+        
+                                }
+        
+                            }
+        
+                        }
+
+                        console.log(propertySumUpTo100);
+                        
+                        // Array filled with formated dates
+                        for (let i = 0; i < rowJsonObject.length; i++) {
+                            // console.log(rowJsonObject[i].rel_date);
+                            const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
+                            
+                            const year = num_date.toLocaleString("default", { year: "numeric" });
+                            const month = num_date.toLocaleString("default", { month: "2-digit" });
+                            const day = num_date.toLocaleString("default", { day: "2-digit" });
+        
+                            const dateFormat = month + "/" + day + "/" + year;
+        
+                            dateSumUpTo100.push(dateFormat);
+                        };
+
+                        console.log(dateSumUpTo100);
+                        
+                    });
+                 
+                });
+
+                // }
+
+
+                // -----------------------------------------------------------------------------------
+
+                // Calculation of the Differentiation
+                for (let i = 0; i < propertyDifferentiation.length; i++) {
+                            
+                    differentiation[i] = [ ];
+                    
+                    for (let j = 0; j < propertyDifferentiation[i].length; j++) {
+
+                        if (propertyDifferentiation[i][j] >= propertyDifferentiation[i][j + 1]) {
+                            differentiation[i][j] = (propertyDifferentiation[i][j] - propertyDifferentiation[i][j + 1]);
+                        } else {
+                            differentiation[i][j] = (propertyDifferentiation[i][j + 1] - propertyDifferentiation[i][j]);
+                        }
+                        
+                    }
+                    
+                }
+
+                // -----------------------------------------------------------------------------------
+
+                // Calculation of the Differentiation Rate
+                for (let i = 0; i < propertyDifferentiation.length; i++) {
+                            
+                    differentiationRate[i] = [ ];
+                    
+                    for (let j = 0; j < propertyDifferentiation[i].length; j++) {
+
+                        if (propertyDifferentiation[i][j] >= propertyDifferentiation[i][j + 1]) {
+                            differentiationRate[i][j] = (propertyDifferentiation[i][j] - propertyDifferentiation[i][j + 1]) / propertyDifferentiation[i][j + 1];
+                            
+                            differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
+                        } else {
+                            differentiationRate[i][j] = (propertyDifferentiation[i][j + 1] - propertyDifferentiation[i][j]) / propertyDifferentiation[i][j];
+                            
+                            differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
+                        }
+                        
+                    }
+                    
+                }
+
+                // -----------------------------------------------------------------------------------
+
                 
+
+                
+
+
+
+
+                // const myChart_differentiation = new Chart(ctx2, {
+                //     type: 'bar',
+                //     data: {
+                //         labels: nameDifferentiation,
+                //         datasets: 
+                //             splitProperty.map((key, i) => ({
+                //                 label: 'ok',
+                //                 data: differentiation[i],
+                //                 // backgroundColor: colorArray[i],
+                //                 fill: false
+                //             })),
+                        
+                //     },
+                //     options: { responsive: true,
+                //                 scales: {
+                //                     r: {
+                //                         pointLabels: {
+                //                             display: true,
+                //                             centerPointLabels: true,
+                //                             font: {
+                //                                 size: 18
+                //                             }
+                //                         }
+                //                     }
+                //                 },
+
+                     
+                //     }
+                // });
 
 
 

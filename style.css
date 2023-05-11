@@ -281,19 +281,26 @@ aside .sidebar-content button:hover span {
     perspective: 500px;
 }
 
+
 .main-content .cards .radar {
     grid-column: 1;
     grid-row: 2;
+
+    padding-bottom: 2.6rem;
 }
 
 .main-content .cards .bubble {
     grid-column: 1;
     grid-row: 3;
+
+    padding-bottom: 2.5rem;
 }
 
 .main-content .cards .doughnut {
     grid-column: 2;
     grid-row: 1;
+
+    padding-bottom: 2.5rem;
 }
 
 
@@ -308,16 +315,22 @@ aside .sidebar-content button:hover span {
 .main-content .cards .polar-area {
     grid-column: 2;
     grid-row: 3;
+
+    padding-bottom: 2.5rem;
 }
 
 .main-content .cards .bar {
     grid-column: 3;
     grid-row: 1;
+
+    padding-bottom: 2.5rem;
 }
 
 .main-content .cards .line {
     grid-column: 3;
     grid-row: 3;
+
+    padding-bottom: 2.5rem;
 }
 
 /* ------------------------------- */
@@ -596,23 +609,29 @@ input[type=checkbox]:checked ~ .dynamicSpan {
 
 
 
-
 .flip-card {
+    display: block;
+    /* justify-content: center;
+    align-items: center; */
     height: 100%;
     width: 100%;
     position:relative;
     transition: transform 1500ms;
     transform-style: preserve-3d;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-.radar:hover > .flip-card,
+/* .radar:hover > .flip-card,
 .bubble:hover > .flip-card,
 .doughnut:hover > .flip-card,
 .polar-area:hover > .flip-card,
-.bar:hover > .flip-card,
+.bar:onclick > .flip-card,
 .line:hover > .flip-card {
     cursor: pointer;
+    transform: rotateY(180deg);
+} */
+
+.flip-card.flipped {
     transform: rotateY(180deg);
 }
 
@@ -638,6 +657,28 @@ input[type=checkbox]:checked ~ .dynamicSpan {
 .flip-card-back {
     transform: rotateY(180deg);
 }
+
+.arrow-btn {
+    cursor: pointer;
+}
+
+.arrow-chart-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* position: absolute; */
+    /* backface-visibility: hidden; */
+}
+
+/* .arrow-chart-title-front .h3-title {
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+} */
+
+/* .arrow-btn {
+    cursor: pointer;
+} */
 
 
 /* .flip-card.is-flipped {

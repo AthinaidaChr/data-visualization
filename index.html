@@ -51,6 +51,13 @@
 
                 </button>
 
+                <button class="buttons" id="property-btn">
+
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Property Display</h3>
+
+                </button>
+
                 <button class="buttons" id="differentiation-btn">
 
                     <span class="material-icons-sharp">align_horizontal_left</span>
@@ -159,7 +166,19 @@
 
                 <div class="chart radar" id="radar-chart">
     
-                    <div class="flip-card">
+                    <div class="arrow-chart-title">
+
+                        <h3>Radar Chart</h3>
+
+                        <button class="arrow-btn" id="arrow-btn-radar">
+
+                            <span class="material-icons-sharp">cached</span>
+                                
+                        </button>
+
+                    </div>
+    
+                    <div class="flip-card" id="flip-card-radar">
     
                         <div class="flip-card-front">
                         
@@ -215,7 +234,19 @@
     
                 <div class="chart bubble" id="bubble-chart">
 
-                    <div class="flip-card">
+                    <div class="arrow-chart-title">
+
+                        <h3>Bubble Chart</h3>
+
+                        <button class="arrow-btn" id="arrow-btn-bubble">
+
+                            <span class="material-icons-sharp">cached</span>
+                                
+                        </button>
+
+                    </div>
+
+                    <div class="flip-card" id="flip-card-bubble">
     
                         <div class="flip-card-front">
                         
@@ -264,8 +295,20 @@
                 </div>
     
                 <div class="chart doughnut" id="doughnut-chart">
+
+                    <div class="arrow-chart-title">
+
+                        <h3>Doughnut Chart</h3>
+
+                        <button class="arrow-btn" id="arrow-btn-doughnut">
+
+                            <span class="material-icons-sharp">cached</span>
+                                
+                        </button>
+
+                    </div>
     
-                    <div class="flip-card">
+                    <div class="flip-card" id="flip-card-doughnut">
     
                         <div class="flip-card-front">
                         
@@ -326,8 +369,20 @@
 
 
                 <div class="chart polar-area" id="polar-area-chart">
+
+                    <div class="arrow-chart-title">
+
+                        <h3>Polar Area Chart</h3>
+
+                        <button class="arrow-btn" id="arrow-btn-polar-area">
+
+                            <span class="material-icons-sharp">cached</span>
+                                
+                        </button>
+
+                    </div>
     
-                    <div class="flip-card">
+                    <div class="flip-card" id="flip-card-polar-area">
     
                         <div class="flip-card-front">
     
@@ -378,58 +433,122 @@
                 
     
                 <div class="chart bar" id="bar-chart">
-    
-                    <div class="flip-card">
-    
+
+                    <div class="arrow-chart-title">
+
+                        <h3>Bar Chart</h3>
+
+                        <button class="arrow-btn" id="arrow-btn-bar">
+
+                            <span class="material-icons-sharp">cached</span>
+                                
+                        </button>
+
+                    </div>
+        
+                    <div class="flip-card" id="flip-card-bar">
+
                         <div class="flip-card-front">
-                        
+                            
                             <canvas id="dashboard-chart-bar"></canvas>
-                        
+                            
                             <script>
 
                                 const ctxDBbar = document.getElementById('dashboard-chart-bar');
-                                
+                                    
                                 new Chart(ctxDBbar, {
                                     type: 'bar',
                                     data: {
-                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
                                         datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: ['#ea5545', '#f46a9b', '#ef9b20', '#edbf33', '#ede15b', '#bdcf32', '#87bc45', '#27aeef', '#b33dc6'],
-                                        borderWidth: 1
-                                        }]
+                                                label: 'commits',
+                                                data: [3068, 1922, 768, 1859, 328],
+                                                backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
+                                                borderWidth: 2
+                                            },
+                                            {
+                                                label: 'bugs',
+                                                data: [2041, 928, 2580, 3159, 758],
+                                                backgroundColor: ['#f46a9b', '#f46a9b', '#f46a9b', '#f46a9b', '#f46a9b'],
+                                                borderWidth: 2,
+                                            },
+                                            {
+                                                label: 'issues',
+                                                data: [1223, 1187, 782, 1079, 648],
+                                                backgroundColor: ['#ef9b20', '#ef9b20', '#ef9b20', '#ef9b20', '#ef9b20'],
+                                                borderWidth: 2,
+                                        }],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
+                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+                                        plugins: {
+                                            tooltip: {
+                                                // Tooltip will only receive click events
+                                                events: ['click']
+                                                // title: {
+                                                //     display: true,
+                                                //     text: 'Custom Chart Title',
+                                                //     // padding: {
+                                                //     //     top: 10,
+                                                //     //     bottom: 30
+                                                //     // }
+                                                // }
+                                            }
+                                        },
                                         scales: {
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
+                                            // not working
+                                            // xAxis: {
+                                            //     grid: {
+                                            //         drawOnChartArea: false
                                             //     }
-                                            // }]
+                                            // },
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero:true
+                                                }
+                                                // not working
+                                                // grid: {
+                                                //     drawOnChartArea: false
+                                                // }
+                                            }]
                                         }
                                     }
+
                                 });
 
                             </script>
-    
+        
                         </div>
-    
+
                         <div class="flip-card-back">
-    
+
                             <h1>Bar</h1> 
-                                
+                                    
                         </div>
-    
+
                     </div>
+
+                    
     
                 </div>
     
                 <div class="chart line" id="line-chart">
+
+                    <div class="arrow-chart-title">
+
+                        <h3>Line Chart</h3>
+
+                        <button class="arrow-btn" id="arrow-btn-line">
+
+                            <span class="material-icons-sharp">cached</span>
+                                
+                        </button>
+
+                    </div>
     
-                    <div class="flip-card">
+                    <div class="flip-card" id="flip-card-line">
     
                         <div class="flip-card-front">
                         
@@ -527,7 +646,7 @@
     
                         </button>
 
-                        <button class="button ok differentiationOkBtn" type="button" id="differentiation-versions-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-versions-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -551,7 +670,7 @@
     
                         </button>
 
-                        <button class="button ok differentiationOkBtn" type="button" id="differentiation-properties-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-properties-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -575,7 +694,7 @@
     
                         </button>
 
-                        <button class="button ok differentiationOkBtn" type="button" id="differentiation-axis-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-axis-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -588,7 +707,9 @@
 
                 <div class="chart differentiation-chart-display-card" id="differentiation-chart-display">
     
-                    dgbhn
+                    <div>
+                        <canvas id="myChart_differentiation"></canvas>
+                      </div>
     
                 </div>
         
@@ -642,7 +763,7 @@
     
                         </button>
 
-                        <button class="button ok differentiationRateOkBtn" type="button" id="differentiation-rate-versions-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-rate-versions-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -666,7 +787,7 @@
     
                         </button>
 
-                        <button class="button ok differentiationRateOkBtn" type="button" id="differentiation-rate-properties-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-rate-properties-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -690,7 +811,7 @@
     
                         </button>
 
-                        <button class="button ok differentiationRateOkBtn" type="button" id="differentiation-rate-axis-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-rate-axis-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -757,7 +878,7 @@
     
                         </button>
 
-                        <button class="button ok sumUpTo100OkBtn" type="button" id="sum-up-to-100-versions-ok-btn">
+                        <button class="button ok" type="button" id="sum-up-to-100-versions-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -781,7 +902,7 @@
     
                         </button>
 
-                        <button class="button ok sumUpTo100OkBtn" type="button" id="sum-up-to-100-properties-ok-btn">
+                        <button class="button ok" type="button" id="sum-up-to-100-properties-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
@@ -805,7 +926,7 @@
     
                         </button>
 
-                        <button class="button ok sumUpTo100OkBtn" type="button" id="sum-up-to-100-axis-ok-btn">
+                        <button class="button ok" type="button" id="sum-up-to-100-axis-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
