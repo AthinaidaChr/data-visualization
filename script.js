@@ -84,90 +84,27 @@ let sum100 = [];
 
 // Functions
 
+// Function to flip a card using a button
+const flipCard = function(arrowBtnId, cardFlipId) {
 
+    const btnEl = document.getElementById(arrowBtnId);
+    const cardFlipEl = document.getElementById(cardFlipId);
 
-const arrowBtnRadar = document.getElementById('arrow-btn-radar');
-const flipCardRadar = document.getElementById('flip-card-radar');
-
-const arrowBtnBubble = document.getElementById('arrow-btn-bubble');
-const flipCardBubble = document.getElementById('flip-card-bubble');
-
-const arrowBtnDoughnut = document.getElementById('arrow-btn-doughnut');
-const flipCardDoughnut = document.getElementById('flip-card-doughnut');
-
-const arrowBtnPolarArea = document.getElementById('arrow-btn-polar-area');
-const flipCardPolarArea = document.getElementById('flip-card-polar-area');
-
-const arrowBtnBar = document.getElementById('arrow-btn-bar');
-const flipCardBar = document.getElementById('flip-card-bar');
-
-const arrowBtnLine = document.getElementById('arrow-btn-line');
-const flipCardLine = document.getElementById('flip-card-line');
-
-
-
-// // [...cards].forEach((card)=>{
-//     arrow.addEventListener( 'click', function() {
-//         cards.classList.toggle('flipped');
-//   }, false);
-// // });
-
-
-
-const flipCard = function(btnEl, cardFlipEl) {
-
-    // btnEl.forEach(btn => {
+    if (btnEl !== null) {
 
         btnEl.addEventListener( 'click', function() {
 
             cardFlipEl.classList.toggle('flipped');
-    
+        
         }, false);
 
-    // }, false);
+    }
 
-}
-
-flipCard(arrowBtnRadar, flipCardRadar);
-flipCard(arrowBtnBubble, flipCardBubble);
-flipCard(arrowBtnDoughnut, flipCardDoughnut);
-flipCard(arrowBtnPolarArea, flipCardPolarArea);
-flipCard(arrowBtnBar, flipCardBar);
-flipCard(arrowBtnLine, flipCardLine);
-
-
-
-
-const downloadObjectAsJson = function(exportObj, exportName) {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
-    const downloadAnchorNode = document.createElement('a');
-
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", exportName + ".json");
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
-}
+};
 
 // -------------------------------------------
 
-// const displayDiv = function(btnPressed, elementID1, elementID2, elementID3, elementID4, status) {
-
-//     btnPressed.addEventListener('click', function() {
-
-//         document.getElementById(elementID1).style.display = status;
-//         document.getElementById(elementID2).style.display = status;
-//         document.getElementById(elementID3).style.display = status;
-//         document.getElementById(elementID4).style.display = status;
-
-//     });
-
-// }
-
-// displayDiv(dashboardBtn, 'dashboard', 'differentiation-no-file-yet', 'differentiation-rate-no-file-yet', 'sum-up-to-100-no-file-yet', 'block');
-
-// -------------------------------------------
-
-// Create checkbox element dynamically with label and span
+// Function for creating checkbox element dynamically with label and span
 const createCheckBox = function(elementID, name, value, innerText) {
     
     // const check = function(content, element, nameClass, nameID) {
@@ -243,10 +180,9 @@ const createCheckBox = function(elementID, name, value, innerText) {
     // console.log(label);
 };
 
+// -------------------------------------------
 
-
-
-
+// Function to select and deselect all checkboxes at once
 const selectAll = function(elementID, allCheckboxesArray) {
 
     const btn = document.getElementById(elementID);
@@ -272,7 +208,69 @@ const selectAll = function(elementID, allCheckboxesArray) {
 
 };
 
+// -------------------------------------------
+
+// Function to delete a canvas element
+const deleteCanvas = function(elementID) {
+    const canvas = document.getElementById(elementID);
+
+    canvas.remove();
+};
+
+// -------------------------------------------
+
+// Function to create a canvas element
+const createCanvas = function(elementID, canvasID) {
+    
+    // Get the container which will contain the checkboxes
+    const divCanvasEl = document.getElementById(elementID);
+
+    const canvas = document.createElement('canvas');
+
+    canvas.id = canvasID;
+
+    divCanvasEl.appendChild(canvas);
+
+};
+
+// -------------------------------------------
+
+// Function for downloading a JSON object
+const downloadObjectAsJson = function(exportObj, exportName) {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+    const downloadAnchorNode = document.createElement('a');
+
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", exportName + ".json");
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
+
+// -------------------------------------------
+
+// const displayDiv = function(btnPressed, elementID1, elementID2, elementID3, elementID4, status) {
+
+//     btnPressed.addEventListener('click', function() {
+
+//         document.getElementById(elementID1).style.display = status;
+//         document.getElementById(elementID2).style.display = status;
+//         document.getElementById(elementID3).style.display = status;
+//         document.getElementById(elementID4).style.display = status;
+
+//     });
+
+// }
+
+// displayDiv(dashboardBtn, 'dashboard', 'differentiation-no-file-yet', 'differentiation-rate-no-file-yet', 'sum-up-to-100-no-file-yet', 'block');
+
 // -----------------------------------------------------------------------------------
+
+flipCard('arrow-btn-radar', 'flip-card-radar');
+flipCard('arrow-btn-bubble', 'flip-card-bubble');
+flipCard('arrow-btn-doughnut', 'flip-card-doughnut');
+flipCard('arrow-btn-polar-area', 'flip-card-polar-area');
+flipCard('arrow-btn-bar', 'flip-card-bar');
+flipCard('arrow-btn-line', 'flip-card-line');
 
 dashboardBtn.addEventListener('click', function() {
 
@@ -386,7 +384,7 @@ fileUpload.addEventListener('click', function() {
 
                     document.getElementById('dashboard').style.display = "block";
                     document.getElementById('differentiation').style.display = "none";
-                    document.getElementById('differentiation').style.display = "none";
+                    document.getElementById('differentiation-rate').style.display = "none";
                     document.getElementById('sum-up-to-100').style.display = "none";
                 
                 });
@@ -613,6 +611,8 @@ fileUpload.addEventListener('click', function() {
 
                 });
 
+                // -----------------------------------------------------------------------------------
+
 
                 // if (!(checkedCheckboxesDifferentiationVersion.length === 0) && !(checkedCheckboxesDifferentiationProperties.length === 0)) {
 
@@ -623,7 +623,12 @@ fileUpload.addEventListener('click', function() {
                             nameDifferentiation.length = 0;
                             propertyDifferentiation.length = 0;
                             dateDifferentiation.length = 0;
-                         
+                            differentiation.length = 0;                            
+
+                            deleteCanvas('myChart_differentiation');
+                            createCanvas('differentiation-chart-display', 'myChart_differentiation');
+
+
                             // Array filled with selected versions
                             // Gets the values of each row and push it into arrays
                             for (let i = 0; i < rowJsonObject.length; i++) {
@@ -638,6 +643,7 @@ fileUpload.addEventListener('click', function() {
                             };
 
                             console.log(nameDifferentiation);
+
 
                             // Array filled with selected variables
                             for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
@@ -672,6 +678,7 @@ fileUpload.addEventListener('click', function() {
 
                             console.log(propertyDifferentiation);
                             
+
                             // Array filled with formated dates
                             for (let i = 0; i < rowJsonObject.length; i++) {
                                 // console.log(rowJsonObject[i].rel_date);
@@ -687,52 +694,78 @@ fileUpload.addEventListener('click', function() {
                             };
 
                             console.log(dateDifferentiation);
-                            
+
+
+                            // Calculation of the Differentiation
+                            for (let i = 0; i < propertyDifferentiation.length; i++) {
+                                        
+                                differentiation[i] = [ ];
+                                
+                                for (let j = 0; j < propertyDifferentiation[i].length; j++) {
+
+                                    if (propertyDifferentiation[i][j] >= propertyDifferentiation[i][j + 1]) {
+                                        differentiation[i][j] = (propertyDifferentiation[i][j] - propertyDifferentiation[i][j + 1]);
+                                    } else {
+                                        differentiation[i][j] = (propertyDifferentiation[i][j + 1] - propertyDifferentiation[i][j]);
+                                    }
+                                    
+                                }
+                                
+                            }
+
+                            console.log(differentiation);
+
+
+                            // Displays the chart for the variables
+                            // const ctx1= document.getElementById('myChart_property').getContext('2d');
+                            const ctx2 = document.getElementById('myChart_differentiation').getContext('2d');
+
+                            // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+
+                                const myChart_differentiation = new Chart(ctx2, {
+                                    type: 'bar',
+                                    data: {
+                                    labels: nameDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
+                                            borderColor: '#e61802',
+                                            borderWidth: 2
+                                        })),
+                                    },
+                                    options: {
+                                        states: {
+                                            hover: {
+                                                filter: {
+                                                    type: 'none',
+                                                }
+                                            },
+                                        },
+                                        plugins: {
+                                            tooltip: {
+                                              enabled: false // <-- this option disables tooltips
+                                            }
+                                        },
+                                        // maintainAspectRatio: false,
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        
+                                    }
+                                });
+
+                                console.log(myChart_differentiation);
+
+                            // }
+
                         });
 
-
-
-                        // Displays the chart for the variables
-                // const ctx1= document.getElementById('myChart_property').getContext('2d');
-                const ctx2 = document.getElementById('myChart_differentiation').getContext('2d');
-                // const ctx3= document.getElementById('myChart_differentiation_rate').getContext('2d');
-                // const ctx4= document.getElementById('myChart_sum_100').getContext('2d');
-
-
-                // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
-
-                    const myChart_differentiation = new Chart(ctx2, {
-                        type: 'bar',
-                        data: {
-                          labels: nameDifferentiation,
-                          datasets:
-                            checkedCheckboxesDifferentiationProperties.map((key, i) => ({
-                                label: 'ok',
-                                data: differentiation[i],
-                                // backgroundColor: colorArray[i],
-                                fill: false
-                            })),
-                        },
-                        options: {
-                          scales: {
-                            y: {
-                              beginAtZero: true
-                            }
-                          }
-                        }
-                      });
-                // }
-
-
-
-                        
-                     
                     });
 
                 // }
 
-
-
+                // -----------------------------------------------------------------------------------
 
                 // if (!(checkedCheckboxesDifferentiationRateVersion.length === 0) && !(checkedCheckboxesDifferentiationRateProperties.length === 0)) {
 
@@ -743,7 +776,12 @@ fileUpload.addEventListener('click', function() {
                         nameDifferentiationRate.length = 0;
                         propertyDifferentiationRate.length = 0;
                         dateDifferentiationRate.length = 0;
+                        differentiationRate.length = 0;
+                        
+                        deleteCanvas('myChart_differentiationRate');
+                        createCanvas('differentiation-rate-chart-display', 'myChart_differentiationRate');
                      
+
                         // Array filled with selected versions
                         // Gets the values of each row and push it into arrays
                         for (let i = 0; i < rowJsonObject.length; i++) {
@@ -758,6 +796,7 @@ fileUpload.addEventListener('click', function() {
                         };
 
                         console.log(nameDifferentiationRate);
+
 
                         // Array filled with selected variables
                         for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
@@ -792,6 +831,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(propertyDifferentiationRate);
                         
+
                         // Array filled with formated dates
                         for (let i = 0; i < rowJsonObject.length; i++) {
                             // console.log(rowJsonObject[i].rel_date);
@@ -807,6 +847,90 @@ fileUpload.addEventListener('click', function() {
                         };
 
                         console.log(dateDifferentiationRate);
+
+
+
+
+                        // Calculation of the Differentiation
+                        for (let i = 0; i < propertyDifferentiation.length; i++) {
+                                        
+                            differentiation[i] = [ ];
+                            
+                            for (let j = 0; j < propertyDifferentiation[i].length; j++) {
+
+                                if (propertyDifferentiation[i][j] >= propertyDifferentiation[i][j + 1]) {
+                                    differentiation[i][j] = (propertyDifferentiation[i][j] - propertyDifferentiation[i][j + 1]);
+                                } else {
+                                    differentiation[i][j] = (propertyDifferentiation[i][j + 1] - propertyDifferentiation[i][j]);
+                                }
+                                
+                            }
+                            
+                        }
+
+
+
+
+
+                        // Calculation of the Differentiation Rate
+                        for (let i = 0; i < propertyDifferentiationRate.length; i++) {
+                            
+                            differentiationRate[i] = [ ];
+                            
+                            for (let j = 0; j < propertyDifferentiationRate[i].length; j++) {
+        
+                                if (propertyDifferentiationRate[i][j] >= propertyDifferentiationRate[i][j + 1]) {
+                                    differentiationRate[i][j] = (propertyDifferentiationRate[i][j] - propertyDifferentiationRate[i][j + 1]) / propertyDifferentiationRate[i][j + 1];
+                                    
+                                    differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
+                                } else {
+                                    differentiationRate[i][j] = (propertyDifferentiationRate[i][j + 1] - propertyDifferentiationRate[i][j]) / propertyDifferentiationRate[i][j];
+                                    
+                                    differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
+                                }
+                                
+                            }
+                            
+                        }
+
+                        console.log(differentiationRate);
+
+
+                        // Displays the chart for the variables
+                        const ctx3= document.getElementById('myChart_differentiationRate').getContext('2d');
+                        // const ctx4= document.getElementById('myChart_sum_100').getContext('2d');
+
+                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+
+                            const myChart_differentiationRate = new Chart(ctx3, {
+                                type: 'bar',
+                                data: {
+                                labels: nameDifferentiationRate,
+                                datasets:
+                                checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
+                                        borderColor: '#e61802',
+                                        borderWidth: 2
+                                    })),
+                                },
+                                options: {
+                                    plugins: {
+                                        tooltip: {
+                                            enabled: false // <-- this option disables tooltips
+                                        }
+                                    },
+                                    // maintainAspectRatio: false,
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                        
+                                }
+                            });
+
+                            console.log(myChart_differentiationRate);
+
+                        // }
                         
                     });
                  
@@ -814,7 +938,7 @@ fileUpload.addEventListener('click', function() {
 
                 // }
 
-
+                // -----------------------------------------------------------------------------------
 
                 // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
 
@@ -897,87 +1021,12 @@ fileUpload.addEventListener('click', function() {
                 // }
 
 
-                // -----------------------------------------------------------------------------------
 
-                // Calculation of the Differentiation
-                for (let i = 0; i < propertyDifferentiation.length; i++) {
-                            
-                    differentiation[i] = [ ];
-                    
-                    for (let j = 0; j < propertyDifferentiation[i].length; j++) {
 
-                        if (propertyDifferentiation[i][j] >= propertyDifferentiation[i][j + 1]) {
-                            differentiation[i][j] = (propertyDifferentiation[i][j] - propertyDifferentiation[i][j + 1]);
-                        } else {
-                            differentiation[i][j] = (propertyDifferentiation[i][j + 1] - propertyDifferentiation[i][j]);
-                        }
-                        
-                    }
-                    
-                }
 
-                // -----------------------------------------------------------------------------------
-
-                // Calculation of the Differentiation Rate
-                for (let i = 0; i < propertyDifferentiation.length; i++) {
-                            
-                    differentiationRate[i] = [ ];
-                    
-                    for (let j = 0; j < propertyDifferentiation[i].length; j++) {
-
-                        if (propertyDifferentiation[i][j] >= propertyDifferentiation[i][j + 1]) {
-                            differentiationRate[i][j] = (propertyDifferentiation[i][j] - propertyDifferentiation[i][j + 1]) / propertyDifferentiation[i][j + 1];
-                            
-                            differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
-                        } else {
-                            differentiationRate[i][j] = (propertyDifferentiation[i][j + 1] - propertyDifferentiation[i][j]) / propertyDifferentiation[i][j];
-                            
-                            differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
-                        }
-                        
-                    }
-                    
-                }
-
-                // -----------------------------------------------------------------------------------
 
                 
-
                 
-
-
-
-
-                // const myChart_differentiation = new Chart(ctx2, {
-                //     type: 'bar',
-                //     data: {
-                //         labels: nameDifferentiation,
-                //         datasets: 
-                //             splitProperty.map((key, i) => ({
-                //                 label: 'ok',
-                //                 data: differentiation[i],
-                //                 // backgroundColor: colorArray[i],
-                //                 fill: false
-                //             })),
-                        
-                //     },
-                //     options: { responsive: true,
-                //                 scales: {
-                //                     r: {
-                //                         pointLabels: {
-                //                             display: true,
-                //                             centerPointLabels: true,
-                //                             font: {
-                //                                 size: 18
-                //                             }
-                //                         }
-                //                     }
-                //                 },
-
-                     
-                //     }
-                // });
-
 
 
 

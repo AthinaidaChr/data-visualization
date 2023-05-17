@@ -335,6 +335,35 @@ aside .sidebar-content button:hover span {
 
 /* ------------------------------- */
 
+.main-content .no-file-yet {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 6rem;
+}
+
+.main-content #no-file-yet-icon {
+    color: #ffffff;
+    font-size: 23rem;
+    box-shadow: var(--box-shadow-buttons);
+}
+
+.main-content .no-file-yet-title {
+    padding-top: 2rem;
+    white-space: nowrap; 
+}
+
+.main-content .no-file-yet-text {
+    white-space: nowrap; 
+}
+
+
+
+/* ------------------------------- */
+
 .main-content .cards .differentiation-versions-card,
 .main-content .cards .differentiation-rate-versions-card,
 .main-content .cards .sum-up-to-100-versions-card {
@@ -370,9 +399,14 @@ aside .sidebar-content button:hover span {
     grid-row: 1;
 }
 
-.main-content .cards .differentiation-chart-display-card {
+.main-content .cards .differentiation-chart-display-card,
+.main-content .cards .differentiation-rate-chart-display-card,
+.main-content .cards .sum-up-to-100-chart-display-card {
     grid-column: 2 / 4;
     grid-row: 2 / 4;
+
+    /* min-width: 50rem; */
+    min-height: 50rem;
 }
 
 /* ------------------------------- */

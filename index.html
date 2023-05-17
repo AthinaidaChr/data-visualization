@@ -191,25 +191,65 @@
                                 new Chart(ctxDBradar, {
                                     type: 'radar',
                                     data: {
-                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
                                         datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: ['#ea5545', '#f46a9b', '#ef9b20', '#edbf33', '#ede15b', '#bdcf32', '#87bc45', '#27aeef', '#b33dc6'],
-                                        borderWidth: 1,
-                                        fill: false
-                                        }]
+                                                label: 'Comments',
+                                                data: [5121, 3847, 7730, 6071, 9429],
+                                                backgroundColor: 'rgba(84, 33, 82, 0.7)',
+                                                borderWidth: 2,
+                                                borderColor: '#660244'
+                                            },
+                                            {
+                                                label: 'Duplicated Lines',
+                                                data: [10803, 11662, 13528, 10273, 11832],
+                                                backgroundColor: 'rgba(156, 30, 150, 0.7)',
+                                                borderWidth: 2,
+                                                borderColor: '#940399'
+                                            },
+                                            {
+                                                label: 'Total Lines',
+                                                data: [19224, 17942, 22447, 20680, 24256],
+                                                backgroundColor: 'rgba(250, 52, 241, 0.7)',
+                                                borderWidth: 2,
+                                                borderColor: '#c704be'
+                                            }
+                                        ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
+                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+                                        plugins: {
+                                            tooltip: {
+                                                // Tooltip will only receive click events
+                                                events: ['click']
+                                                // title: {
+                                                //     display: true,
+                                                //     text: 'Custom Chart Title',
+                                                //     // padding: {
+                                                //     //     top: 10,
+                                                //     //     bottom: 30
+                                                //     // }
+                                                // }
+                                            },
+                                        },
                                         scales: {
+                                            // not working
+                                            // xAxis: {
+                                            //     grid: {
+                                            //         drawOnChartArea: false
+                                            //     }
+                                            // },
                                             // yAxes: [{
                                             //     ticks: {
                                             //         beginAtZero:true
                                             //     }
-                                            // }]
-                                        }
+                                            //     // not working
+                                            //     // grid: {
+                                            //     //     drawOnChartArea: false
+                                            //     // }
+                                            // }]                                            
+                                        },
                                     }
                                 });
 
@@ -321,24 +361,90 @@
                                 new Chart(ctxDBdoughnut, {
                                     type: 'doughnut',
                                     data: {
-                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        labels: ['v1,0,0', 'v2,0,0', 'v3,0,0'],
                                         datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: ['#ea5545', '#f46a9b', '#ef9b20', '#edbf33', '#ede15b', '#bdcf32', '#87bc45', '#27aeef', '#b33dc6'],
-                                        borderWidth: 1
-                                        }]
+                                                label: 'NOF',
+                                                data: [793, 1263, 891],
+                                                backgroundColor: '#87bc45',
+                                                borderColor: '#488003',
+                                                borderWidth: 2
+                                            },
+                                            {
+                                                label: 'NOA',
+                                                data: [1368, 874, 1358],
+                                                backgroundColor: '#bdcf32',
+                                                borderColor: '#488003',
+                                                borderWidth: 2
+                                            },
+                                            {
+                                                label: 'NOM',
+                                                data: [674, 956, 548],
+                                                backgroundColor: '#ede15b',
+                                                borderColor: '#488003',
+                                                borderWidth: 2
+                                            }
+                                        ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
+                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+                                        plugins: {
+                                            tooltip: {
+                                                // Tooltip will only receive click events
+                                                events: ['click']
+                                                // title: {
+                                                //     display: true,
+                                                //     text: 'Custom Chart Title',
+                                                //     // padding: {
+                                                //     //     top: 10,
+                                                //     //     bottom: 30
+                                                //     // }
+                                                // }
+                                            },
+                                            plugins: {
+                                                datalabels: {
+                                                    display: true,
+                                                    backgroundColor: '#ccc',
+                                                    borderRadius: 3,
+                                                    font: {
+                                                    color: 'red',
+                                                    weight: 'bold',
+                                                    },
+                                                },
+                                                doughnutlabel: {
+                                                    labels: [
+                                                    {
+                                                        text: '550',
+                                                        font: {
+                                                        size: 20,
+                                                        weight: 'bold',
+                                                        },
+                                                    },
+                                                    {
+                                                        text: 'total',
+                                                    },
+                                                    ],
+                                                },
+                                            },
+                                        },
                                         scales: {
+                                            // not working
+                                            // xAxis: {
+                                            //     grid: {
+                                            //         drawOnChartArea: false
+                                            //     }
+                                            // },
                                             // yAxes: [{
                                             //     ticks: {
                                             //         beginAtZero:true
                                             //     }
-                                            // }]
-                                        }
+                                            //     // not working
+                                            //     // grid: {
+                                            //     //     drawOnChartArea: false
+                                            //     // }
+                                            // }]                                            
+                                        },
                                     }
                                 });
 
@@ -389,30 +495,64 @@
                             <canvas id="dashboard-chart-polar-area"></canvas>
                             
                             <script>
-
+                                
                                 const ctxDBpolarArea = document.getElementById('dashboard-chart-polar-area');
                                     
                                 new Chart(ctxDBpolarArea, {
                                     type: 'polarArea',
                                     data: {
-                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        labels: ['v1,0,0', 'v2,0,0', 'v3,0,0'],
                                         datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: ['#ea5545', '#f46a9b', '#ef9b20', '#edbf33', '#ede15b', '#bdcf32', '#87bc45', '#27aeef', '#b33dc6'],
-                                        borderWidth: 1
-                                        }]
+                                                label: 'Duplicated Blocks',
+                                                data: [456, 294, 671],
+                                                backgroundColor: '#ffb55a',
+                                                borderColor: '#eb770c',
+                                                borderWidth: 2
+                                            },
+                                            {
+                                                label: 'Duplicated Lines',
+                                                data: [753, 950, 1352],
+                                                backgroundColor: '#ef9b20',
+                                                borderColor: '#eb770c',
+                                                borderWidth: 2
+                                            },
+                                        ],
                                     },
                                     options: {
-                                        responsive: true,                                                
+                                        responsive: true,
                                         maintainAspectRatio: false,
+                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+                                        plugins: {
+                                            tooltip: {
+                                                // Tooltip will only receive click events
+                                                events: ['click']
+                                                // title: {
+                                                //     display: true,
+                                                //     text: 'Custom Chart Title',
+                                                //     // padding: {
+                                                //     //     top: 10,
+                                                //     //     bottom: 30
+                                                //     // }
+                                                // }
+                                            }
+                                        },
                                         scales: {
-                                            yAxes: [{
-                                                ticks: {
-                                                    beginAtZero:true
-                                                }
-                                            }]
-                                        }
+                                            // not working
+                                            // xAxis: {
+                                            //     grid: {
+                                            //         drawOnChartArea: false
+                                            //     }
+                                            // },
+                                            // yAxes: [{
+                                            //     ticks: {
+                                            //         beginAtZero:true
+                                            //     }
+                                            //     // not working
+                                            //     // grid: {
+                                            //     //     drawOnChartArea: false
+                                            //     // }
+                                            // }]                                            
+                                        },
                                     }
                                 });
 
@@ -461,21 +601,24 @@
                                     data: {
                                         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
                                         datasets: [{
-                                                label: 'commits',
+                                                label: 'Commits',
                                                 data: [3068, 1922, 768, 1859, 328],
                                                 backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
+                                                borderColor: '#e61802',
                                                 borderWidth: 2
                                             },
                                             {
-                                                label: 'bugs',
+                                                label: 'Bugs',
                                                 data: [2041, 928, 2580, 3159, 758],
                                                 backgroundColor: ['#f46a9b', '#f46a9b', '#f46a9b', '#f46a9b', '#f46a9b'],
+                                                borderColor: '#f2276f',                                                
                                                 borderWidth: 2,
                                             },
                                             {
-                                                label: 'issues',
+                                                label: 'Issues',
                                                 data: [1223, 1187, 782, 1079, 648],
                                                 backgroundColor: ['#ef9b20', '#ef9b20', '#ef9b20', '#ef9b20', '#ef9b20'],
+                                                borderColor: '#eb770c',
                                                 borderWidth: 2,
                                         }],
                                     },
@@ -614,8 +757,15 @@
 
             </div>
 
-            No excel file yet.
+            <div class="no-file-yet">
+                
+                <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
 
+                <h2 class="no-file-yet-title">No excel file yet...</h2>
+
+                <span class="no-file-yet-text">Please insert an EXCEL file in the Dashboard Section to unlock this area.</span>
+            
+            </div>
 
         </div>
 
@@ -706,11 +856,9 @@
                 </div>
 
                 <div class="chart differentiation-chart-display-card" id="differentiation-chart-display">
-    
-                    <div>
-                        <canvas id="myChart_differentiation"></canvas>
-                      </div>
-    
+                   
+                    <canvas id="myChart_differentiation"></canvas>
+                
                 </div>
         
             </div>
@@ -731,7 +879,15 @@
 
             </div>
 
-            No excel file yet.
+            <div class="no-file-yet">
+                
+                <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
+
+                <h2 class="no-file-yet-title">No excel file yet...</h2>
+
+                <span class="no-file-yet-text">Please insert an EXCEL file in the Dashboard Section to unlock this area.</span>
+            
+            </div>
 
 
         </div>
@@ -822,10 +978,10 @@
 
                 </div>
 
-                <div class="chart" id="differentiation-rate-chart-display">
-    
-                    dgbhn
-    
+                <div class="chart differentiation-rate-chart-display-card" id="differentiation-rate-chart-display">
+                   
+                    <canvas id="myChart_differentiationRate"></canvas>
+                
                 </div>
         
             </div>
@@ -846,7 +1002,14 @@
 
             </div>
 
-            No excel file yet.
+            <div class="no-file-yet">
+                
+                <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
+
+                <h2 class="no-file-yet-title">No excel file yet...</h2>
+
+                <span class="no-file-yet-text">Please insert an EXCEL file in the Dashboard Section to unlock this area.</span>
+            </div>
 
 
         </div>
@@ -937,10 +1100,10 @@
 
                 </div>
 
-                <div class="chart" id="sum-up-to-100-chart-display">
-    
-                    dgbhn
-    
+                <div class="chart sum-up-to-100-chart-display-card" id="sum-up-to-100-chart-display">
+                   
+                    <canvas id="myChart_sum_up_to_100"></canvas>
+                
                 </div>
         
             </div>
