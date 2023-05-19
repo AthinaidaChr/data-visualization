@@ -44,37 +44,37 @@
             <!-- -------------- Sidebar Menu -------------- -->
             <div class="sidebar-content">
 
-                <button class="buttons active" id="dashboard-btn">
+                <button class="buttons" id="dashboard-btn">
 
                     <span class="material-icons-sharp">dashboard</span>
                     <h3>Dashboard</h3>
 
                 </button>
 
-                <button class="buttons" id="property-btn">
+                <button class="buttons" id="summary-statistics-btn">
 
-                    <span class="material-icons-sharp">dashboard</span>
-                    <h3>Property Display</h3>
+                    <span class="material-icons-sharp">insights</span>
+                    <h3>Summary Statistics</h3>
 
                 </button>
 
                 <button class="buttons" id="differentiation-btn">
 
-                    <span class="material-icons-sharp">align_horizontal_left</span>
-                    <h3>Differentiation</h3>
+                    <span class="material-icons-sharp">leaderboard</span>
+                    <h3>Evaluation</h3>
 
                 </button>
 
                 <button class="buttons" id="differentiation-rate-btn">
 
-                    <span class="material-icons-sharp">align_vertical_bottom</span>
-                    <h3>Differentiation Rate</h3>
+                    <span class="material-icons-sharp">candlestick_chart</span>
+                    <h3>Evaluation Rate</h3>
 
                 </button>
 
                 <button class="buttons" id="sum-up-to-100-btn">
 
-                    <span class="material-icons-sharp">align_horizontal_right</span>
+                    <span class="material-icons-sharp">stacked_bar_chart</span>
                     <h3>Sum up to 100%</h3>
 
                 </button>
@@ -744,6 +744,146 @@
         </div>
 
 
+        <!-- -------------- Summary Statistics -------------- -->
+
+        <!-- -------------- Summary Statistics - Main section of the page -------------- -->
+        <div class="main-content" id="summary-statistics-no-file-yet" style="display: none;">
+
+            <!-- Contains the title of each section. -->
+            <div class="main-title" id="summary-statistics-title">
+
+                <span class="material-icons-sharp">arrow_right</span>
+                <h2>Summary Statistics</h2>
+
+            </div>
+
+            <div class="no-file-yet">
+                
+                <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
+
+                <h2 class="no-file-yet-title">No excel file yet...</h2>
+
+                <span class="no-file-yet-text">Please insert an EXCEL file in the Dashboard Section to unlock this area.</span>
+            
+            </div>
+
+        </div>
+
+        <!-- -------------- Summary Statistics - Main section of the page -------------- -->
+        <div class="main-content" id="summary-statistics" style="display:none;">
+
+            <!-- Contains the title of each section. -->
+            <div class="main-title" id="summary-statistics-title">
+
+                <span class="material-icons-sharp">arrow_right</span>
+                <h2>Differentiation</h2>
+
+            </div>
+
+            <!-- Section with all the cards / charts -->
+            <div class="cards">
+
+                <div class="chart summary-statistics-versions-card">
+                    
+                    <div id="summary-statistics-versions"></div>
+
+                    <div class="cardButtons">
+
+                        <div class="radio-button-container">
+
+                            <label class="radio-button">Version
+                                <input type="radio" checked="checked" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+    
+                            <label class="radio-button">Date
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="ok-select-all-button-container">
+
+                            <button class="button selectDeselectAll" type="button" id="summary-statistics-versions-select-deselect-all-btn">
+                                    
+                                Select all
+                                <span class="material-icons-sharp">done_all</span>
+        
+                            </button>
+    
+                            <button class="button ok" type="button" id="summary-statistics-versions-ok-btn">
+                                    
+                                OK
+                                <span class="material-icons-sharp">check</span>
+        
+                            </button>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="chart summary-statistics-properties-card">
+        
+                    <div id="summary-statistics-properties"></div>
+
+                    <div class="cardButtons">
+
+                        <button class="button selectDeselectAll" type="button" id="summary-statistics-properties-select-deselect-all-btn">
+                                    
+                            Select all
+                            <span class="material-icons-sharp">done_all</span>
+    
+                        </button>
+
+                        <button class="button ok" type="button" id="summary-statistics-properties-ok-btn">
+                                
+                            OK
+                            <span class="material-icons-sharp">check</span>
+    
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="chart summary-statistics-axis-card">
+        
+                    <div id="summary-statistics-axis"></div>
+
+                    <!-- <div class="cardButtons">
+
+                        <button class="button selectDeselectAll" type="button" id="summary-statistics-axis-select-deselect-all-btn">
+                                    
+                            Select all
+                            <span class="material-icons-sharp">done_all</span>
+    
+                        </button>
+
+                        <button class="button ok" type="button" id="summary-statistics-axis-ok-btn">
+                                
+                            OK
+                            <span class="material-icons-sharp">check</span>
+    
+                        </button>
+
+                    </div> -->
+
+                </div>
+
+                <div class="chart summary-statistics-chart-display-card" id="summary-statistics-chart-display">
+                   
+                    <canvas id="myChart_summaryStatistics"></canvas>
+                
+                </div>
+        
+            </div>
+
+        </div>
+
+
         <!-- -------------- Differentiation -------------- -->
 
         <!-- -------------- Differentiation - Main section of the page -------------- -->
@@ -753,7 +893,7 @@
             <div class="main-title" id="differentiation-title">
 
                 <span class="material-icons-sharp">arrow_right</span>
-                <h2>Differentiation</h2>
+                <h2>Evaluation</h2>
 
             </div>
 
@@ -776,7 +916,7 @@
             <div class="main-title" id="differentiation-title">
 
                 <span class="material-icons-sharp">arrow_right</span>
-                <h2>Differentiation</h2>
+                <h2>Evaluation</h2>
 
             </div>
 
@@ -875,7 +1015,7 @@
             <div class="main-title" id="differentiation-rate-title">
 
                 <span class="material-icons-sharp">arrow_right</span>
-                <h2>Differentiation Rate</h2>
+                <h2>Evaluation Rate</h2>
 
             </div>
 
@@ -899,7 +1039,7 @@
             <div class="main-title" id="differentiation-rate-title">
 
                 <span class="material-icons-sharp">arrow_right</span>
-                <h2>Differentiation Rate</h2>
+                <h2>Evaluation Rate</h2>
 
             </div>
 
