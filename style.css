@@ -372,12 +372,19 @@ aside .sidebar-content button:hover span {
     min-width: 30rem;
 }
 
-.main-content .cards .summary-statistics-axis-card,
-.main-content .cards .differentiation-axis-card,
-.main-content .cards .differentiation-rate-axis-card,
-.main-content .cards .sum-up-to-100-axis-card {
+.main-content .cards .summary-statistics-charts-card,
+.main-content .cards .differentiation-charts-card,
+.main-content .cards .differentiation-rate-charts-card,
+.main-content .cards .sum-up-to-100-charts-card {
     grid-column: 3;
     grid-row: 1;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+
+    min-width: 30rem;
 }
 
 .main-content .cards .summary-statistics-chart-display-card,
@@ -601,14 +608,22 @@ input[type=checkbox]:checked ~ .dynamicSpan {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* gap: 20rem; */
+    margin-left: auto;
+}
+
+.cardButtonsVersions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 20rem;
-    /* margin-left: auto; */
+    margin-right: auto;
 }
 
 .cardButtons .ok-select-all-button-container {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     /* gap: 20rem; */
     /* margin-left: auto; */
 }

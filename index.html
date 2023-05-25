@@ -776,7 +776,7 @@
             <div class="main-title" id="summary-statistics-title">
 
                 <span class="material-icons-sharp">arrow_right</span>
-                <h2>Differentiation</h2>
+                <h2>Summary Statistics</h2>
 
             </div>
 
@@ -787,17 +787,17 @@
                     
                     <div id="summary-statistics-versions"></div>
 
-                    <div class="cardButtons">
+                    <div class="cardButtons cardButtonsVersions">
 
                         <div class="radio-button-container">
 
                             <label class="radio-button">Version
-                                <input type="radio" checked="checked" name="radio">
+                                <input type="radio" checked="checked" name="summary-statistics-radio" id="summary-statistics-versions-radio">
                                 <span class="checkmark"></span>
                             </label>
     
                             <label class="radio-button">Date
-                                <input type="radio" name="radio">
+                                <input type="radio" name="summary-statistics-radio" id="summary-statistics-dates-radio">
                                 <span class="checkmark"></span>
                             </label>
 
@@ -849,27 +849,27 @@
 
                 </div>
 
-                <div class="chart summary-statistics-axis-card">
+                <div class="chart summary-statistics-charts-card">
         
-                    <div id="summary-statistics-axis"></div>
+                    <div id="summary-statistics-charts"></div>
 
-                    <!-- <div class="cardButtons">
+                    <div class="cardButtons">
 
-                        <button class="button selectDeselectAll" type="button" id="summary-statistics-axis-select-deselect-all-btn">
+                        <button class="button selectDeselectAll" type="button" id="summary-statistics-charts-select-deselect-all-btn">
                                     
                             Select all
                             <span class="material-icons-sharp">done_all</span>
     
                         </button>
 
-                        <button class="button ok" type="button" id="summary-statistics-axis-ok-btn">
+                        <button class="button ok" type="button" id="summary-statistics-charts-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
     
                         </button>
 
-                    </div> -->
+                    </div>
 
                 </div>
 
@@ -927,21 +927,39 @@
                     
                     <div id="differentiation-versions"></div>
 
-                    <div class="cardButtons">
+                    <div class="cardButtons cardButtonsVersions">
 
-                        <button class="button selectDeselectAll" type="button" id="differentiation-versions-select-deselect-all-btn">
+                        <div class="radio-button-container">
+
+                            <label class="radio-button">Version
+                                <input type="radio" checked="checked" name="radio-differentiation" id="differentiation-versions-radio">
+                                <span class="checkmark"></span>
+                            </label>
+    
+                            <label class="radio-button">Date
+                                <input type="radio" name="radio-differentiation" id="differentiation-dates-radio">
+                                <span class="checkmark"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="ok-select-all-button-container">
+
+                            <button class="button selectDeselectAll" type="button" id="differentiation-versions-select-deselect-all-btn">
                                     
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
+                                Select all
+                                <span class="material-icons-sharp">done_all</span>
+        
+                            </button>
     
-                        </button>
+                            <button class="button ok" type="button" id="differentiation-versions-ok-btn">
+                                    
+                                OK
+                                <span class="material-icons-sharp">check</span>
+        
+                            </button>
 
-                        <button class="button ok" type="button" id="differentiation-versions-ok-btn">
-                                
-                            OK
-                            <span class="material-icons-sharp">check</span>
-    
-                        </button>
+                        </div>
 
                     </div>
                     
@@ -971,27 +989,27 @@
 
                 </div>
 
-                <div class="chart differentiation-axis-card">
+                <div class="chart differentiation-charts-card">
         
-                    <div id="differentiation-axis"></div>
+                    <div id="differentiation-charts"></div>
 
-                    <!-- <div class="cardButtons">
+                    <div class="cardButtons">
 
-                        <button class="button selectDeselectAll" type="button" id="differentiation-axis-select-deselect-all-btn">
+                        <button class="button selectDeselectAll" type="button" id="differentiation-charts-select-deselect-all-btn">
                                     
                             Select all
                             <span class="material-icons-sharp">done_all</span>
     
                         </button>
 
-                        <button class="button ok" type="button" id="differentiation-axis-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-charts-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
     
                         </button>
 
-                    </div> -->
+                    </div>
 
                 </div>
 
@@ -1050,21 +1068,40 @@
                     
                     <div id="differentiation-rate-versions"></div>
 
-                    <div class="cardButtons">
+                    <div class="cardButtons cardButtonsVersions">
 
-                        <button class="button selectDeselectAll" type="button" id="differentiation-rate-versions-select-deselect-all-btn">
+                        <div class="radio-button-container">
+
+                            <label class="radio-button">Version
+                                <input type="radio" checked="checked" name="radio-differentiation-rate" id="differentiation-rate-versions-radio">
+                                <span class="checkmark"></span>
+                            </label>
+    
+                            <label class="radio-button">Date
+                                <input type="radio" name="radio-differentiation-rate" id="differentiation-rate-dates-radio">
+                                <span class="checkmark"></span>
+                            </label>
+
+                        </div>
+
+
+                        <div class="ok-select-all-button-container">
+
+                            <button class="button selectDeselectAll" type="button" id="differentiation-rate-versions-select-deselect-all-btn">
                                     
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
+                                Select all
+                                <span class="material-icons-sharp">done_all</span>
+        
+                            </button>
     
-                        </button>
+                            <button class="button ok" type="button" id="differentiation-rate-versions-ok-btn">
+                                    
+                                OK
+                                <span class="material-icons-sharp">check</span>
+        
+                            </button>
 
-                        <button class="button ok" type="button" id="differentiation-rate-versions-ok-btn">
-                                
-                            OK
-                            <span class="material-icons-sharp">check</span>
-    
-                        </button>
+                        </div>
 
                     </div>
                     
@@ -1094,27 +1131,27 @@
 
                 </div>
 
-                <div class="chart differentiation-rate-axis-card">
+                <div class="chart differentiation-rate-charts-card">
         
-                    <div id="differentiation-rate-axis"></div>
+                    <div id="differentiation-rate-charts"></div>
 
-                    <!-- <div class="cardButtons">
+                    <div class="cardButtons">
 
-                        <button class="button selectDeselectAll" type="button" id="differentiation-rate-axis-select-deselect-all-btn">
+                        <button class="button selectDeselectAll" type="button" id="differentiation-rate-charts-select-deselect-all-btn">
                                     
                             Select all
                             <span class="material-icons-sharp">done_all</span>
     
                         </button>
 
-                        <button class="button ok" type="button" id="differentiation-rate-axis-ok-btn">
+                        <button class="button ok" type="button" id="differentiation-rate-charts-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
     
                         </button>
 
-                    </div> -->
+                    </div>
 
                 </div>
 
@@ -1216,27 +1253,27 @@
 
                 </div>
 
-                <div class="chart sum-up-to-100-axis-card">
+                <div class="chart sum-up-to-100-charts-card">
         
-                    <div id="sum-up-to-100-axis"></div>
+                    <div id="sum-up-to-100-charts"></div>
 
-                    <!-- <div class="cardButtons">
+                    <div class="cardButtons">
 
-                        <button class="button selectDeselectAll" type="button" id="sum-up-to-100-axis-select-deselect-all-btn">
+                        <button class="button selectDeselectAll" type="button" id="sum-up-to-100-charts-select-deselect-all-btn">
                                     
                             Select all
                             <span class="material-icons-sharp">done_all</span>
     
                         </button>
 
-                        <button class="button ok" type="button" id="sum-up-to-100-axis-ok-btn">
+                        <button class="button ok" type="button" id="sum-up-to-100-charts-ok-btn">
                                 
                             OK
                             <span class="material-icons-sharp">check</span>
     
                         </button>
 
-                    </div> -->
+                    </div>
 
                 </div>
 
