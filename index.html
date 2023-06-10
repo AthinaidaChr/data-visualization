@@ -90,8 +90,18 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="dashboard-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Dashboard</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Dashboard</h2>
+
+                </div>
+
+                <!-- <div id="dashboard-text"> -->
+
+                    <p id="main-title-description">In the Dashboard Section you can upload your excel file and you can find all the chart information you need.</p>                        
+
+                <!-- </div> -->
 
             </div>
     
@@ -299,12 +309,18 @@
                                 new Chart(ctxDBbubble, {
                                     type: 'bubble',
                                     data: {
-                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                                         datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: ['#ea5545', '#f46a9b', '#ef9b20', '#edbf33', '#ede15b', '#bdcf32', '#87bc45', '#27aeef', '#b33dc6'],
-                                        borderWidth: 1
+                                            label: 'First Dataset',
+                                            data: [{
+                                            x: 20,
+                                            y: 30,
+                                            r: 15
+                                            }, {
+                                            x: 40,
+                                            y: 10,
+                                            r: 10
+                                            }],
+                                            backgroundColor: 'rgb(255, 99, 132)'
                                         }]
                                     },
                                     options: {
@@ -752,8 +768,18 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="summary-statistics-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Summary Statistics</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Summary Statistics</h2>
+
+                </div>
+
+                <!-- <div id="summary-statistics-text"> -->
+
+                    <p id="main-title-description">In the Summary Statistics Section you can view all the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+
+                <!-- </div> -->
 
             </div>
 
@@ -772,18 +798,59 @@
         <!-- -------------- Summary Statistics - Main section of the page -------------- -->
         <div class="main-content" id="summary-statistics" style="display:none;">
 
+
             <!-- Contains the title of each section. -->
             <div class="main-title" id="summary-statistics-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Summary Statistics</h2>
+                <div class="main-title-text">
 
-            </div>
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Summary Statistics</h2>
+
+                </div>
+
+                <!-- <div id="summary-statistics-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Summary Statistics Section you can view all the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+    
+                    <!-- </div> -->
+                <!-- </div> -->
+
+            </div>           
 
             <!-- Section with all the cards / charts -->
             <div class="cards">
 
                 <div class="chart summary-statistics-versions-card">
+
+                    <div id="description-text">
+
+                        <p>Choose between the Versions / Dates of your uploaded software :</p>
+
+
+                        <div class="show-color-options-text">
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp primary">lightbulb</span>
+                                Primary Versions
+
+                            </div>
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp secondary">lightbulb</span>                            Secondary Versions
+                                Secondary Versions
+
+                            </div>
+                            
+
+                        </div>
+                        
+
+                    </div>
                     
                     <div id="summary-statistics-versions"></div>
 
@@ -826,6 +893,12 @@
                 </div>
 
                 <div class="chart summary-statistics-properties-card">
+
+                    <div id="description-text">
+
+                        <p>Select the properties you want to display at the chart :</p>                        
+
+                    </div>
         
                     <div id="summary-statistics-properties"></div>
 
@@ -850,17 +923,16 @@
                 </div>
 
                 <div class="chart summary-statistics-charts-card">
+
+                    <div id="description-text">
+
+                        <p>Select the type of chart you want to display for the Summary Statistics :</p>                        
+
+                    </div>
         
                     <div id="summary-statistics-charts"></div>
 
                     <div class="cardButtons">
-
-                        <button class="button selectDeselectAll" type="button" id="summary-statistics-charts-select-deselect-all-btn">
-                                    
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
-    
-                        </button>
 
                         <button class="button ok" type="button" id="summary-statistics-charts-ok-btn">
                                 
@@ -878,6 +950,10 @@
                     <canvas id="myChart_summaryStatistics"></canvas>
                 
                 </div>
+
+                <div id="summary-statistics-z-axis-modal" style="display: none;"></div>
+
+                <div class="summary-statistics-overlay" style="display: none;"></div>
         
             </div>
 
@@ -892,8 +968,21 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="differentiation-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Evaluation</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Evaluation</h2>
+
+                </div>
+
+                <!-- <div id="differentiation-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Evaluation Section you can view all the calculated differentiation between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+    
+                    <!-- </div> -->
+                <!-- </div> -->
 
             </div>
 
@@ -915,8 +1004,22 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="differentiation-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Evaluation</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Evaluation</h2>
+
+                </div>
+
+                <!-- <div id="differentiation-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Evaluation Section you can view all the calculated differentiation between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+    
+                    <!-- </div> -->
+
+                <!-- </div> -->
 
             </div>
 
@@ -924,6 +1027,33 @@
             <div class="cards">
 
                 <div class="chart differentiation-versions-card">
+
+                    <div id="description-text">
+
+                        <p>Choose between the Versions / Dates of your uploaded software :</p>
+
+
+                        <div class="show-color-options-text">
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp primary">lightbulb</span>
+                                Primary Versions
+
+                            </div>
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp secondary">lightbulb</span>                            Secondary Versions
+                                Secondary Versions
+
+                            </div>
+                            
+
+                        </div>
+                        
+
+                    </div>
                     
                     <div id="differentiation-versions"></div>
 
@@ -966,6 +1096,12 @@
                 </div>
 
                 <div class="chart differentiation-properties-card">
+
+                    <div id="description-text">
+
+                        <p>Select the properties you want to display at the chart :</p>                        
+
+                    </div>
         
                     <div id="differentiation-properties"></div>
 
@@ -990,17 +1126,16 @@
                 </div>
 
                 <div class="chart differentiation-charts-card">
+
+                    <div id="description-text">
+
+                        <p>Select the type of chart you want to display for the Evaluation :</p>                        
+
+                    </div>
         
                     <div id="differentiation-charts"></div>
 
                     <div class="cardButtons">
-
-                        <button class="button selectDeselectAll" type="button" id="differentiation-charts-select-deselect-all-btn">
-                                    
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
-    
-                        </button>
 
                         <button class="button ok" type="button" id="differentiation-charts-ok-btn">
                                 
@@ -1018,6 +1153,10 @@
                     <canvas id="myChart_differentiation"></canvas>
                 
                 </div>
+
+                <div id="differentiation-z-axis-modal" style="display: none;"></div>
+
+                <div class="differentiation-overlay" style="display: none;"></div>
         
             </div>
 
@@ -1032,8 +1171,22 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="differentiation-rate-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Evaluation Rate</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Evaluation Rate</h2>
+
+                </div>
+
+                <!-- <div id="differentiation-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+    
+                    <!-- </div> -->
+
+                <!-- </div> -->
 
             </div>
 
@@ -1056,8 +1209,22 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="differentiation-rate-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Evaluation Rate</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Evaluation Rate</h2>
+
+                </div>
+
+                <!-- <div id="differentiation-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+    
+                    <!-- </div> -->
+
+                <!-- </div> -->
 
             </div>
 
@@ -1065,6 +1232,33 @@
             <div class="cards">
 
                 <div class="chart differentiation-rate-versions-card">
+
+                    <div id="description-text">
+
+                        <p>Choose between the Versions / Dates of your uploaded software :</p>
+
+
+                        <div class="show-color-options-text">
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp primary">lightbulb</span>
+                                Primary Versions
+
+                            </div>
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp secondary">lightbulb</span>                            Secondary Versions
+                                Secondary Versions
+
+                            </div>
+                            
+
+                        </div>
+                        
+
+                    </div>
                     
                     <div id="differentiation-rate-versions"></div>
 
@@ -1108,6 +1302,12 @@
                 </div>
 
                 <div class="chart differentiation-rate-properties-card">
+
+                    <div id="description-text">
+
+                        <p>Select the properties you want to display at the chart :</p>                        
+
+                    </div>
         
                     <div id="differentiation-rate-properties"></div>
 
@@ -1132,17 +1332,16 @@
                 </div>
 
                 <div class="chart differentiation-rate-charts-card">
+
+                    <div id="description-text">
+
+                        <p>Select the type of chart you want to display for the Evaluation Rate :</p>                        
+
+                    </div>
         
                     <div id="differentiation-rate-charts"></div>
 
                     <div class="cardButtons">
-
-                        <button class="button selectDeselectAll" type="button" id="differentiation-rate-charts-select-deselect-all-btn">
-                                    
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
-    
-                        </button>
 
                         <button class="button ok" type="button" id="differentiation-rate-charts-ok-btn">
                                 
@@ -1160,6 +1359,11 @@
                     <canvas id="myChart_differentiationRate"></canvas>
                 
                 </div>
+
+                <div id="differentiation-rate-z-axis-modal" style="display: none;"></div>
+
+                <div class="differentiation-rate-overlay" style="display: none;"></div>
+        
         
             </div>
 
@@ -1258,13 +1462,6 @@
                     <div id="sum-up-to-100-charts"></div>
 
                     <div class="cardButtons">
-
-                        <button class="button selectDeselectAll" type="button" id="sum-up-to-100-charts-select-deselect-all-btn">
-                                    
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
-    
-                        </button>
 
                         <button class="button ok" type="button" id="sum-up-to-100-charts-ok-btn">
                                 

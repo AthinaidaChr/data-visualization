@@ -28,6 +28,12 @@ let rowJsonObject;      // array of objects me antikeimena thn kathe grammh tou 
 // -----------------------------------------------------------------------------------
 
 
+const resetBtn = document.getElementById("reset");
+
+
+// -----------------------------------------------------------------------------------
+
+
 // Array filled with property names of rowJsonObject array of objects
 let objectProperties = [];
 
@@ -62,6 +68,7 @@ const differentiationRateDatesRadioEl = document.getElementById('differentiation
 // -----------------------------------------------------------------------------------
 
 
+// Ok Buttons for Version Cards
 const summaryStatisticsVersionsOkBtn = document.getElementById('summary-statistics-versions-ok-btn');
 const differentiationVersionsOkBtn = document.getElementById('differentiation-versions-ok-btn');
 const differentiationRateVersionsOkBtn = document.getElementById('differentiation-rate-versions-ok-btn');
@@ -72,7 +79,6 @@ const sumUpTo100VersionsOkBtn = document.getElementById('sum-up-to-100-versions-
 // Version variables for creating dynamicaly checkboxes
 const checkboxesSummaryStatisticsVersionEl = document.getElementsByName('summary-statistics-versions');
 // let checkedCheckboxesSummaryStatisticsVersion = [];      // array filled with checked versions
-
 
 const checkboxesDifferentiationVersionEl = document.getElementsByName('differentiation-versions');
 // let checkedCheckboxesDifferentiationVersion = [];      // array filled with checked versions
@@ -102,6 +108,7 @@ const checkboxesDifferentiationRateDateEl = document.getElementsByName('differen
 // -----------------------------------------------------------------------------------
 
 
+// Ok Buttons for Property Cards
 const summaryStatisticsPropertiesOkBtn = document.getElementById('summary-statistics-properties-ok-btn');
 const differentiationPropertiesOkBtn = document.getElementById('differentiation-properties-ok-btn');
 const differentiationRatePropertiesOkBtn = document.getElementById('differentiation-rate-properties-ok-btn');
@@ -109,7 +116,7 @@ const sumUpTo100PropertiesOkBtn = document.getElementById('sum-up-to-100-propert
 
 // -------------------------------------------
 
-// Version variables for creating dynamicaly checkboxes
+// Property variables for creating dynamicaly checkboxes
 const checkboxesSummaryStatisticsPropertiesEl = document.getElementsByName('summary-statistics-properties');
 let checkedCheckboxesSummaryStatisticsProperties = [];      // array filled with checked versions
 
@@ -123,13 +130,10 @@ const checkboxesSumUpTo100PropertiesEl = document.getElementsByName('sum-up-to-1
 let checkedCheckboxesSumUpTo100Properties = [];      // array filled with checked versions
 
 
-
-
-
-
 // -----------------------------------------------------------------------------------
 
 
+// Ok Buttons for Chart Type Cards
 const summaryStatisticsChartsOkBtn = document.getElementById('summary-statistics-charts-ok-btn');
 const differentiationChartsOkBtn = document.getElementById('differentiation-charts-ok-btn');
 const differentiationRateChartsOkBtn = document.getElementById('differentiation-rate-charts-ok-btn');
@@ -137,7 +141,7 @@ const sumUpTo100ChartsOkBtn = document.getElementById('sum-up-to-100-charts-ok-b
 
 // -------------------------------------------
 
-// Version variables for creating dynamicaly checkboxes
+// Chart type variables for creating dynamicaly checkboxes
 const checkboxesSummaryStatisticsChartsEl = document.getElementsByName('summary-statistics-charts');
 let checkedCheckboxesSummaryStatisticsCharts = [];      // array filled with checked versions
 
@@ -151,21 +155,53 @@ const checkboxesSumUpTo100ChartsEl = document.getElementsByName('sum-up-to-100-c
 let checkedCheckboxesSumUpTo100Charts = [];      // array filled with checked versions
 
 
+// -----------------------------------------------------------------------------------
 
+
+// Ok Buttons for Modal Cards - z axis
+let summaryStatisticsModalOkBtn;
+let differentiationModalOkBtn;
+let differentiationRateModalOkBtn;
+
+// -------------------------------------------
+
+// Element Variables for Modals and Overlays
+const summaryStatisticsModal = document.getElementById('summary-statistics-z-axis-modal');
+const summaryStatisticsOverlay = document.querySelector('.summary-statistics-overlay');
+
+const differentiationModal = document.getElementById('differentiation-z-axis-modal');
+const differentiationOverlay = document.querySelector('.differentiation-overlay');
+
+const differentiationRateModal = document.getElementById('differentiation-rate-z-axis-modal');
+const differentiationRateOverlay = document.querySelector('.differentiation-rate-overlay');
+
+// -------------------------------------------
+
+// Property variables for creating dynamicaly checkboxes inside modal cards
+const checkboxesSummaryStatisticsModalEl = document.getElementsByName('summary-statistics-z-axis-modal');
+let checkedCheckboxesSummaryStatisticsModal = [];      // array filled with checked versions
+
+const checkboxesDifferentiationModalEl = document.getElementsByName('differentiation-z-axis-modal');
+let checkedCheckboxesDifferentiationModal = [];      // array filled with checked versions
+
+const checkboxesDifferentiationRateModalEl = document.getElementsByName('differentiation-rate-z-axis-modal');
+let checkedCheckboxesDifferentiationRateModal = [];      // array filled with checked versions
 
 
 // -----------------------------------------------------------------------------------
 
 
-const summaryStatisticsOkBtnsArray = [summaryStatisticsVersionsOkBtn, summaryStatisticsPropertiesOkBtn];
-const differentiationOkBtnsArray = [differentiationVersionsOkBtn, differentiationPropertiesOkBtn];
-const differentiationRateOkBtnsArray = [differentiationRateVersionsOkBtn, differentiationRatePropertiesOkBtn];
+// Arrays that contain Ok Buttons for each selection
+const summaryStatisticsOkBtnsArray = [summaryStatisticsVersionsOkBtn, summaryStatisticsPropertiesOkBtn, summaryStatisticsChartsOkBtn];
+const differentiationOkBtnsArray = [differentiationVersionsOkBtn, differentiationPropertiesOkBtn, differentiationChartsOkBtn];
+const differentiationRateOkBtnsArray = [differentiationRateVersionsOkBtn, differentiationRatePropertiesOkBtn, differentiationRateChartsOkBtn];
 const sumUpTo100OkBtnsArray = [sumUpTo100VersionsOkBtn, sumUpTo100PropertiesOkBtn];
 
 
 // -----------------------------------------------------------------------------------
 
 
+// New arrays to fill with variables for the chart display
 let nameSummaryStatistics = [], propertySummaryStatistics = [], dateSummaryStatistics = [], dateSummaryStatisticsOriginal = [], xAxisSummaryStatistics = [];
 let nameDifferentiation = [], propertyDifferentiation = [], dateDifferentiation = [], xAxisDifferentiation = [];
 let nameDifferentiationRate = [], propertyDifferentiationRate = [], dateDifferentiationRate = [], xAxisDifferentiationRate = [];
@@ -174,8 +210,13 @@ let nameSumUpTo100 = [], propertySumUpTo100 = [], dateSumUpTo100 = [];
 
 // -----------------------------------------------------------------------------------
 
-let chartNamesArray = ['Floating Bar', 'Horizontal Bar', 'Stacked Bar', 'Vertical Bar', 'Line', 'Bubble', 'Combo Bar/Line', 'Doughnut', 'Multi Series Pie', 'Pie', 'Polar Area', 'Radar', 'Scatter'];
 
+// Variables that set the type of each chart
+let summaryStatisticsChartType;
+let differentiationChartType;
+let differentiationRateChartType;
+
+let chartNamesArray = ['Floating Bar', 'Horizontal Bar', 'Stacked Bar', 'Vertical Bar', 'Line', 'Bubble', 'Combo Bar/Line', 'Doughnut', 'Multi Series Pie', 'Pie', 'Polar Area', 'Radar', 'Scatter'];
 
 
 // -----------------------------------------------------------------------------------
@@ -186,6 +227,13 @@ let summaryStatistics = [];
 let differentiation = [];
 let differentiationRate = [];
 let sum100 = [];
+
+// -----------------------------------------------------------------------------------
+
+
+let dataSummaryStatistics, optionsSummaryStatistics;
+let dataDifferentiation, optionsDifferentiation;
+let dataDifferentiationRate, optionsDifferentiationRate;
 
 
 // -----------------------------------------------------------------------------------
@@ -209,11 +257,7 @@ let sum100 = [];
 //     };
 // };
 
-
-
-
-
-
+// -------------------------------------------
 
 // Function to flip a card using a button
 const flipCard = function(arrowBtnId, cardFlipId) {
@@ -354,6 +398,77 @@ const createCheckBoxDates = function(elementID, name, value, innerText) {
     
 };
 
+
+
+
+
+
+
+
+// Function for creating checkbox element dynamically with label and span
+const createRadio = function(elementID, name, value, innerText) {
+    
+    // Get the container which will contain the checkboxes
+    const checkboxEl = document.getElementById(elementID);
+
+    // creating label element
+    const label = document.createElement('label');
+
+
+        label.className = 'dynamicLabel';
+        label.id = 'dynamic-label'
+
+
+    // creating checkbox element
+    const checkbox = document.createElement('input');
+
+    // Assigning the attributes to created checkbox
+    checkbox.type = "radio";
+    checkbox.name = name;
+    checkbox.value = value;
+
+
+        checkbox.className = 'dynamicCheckbox';
+        checkbox.id = 'dynamic-checkbox';
+    
+
+    // creating span element
+    const span = document.createElement('span');
+
+    span.innerHTML = innerText;
+
+
+        span.className = 'dynamicSpan';
+        span.id = 'dynamic-span';
+
+    
+    // appending the checkbox and span to label and then the label to div element checkboxEl
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    checkboxEl.appendChild(label);
+    
+};
+
+
+
+
+// -------------------------------------------
+
+
+// const createText = function(elementID, innerText) {
+
+//     const divText = document.getElementById(elementID);
+//     // Create element:
+//     const paragraph = document.createElement("p");
+//     paragraph.innerText = innerText;
+
+//     // Append to body:
+//     divText.appendChild(paragraph);
+// }
+
+
+
+
 // -------------------------------------------
 
 const deleteDivInside = function(elementID) {
@@ -434,6 +549,24 @@ const createCanvas = function(elementID, canvasID) {
     divCanvasEl.appendChild(canvas);
 
 };
+
+
+
+
+
+// Create button element for versions dynamically
+const createButton = function(elementID, buttonClass, buttonID, innerText) {
+    const button = document.createElement("button");
+    const element = document.getElementById(elementID);
+
+    button.className = buttonClass;
+    button.id = buttonID;
+    button.innerHTML = innerText;
+
+    element.appendChild(button);
+};
+
+
 
 // -------------------------------------------
 
@@ -524,7 +657,18 @@ sumUpTo100Btn.addEventListener('click', function() {
 
 });
 
+
 // -----------------------------------------------------------------------------------
+
+
+resetBtn.addEventListener('click', function() {
+
+    window.location.reload();
+});
+
+
+// -----------------------------------------------------------------------------------
+
 
 fileUpload.addEventListener('click', function() {
 
@@ -1092,25 +1236,16 @@ fileUpload.addEventListener('click', function() {
                 // Creating checkboxes for properties
                 for (let i = 0; i < chartNamesArray.length; i++) {
 
-                    createCheckBox('summary-statistics-charts', 'summary-statistics-charts', chartNamesArray[i], chartNamesArray[i]);
-                    createCheckBox('differentiation-charts', 'differentiation-charts', chartNamesArray[i], chartNamesArray[i]);
-                    createCheckBox('differentiation-rate-charts', 'differentiation-rate-charts', chartNamesArray[i], chartNamesArray[i]);
+                    createRadio('summary-statistics-charts', 'summary-statistics-charts', chartNamesArray[i], chartNamesArray[i]);
+                    createRadio('differentiation-charts', 'differentiation-charts', chartNamesArray[i], chartNamesArray[i]);
+                    createRadio('differentiation-rate-charts', 'differentiation-rate-charts', chartNamesArray[i], chartNamesArray[i]);
                     // createCheckBox('sum-up-to-100-charts', 'sum-up-to-100-charts', chartNamesArray[i], chartNamesArray[i]);
 
                 }
 
 
 
-
-
-
-
-
-
-
                 // -----------------------------------------------------------------------------------
-
-
 
 
                 // if (!(checkedCheckboxesSummaryStatisticsVersion.length === 0) && !(checkedCheckboxesSummaryStatisticsProperties.length === 0)) {
@@ -1121,10 +1256,12 @@ fileUpload.addEventListener('click', function() {
 
                         nameSummaryStatistics.length = 0;
                         propertySummaryStatistics.length = 0;
-                        dateSummaryStatisticsOriginal.length = 0;
+                        // dateSummaryStatisticsOriginal.length = 0;
                         dateSummaryStatistics.length = 0;
                         xAxisSummaryStatistics.length = 0;
                         summaryStatistics.length = 0;
+
+                        summaryStatisticsChartType = 'bar';
                         
                         deleteCanvas('myChart_summaryStatistics');
                         createCanvas('summary-statistics-chart-display', 'myChart_summaryStatistics');
@@ -1144,18 +1281,6 @@ fileUpload.addEventListener('click', function() {
                             }
                             else if (summaryStatisticsDatesRadioEl.checked) {
 
-                                // console.log('Radio Dates Checked');
-                                
-                                // console.log(typeof checkboxesSummaryStatisticsDateEl[i].value);
-
-                                // console.log(checkboxesSummaryStatisticsDateEl[i].value);
-                                
-                                // console.log(formatedDatesArraySummaryStatistics[i]);
-
-                                // console.log(rowJsonObject[i].rel_date);
-
-                                // console.log(checkboxesSummaryStatisticsDateEl[i].value === formatedDatesArraySummaryStatistics[i]);
-                                
                                 if (checkboxesSummaryStatisticsDateEl[i].checked && checkboxesSummaryStatisticsDateEl[i].value === formatedDatesArray[i]) {
                                     
                                     dateSummaryStatistics.push(formatedDatesArray[i]);
@@ -1220,18 +1345,27 @@ fileUpload.addEventListener('click', function() {
                         console.log(propertySummaryStatistics);
 
 
+                        checkedCheckboxesSummaryStatisticsCharts.length = 0;
 
-
-
+                        for (let i = 0; i < checkboxesSummaryStatisticsChartsEl.length; i++) {
+    
+                            if (checkboxesSummaryStatisticsChartsEl[i].checked) {
+                                checkedCheckboxesSummaryStatisticsCharts.push(checkboxesSummaryStatisticsChartsEl[i].value);
+                            }
+                            
+                        }
+    
+                        // DEBUGGING
+                        // console.log(checkboxesSummaryStatisticsChartsEl);
+                        // console.log(checkboxesSummaryStatisticsChartsEl.length);
+                        console.log(checkedCheckboxesSummaryStatisticsCharts);
+                        // console.log(typeof checkedCheckboxesSummaryStatisticsCharts);
                         
-                        // Displays the chart for the variables
-                        const ctx1= document.getElementById('myChart_summaryStatistics').getContext('2d');
 
-                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+                        if ((checkedCheckboxesSummaryStatisticsCharts[0] === 'Floating Bar') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Stacked Bar') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Vertical Bar')) {
+                            summaryStatisticsChartType = 'bar';
 
-                            const myChart_summaryStatistics = new Chart(ctx1, {
-                                type: 'bar',
-                                data: {
+                            dataSummaryStatistics = {
                                 labels: xAxisSummaryStatistics,
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
@@ -1241,18 +1375,217 @@ fileUpload.addEventListener('click', function() {
                                         borderColor: '#e61802',
                                         borderWidth: 2
                                     })),
-                                },
-                                options: {
-                                    plugins: {
-                                        tooltip: {
-                                            enabled: false // <-- this option disables tooltips
-                                        }
-                                    },
-                                    // maintainAspectRatio: false,
+                                };
+
+
+
+                                optionsSummaryStatistics = {
+                                    indexAxis: 'y',
                                     responsive: true,
                                     maintainAspectRatio: false,
+                                    plugins: {
+                                      legend: {
+                                        position: 'right',
+                                      }
+                                    }
+                                };
+
+
+
+
+
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Horizontal Bar') {
+                            summaryStatisticsChartType = 'horizontalBar';
+
+                            dataSummaryStatistics = {
+                                labels: xAxisSummaryStatistics,
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
+                                        borderColor: '#e61802',
+                                        borderWidth: 2
+                                    })),
+                                };
+
+
+
+                                optionsSummaryStatistics = {
+                                    indexAxis: 'y',
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                      legend: {
+                                        position: 'right',
+                                      }
+                                    }
+                                };
+
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Line') {
+                            summaryStatisticsChartType = 'line';
+
+                            dataSummaryStatistics = {
+                                labels: xAxisSummaryStatistics,
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        backgroundColor: '#ea5545',
+                                        borderColor: '#e61802',
+                                        borderWidth: 2
+                                    })),
+                                };
+
+
+
+                                optionsSummaryStatistics = {
+                                    indexAxis: 'y',
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                      legend: {
+                                        position: 'right',
+                                      }
+                                    }
+                                };
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Bubble') {
+                            
+                            summaryStatisticsChartType = 'bubble';
+
+                            summaryStatisticsModal.style.display = "block";
+                            summaryStatisticsOverlay.style.display = "block";
+
+                            deleteDivInside('summary-statistics-z-axis-modal');
+
+                            for (let i = 0; i < checkedCheckboxesSummaryStatisticsProperties.length; i++) {
+                                
+                                createRadio('summary-statistics-z-axis-modal', 'summary-statistics-z-axis-modal', checkedCheckboxesSummaryStatisticsProperties[i], checkedCheckboxesSummaryStatisticsProperties[i]);
+        
+                            }
+                      
+                            createButton('summary-statistics-z-axis-modal', 'ok', 'summary-statistics-modal-ok-btn', 'Ok');
+
+
+                            summaryStatisticsModalOkBtn = document.getElementById('summary-statistics-modal-ok-btn');
+
+
+                            summaryStatisticsModalOkBtn.addEventListener("click", function() {
+            
+
+                                summaryStatisticsModal.style.display = "none";
+                                summaryStatisticsOverlay.style.display = "none";
+                            
+                                checkedCheckboxesSummaryStatisticsModal.length = 0;
+
+                                    for (let i = 0; i < checkboxesSummaryStatisticsModalEl.length; i++) {
+
+                                        if (checkboxesSummaryStatisticsModalEl[i].checked) {
+                                            checkedCheckboxesSummaryStatisticsModal.push(checkboxesSummaryStatisticsModalEl[i].value);
+                                        }
                                         
-                                }
+                                    }
+
+                                    // DEBUGGING
+                                    // console.log(checkboxesSummaryStatisticsModalEl);
+                                    // console.log(checkboxesSummaryStatisticsModalEl.length);
+                                    console.log(checkedCheckboxesSummaryStatisticsModal);
+                                    // console.log(typeof checkedCheckboxesSummaryStatisticsModal);
+
+                                // });
+
+                            });
+
+
+                            dataSummaryStatistics = {
+                                labels: xAxisSummaryStatistics,
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: [{
+                                            x: xAxisSummaryStatistics,
+                                            y: propertySummaryStatistics[i],
+                                            r: checkedCheckboxesSummaryStatisticsModal
+                                        }],
+                                        backgroundColor: '#ea5545',
+                                        borderColor: '#e61802',
+                                        borderWidth: 2
+                                    })),
+                                };
+
+
+
+                                optionsSummaryStatistics = {
+                                    indexAxis: 'y',
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        xAxes: [{
+                                          ticks: {
+                                            callback: function(value, index, values) {
+                                                // checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                                    return 'value is ' + xAxisSummaryStatistics[i];
+                                                // }))
+                                              
+                                            }
+                                          }
+                                        }]
+                                      },
+                                    plugins: {
+                                      legend: {
+                                        position: 'right',
+                                      }
+                                    }
+                                };
+
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Combo Bar / Line') {
+                            summaryStatisticsChartType = 'bar';
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Doughnut') {
+                            summaryStatisticsChartType = 'doughnut';
+                        }
+                        else if ((checkedCheckboxesSummaryStatisticsCharts[0] === 'Pie') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Multi Series Pie')) {
+                            summaryStatisticsChartType = 'pie';
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Polar Area') {
+                            summaryStatisticsChartType = 'polarArea';
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Radar') {
+                            summaryStatisticsChartType = 'radar';
+                        }
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Scatter') {
+                            summaryStatisticsChartType = 'scatter';
+                        }
+
+                        console.log(checkedCheckboxesSummaryStatisticsCharts[0]);
+                        console.log(summaryStatisticsChartType);
+
+
+
+                        // Displays the chart for the variables
+                        const ctx1= document.getElementById('myChart_summaryStatistics').getContext('2d');
+
+                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+
+                            const myChart_summaryStatistics = new Chart(ctx1, {
+                                type: summaryStatisticsChartType,
+                                data: dataSummaryStatistics,
+                                options: optionsSummaryStatistics
+                                // options: {
+                                //     plugins: {
+                                //         tooltip: {
+                                //             enabled: false // <-- this option disables tooltips
+                                //         }
+                                //     },
+                                //     // maintainAspectRatio: false,
+                                //     responsive: true,
+                                //     maintainAspectRatio: false,
+                                        
+                                // }
                             });
 
                             console.log(myChart_summaryStatistics);
@@ -1279,6 +1612,8 @@ fileUpload.addEventListener('click', function() {
                             dateDifferentiation.length = 0;
                             xAxisDifferentiation.length = 0;
                             differentiation.length = 0;
+
+                            differentiationChartType = 'bar';
                             
                             deleteCanvas('myChart_differentiation');
                             createCanvas('differentiation-chart-display', 'myChart_differentiation');
@@ -1403,13 +1738,113 @@ fileUpload.addEventListener('click', function() {
                             console.log(differentiation);
 
 
+                            checkedCheckboxesDifferentiationCharts.length = 0;
+
+                            for (let i = 0; i < checkboxesDifferentiationChartsEl.length; i++) {
+        
+                                if (checkboxesDifferentiationChartsEl[i].checked) {
+                                    checkedCheckboxesDifferentiationCharts.push(checkboxesDifferentiationChartsEl[i].value);
+                                }
+                                
+                            }
+        
+                            // DEBUGGING
+                            // console.log(checkboxesDifferentiationChartsEl);
+                            // console.log(checkboxesDifferentiationChartsEl.length);
+                            console.log(checkedCheckboxesDifferentiationCharts);
+                            // console.log(typeof checkedCheckboxesDifferentiationCharts);
+
+
+
+
+
+                            if ((checkedCheckboxesDifferentiationCharts[0] === 'Floating Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Horizontal Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Stacked Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Vertical Bar')) {
+                                differentiationChartType = 'bar';
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Line') {
+                                differentiationChartType = 'line';
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Bubble') {
+
+                                differentiationChartType = 'bubble';
+
+                                differentiationModal.style.display = "block";
+                                differentiationOverlay.style.display = "block";
+    
+                                deleteDivInside('differentiation-z-axis-modal');
+    
+                                for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
+                                    
+                                    createRadio('differentiation-z-axis-modal', 'differentiation-z-axis-modal', checkedCheckboxesDifferentiationProperties[i], checkedCheckboxesDifferentiationProperties[i]);
+            
+                                }
+                          
+                                createButton('differentiation-z-axis-modal', 'ok', 'differentiation-modal-ok-btn', 'Ok');
+    
+    
+                                differentiationModalOkBtn = document.getElementById('differentiation-modal-ok-btn');
+    
+    
+                                differentiationModalOkBtn.addEventListener("click", function() {
+                
+    
+                                    differentiationModal.style.display = "none";
+                                    differentiationOverlay.style.display = "none";
+                                
+                                    checkedCheckboxesDifferentiationModal.length = 0;
+    
+                                        for (let i = 0; i < checkboxesDifferentiationModalEl.length; i++) {
+    
+                                            if (checkboxesDifferentiationModalEl[i].checked) {
+                                                checkedCheckboxesDifferentiationModal.push(checkboxesDifferentiationModalEl[i].value);
+                                            }
+                                            
+                                        }
+    
+                                        // DEBUGGING
+                                        // console.log(checkboxesDifferentiationModalEl);
+                                        // console.log(checkboxesDifferentiationModalEl.length);
+                                        console.log(checkedCheckboxesDifferentiationModal);
+                                        // console.log(typeof checkedCheckboxesDifferentiationModal);
+    
+                                    // });
+    
+                                });
+
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Combo Bar / Line') {
+                                differentiationChartType = 'bar';
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Doughnut') {
+                                differentiationChartType = 'doughnut';
+                            }
+                            else if ((checkedCheckboxesDifferentiationCharts[0] === 'Pie') || (checkedCheckboxesDifferentiationCharts[0] === 'Multi Series Pie')) {
+                                differentiationChartType = 'pie';
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Polar Area') {
+                                differentiationChartType = 'polarArea';
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Radar') {
+                                differentiationChartType = 'radar';
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Scatter') {
+                                differentiationChartType = 'scatter';
+                            }
+    
+                            console.log(checkedCheckboxesDifferentiationCharts[0]);
+                            console.log(differentiationChartType);
+
+
+
+
+
                             // Displays the chart for the variables
                             const ctx2 = document.getElementById('myChart_differentiation').getContext('2d');
 
                             // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
 
                                 const myChart_differentiation = new Chart(ctx2, {
-                                    type: 'bar',
+                                    type: differentiationChartType,
                                     data: {
                                     labels: xAxisDifferentiation,
                                     datasets:
@@ -1467,13 +1902,11 @@ fileUpload.addEventListener('click', function() {
                         dateDifferentiationRate.length = 0;
                         xAxisDifferentiationRate.length = 0;
                         differentiationRate.length = 0;
+
+                        differentiationRateChartType = 'bar';
                             
                         deleteCanvas('myChart_differentiationRate');
                         createCanvas('differentiation-rate-chart-display', 'myChart_differentiationRate');
-
-                     
-
-
 
 
                         // Array filled with selected versions
@@ -1579,6 +2012,103 @@ fileUpload.addEventListener('click', function() {
                         console.log(differentiationRate);
 
 
+                        checkedCheckboxesDifferentiationRateCharts.length = 0;
+
+                            for (let i = 0; i < checkboxesDifferentiationRateChartsEl.length; i++) {
+        
+                                if (checkboxesDifferentiationRateChartsEl[i].checked) {
+                                    checkedCheckboxesDifferentiationRateCharts.push(checkboxesDifferentiationRateChartsEl[i].value);
+                                }
+                                
+                            }
+        
+                            // DEBUGGING
+                            // console.log(checkboxesDifferentiationRateChartsEl);
+                            // console.log(checkboxesDifferentiationRateChartsEl.length);
+                            console.log(checkedCheckboxesDifferentiationRateCharts);
+                            // console.log(typeof checkedCheckboxesDifferentiationRateCharts);
+
+
+
+
+
+                            if ((checkedCheckboxesDifferentiationRateCharts[0] === 'Floating Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Horizontal Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Stacked Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Vertical Bar')) {
+                                differentiationRateChartType = 'bar';
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Line') {
+                                differentiationRateChartType = 'line';
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Bubble') {
+
+                                differentiationRateChartType = 'bubble';
+
+                                differentiationRateModal.style.display = "block";
+                                differentiationRateOverlay.style.display = "block";
+    
+                                deleteDivInside('differentiation-rate-z-axis-modal');
+    
+                                for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
+                                    
+                                    createRadio('differentiation-rate-z-axis-modal', 'differentiation-rate-z-axis-modal', checkedCheckboxesDifferentiationRateProperties[i], checkedCheckboxesDifferentiationRateProperties[i]);
+            
+                                }
+                          
+                                createButton('differentiation-rate-z-axis-modal', 'ok', 'differentiation-rate-modal-ok-btn', 'Ok');
+    
+    
+                                differentiationRateModalOkBtn = document.getElementById('differentiation-rate-modal-ok-btn');
+    
+    
+                                differentiationRateModalOkBtn.addEventListener("click", function() {
+                
+    
+                                    differentiationRateModal.style.display = "none";
+                                    differentiationRateOverlay.style.display = "none";
+                                
+                                    checkedCheckboxesDifferentiationRateModal.length = 0;
+    
+                                        for (let i = 0; i < checkboxesDifferentiationRateModalEl.length; i++) {
+    
+                                            if (checkboxesDifferentiationRateModalEl[i].checked) {
+                                                checkedCheckboxesDifferentiationRateModal.push(checkboxesDifferentiationRateModalEl[i].value);
+                                            }
+                                            
+                                        }
+    
+                                        // DEBUGGING
+                                        // console.log(checkboxesDifferentiationRateModalEl);
+                                        // console.log(checkboxesDifferentiationRateModalEl.length);
+                                        console.log(checkedCheckboxesDifferentiationRateModal);
+                                        // console.log(typeof checkedCheckboxesDifferentiationRateModal);
+    
+                                    // });
+    
+                                });
+
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Combo Bar / Line') {
+                                differentiationRateChartType = 'bar';
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Doughnut') {
+                                differentiationRateChartType = 'doughnut';
+                            }
+                            else if ((checkedCheckboxesDifferentiationRateCharts[0] === 'Pie') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Multi Series Pie')) {
+                                differentiationRateChartType = 'pie';
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Polar Area') {
+                                differentiationRateChartType = 'polarArea';
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Radar') {
+                                differentiationRateChartType = 'radar';
+                            }
+                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Scatter') {
+                                differentiationRateChartType = 'scatter';
+                            }
+    
+                            console.log(checkedCheckboxesDifferentiationRateCharts[0]);
+                            console.log(differentiationRateChartType);
+
+
                         // Displays the chart for the variables
                         const ctx3= document.getElementById('myChart_differentiationRate').getContext('2d');
                         // const ctx4= document.getElementById('myChart_sum_100').getContext('2d');
@@ -1586,7 +2116,7 @@ fileUpload.addEventListener('click', function() {
                         // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
 
                             const myChart_differentiationRate = new Chart(ctx3, {
-                                type: 'bar',
+                                type: differentiationRateChartType,
                                 data: {
                                 labels: xAxisDifferentiationRate,
                                 datasets:
