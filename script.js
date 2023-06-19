@@ -202,9 +202,9 @@ const sumUpTo100OkBtnsArray = [sumUpTo100VersionsOkBtn, sumUpTo100PropertiesOkBt
 
 
 // New arrays to fill with variables for the chart display
-let nameSummaryStatistics = [], propertySummaryStatistics = [], dateSummaryStatistics = [], dateSummaryStatisticsOriginal = [], xAxisSummaryStatistics = [];
-let nameDifferentiation = [], propertyDifferentiation = [], dateDifferentiation = [], xAxisDifferentiation = [];
-let nameDifferentiationRate = [], propertyDifferentiationRate = [], dateDifferentiationRate = [], xAxisDifferentiationRate = [];
+let nameSummaryStatistics = [], propertySummaryStatistics = [], dateSummaryStatistics = [], xAxisSummaryStatistics = [];
+let nameDifferentiation = [], propertyDifferentiation = [], dateDifferentiation = [], xAxisDifferentiation = [], mergedXAxisDifferentiation = [];
+let nameDifferentiationRate = [], propertyDifferentiationRate = [], dateDifferentiationRate = [], xAxisDifferentiationRate = [], mergedXAxisDifferentiationRate = [];
 let nameSumUpTo100 = [], propertySumUpTo100 = [], dateSumUpTo100 = [];
 
 
@@ -216,7 +216,7 @@ let summaryStatisticsChartType;
 let differentiationChartType;
 let differentiationRateChartType;
 
-let chartNamesArray = ['Floating Bar', 'Horizontal Bar', 'Stacked Bar', 'Vertical Bar', 'Line', 'Bubble', 'Combo Bar/Line', 'Doughnut', 'Multi Series Pie', 'Pie', 'Polar Area', 'Radar', 'Scatter'];
+let chartNamesArray = ['Floating Bar', 'Horizontal Bar', 'Stacked Bar', 'Vertical Bar', 'Line', 'Bubble', 'Combo Bar/Line', 'Doughnut', 'Pie', 'Polar Area', 'Radar', 'Scatter'];
 
 
 // -----------------------------------------------------------------------------------
@@ -234,6 +234,16 @@ let sum100 = [];
 let dataSummaryStatistics, optionsSummaryStatistics;
 let dataDifferentiation, optionsDifferentiation;
 let dataDifferentiationRate, optionsDifferentiationRate;
+
+
+
+
+let modalSummaryStatistics = [];
+
+const backgroundColorSummaryStatistics = [], borderColorSummaryStatistics = [];
+const backgroundColorDifferentiation = [], borderColorDifferentiation = [];
+const backgroundColorDifferentiationRate = [], borderColorDifferentiationRate = [];
+
 
 
 // -----------------------------------------------------------------------------------
@@ -551,7 +561,7 @@ const createCanvas = function(elementID, canvasID) {
 };
 
 
-
+// -------------------------------------------
 
 
 // Create button element for versions dynamically
@@ -567,8 +577,77 @@ const createButton = function(elementID, buttonClass, buttonID, innerText) {
 };
 
 
+// -------------------------------------------
+
+
+const backgroundColorFunction = function(xAxisArray, backgroundColorArray, borderColor) {
+    
+    let r;
+    let g;
+    let b;
+
+    for (let i = 0; i < xAxisArray.length; i++) {
+
+        // backgroundColorArray.push(new Array());
+        // borderColorSummaryStatistics.push(new Array());
+
+        r = Math.floor(Math.random() * 255);
+        g = Math.floor(Math.random() * 255);
+        b = Math.floor(Math.random() * 255);
+
+        // for (let j = 0; j < yAxisArray.length; j++) {
+
+            // console.log('rgba('+r+', '+g+', '+b+', 0.2)');
+                                    
+            backgroundColorArray.push('rgba('+r+', '+g+', '+b+', 0.7)');
+            borderColor.push('rgba('+r+', '+g+', '+b+', 1)');
+
+            console.log(backgroundColorArray);
+
+        // }
+                                
+    }
+
+    console.log(backgroundColorArray);
+
+};
+
+// const backgroundColorFunctionSecondary = function(xAxisArray, yAxisArray, backgroundColorArray) {
+
+//     let r;
+//     let g;
+//     let b;
+
+//     for (let i = 0; i < xAxisArray.length; i++) {
+
+//         backgroundColorArray.push(new Array());
+//         borderColorSummaryStatistics.push(new Array());
+
+        
+
+//         for (let j = 0; j < yAxisArray.length; j++) {
+
+//             // console.log('rgba('+r+', '+g+', '+b+', 0.2)');
+//             r = Math.floor(Math.random() * 255);
+//             g = Math.floor(Math.random() * 255);
+//             b = Math.floor(Math.random() * 255);
+                                    
+//             backgroundColorArray[i].push('rgba('+r+', '+g+', '+b+', 0.7)');
+//             borderColorSummaryStatistics[i].push('rgba('+r+', '+g+', '+b+', 1)');
+
+//             // console.log(backgroundColorArray);
+
+//         }
+                                
+//     }
+
+//     console.log(backgroundColorArray);
+
+// };
+
 
 // -------------------------------------------
+
 
 // Function for downloading a JSON object
 const downloadObjectAsJson = function(exportObj, exportName) {
@@ -1256,10 +1335,14 @@ fileUpload.addEventListener('click', function() {
 
                         nameSummaryStatistics.length = 0;
                         propertySummaryStatistics.length = 0;
-                        // dateSummaryStatisticsOriginal.length = 0;
                         dateSummaryStatistics.length = 0;
                         xAxisSummaryStatistics.length = 0;
                         summaryStatistics.length = 0;
+
+                        checkedCheckboxesSummaryStatisticsCharts.length = 0;
+
+                        backgroundColorSummaryStatistics.length = 0;
+                        borderColorSummaryStatistics.length = 0;
 
                         summaryStatisticsChartType = 'bar';
                         
@@ -1345,8 +1428,6 @@ fileUpload.addEventListener('click', function() {
                         console.log(propertySummaryStatistics);
 
 
-                        checkedCheckboxesSummaryStatisticsCharts.length = 0;
-
                         for (let i = 0; i < checkboxesSummaryStatisticsChartsEl.length; i++) {
     
                             if (checkboxesSummaryStatisticsChartsEl[i].checked) {
@@ -1360,100 +1441,143 @@ fileUpload.addEventListener('click', function() {
                         // console.log(checkboxesSummaryStatisticsChartsEl.length);
                         console.log(checkedCheckboxesSummaryStatisticsCharts);
                         // console.log(typeof checkedCheckboxesSummaryStatisticsCharts);
-                        
+                   
 
-                        if ((checkedCheckboxesSummaryStatisticsCharts[0] === 'Floating Bar') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Stacked Bar') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Vertical Bar')) {
+                        backgroundColorFunction(propertySummaryStatistics, backgroundColorSummaryStatistics, borderColorSummaryStatistics);
+
+                        if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Horizontal Bar') {
+                            
                             summaryStatisticsChartType = 'bar';
 
                             dataSummaryStatistics = {
+
                                 labels: xAxisSummaryStatistics,
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
                                         data: propertySummaryStatistics[i],
-                                        backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
-                                        borderColor: '#e61802',
-                                        borderWidth: 2
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i]
                                     })),
-                                };
+                            };
 
+                            optionsSummaryStatistics = {
 
+                                indexAxis: 'y',
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                // plugins: {
+                                //   legend: {
+                                //     position: 'right',
+                                //   }
+                                // }
 
-                                optionsSummaryStatistics = {
-                                    indexAxis: 'y',
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                      legend: {
-                                        position: 'right',
-                                      }
-                                    }
-                                };
-
-
-
-
+                            };
 
                         }
-                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Horizontal Bar') {
-                            summaryStatisticsChartType = 'horizontalBar';
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Stacked Bar') {
+                            
+                            summaryStatisticsChartType = 'bar';
 
                             dataSummaryStatistics = {
+
                                 labels: xAxisSummaryStatistics,
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
                                         data: propertySummaryStatistics[i],
-                                        backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
-                                        borderColor: '#e61802',
-                                        borderWidth: 2
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i]
                                     })),
-                                };
 
+                            };
 
+                            optionsSummaryStatistics = {
 
-                                optionsSummaryStatistics = {
-                                    indexAxis: 'y',
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                      legend: {
-                                        position: 'right',
-                                      }
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: {
+                                        stacked: true
+                                    },
+                                    y: {
+                                        stacked: true
                                     }
-                                };
+                                }
+
+                            };
+
+                        }
+                        else if ((checkedCheckboxesSummaryStatisticsCharts[0] === 'Floating Bar') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Vertical Bar')) {
+                            
+                            summaryStatisticsChartType = 'bar';
+
+                            dataSummaryStatistics = {
+
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i]
+                                    })),
+
+                            };
+
+                            optionsSummaryStatistics = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                // plugins: {
+                                //   legend: {
+                                //     position: 'right',
+                                //   }
+                                // },
+
+                            };
 
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Line') {
+                            
                             summaryStatisticsChartType = 'line';
 
                             dataSummaryStatistics = {
+
                                 labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
                                         data: propertySummaryStatistics[i],
-                                        backgroundColor: '#ea5545',
-                                        borderColor: '#e61802',
-                                        borderWidth: 2
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i],
+                                        fill: true
                                     })),
-                                };
 
+                            };
 
+                            optionsSummaryStatistics = {
 
-                                optionsSummaryStatistics = {
-                                    indexAxis: 'y',
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                      legend: {
-                                        position: 'right',
-                                      }
-                                    }
-                                };
+                                responsive: true,
+                                maintainAspectRatio: false
+
+                            };
+
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Bubble') {
                             
+                            modalSummaryStatistics.length = 0;
+
                             summaryStatisticsChartType = 'bubble';
 
                             summaryStatisticsModal.style.display = "block";
@@ -1497,68 +1621,352 @@ fileUpload.addEventListener('click', function() {
 
                                 // });
 
+
                             });
 
 
-                            dataSummaryStatistics = {
-                                labels: xAxisSummaryStatistics,
-                                datasets:
-                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
-                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
-                                        data: [{
-                                            x: xAxisSummaryStatistics,
-                                            y: propertySummaryStatistics[i],
-                                            r: checkedCheckboxesSummaryStatisticsModal
-                                        }],
-                                        backgroundColor: '#ea5545',
-                                        borderColor: '#e61802',
-                                        borderWidth: 2
-                                    })),
+
+                                // Array filled with selected variables
+                                for (let i = 0; i < checkedCheckboxesSummaryStatisticsModal.length; i++) {
+
+                                    modalSummaryStatistics.push(new Array());
+
+                                    console.log('DONE');
+
+                                    for (let j = 0; j < rowJsonObject.length; j++) {
+                                        
+                                        if (nameSummaryStatistics.includes(rowJsonObject[j].name) || dateSummaryStatistics.includes(formatedDatesArray[j])) {
+
+                                            console.log(nameSummaryStatistics.includes(rowJsonObject[j].name));
+                                            // console.log(checkedCheckboxesSummaryStatisticsModal);
+                                            
+                                            
+                                            
+                                            console.log('EXTRA DONE');
+                                            
+                                            
+                                            
+                                            for (let k = 0; k < objectProperties.length; k++) {
+                
+                                                switch(checkedCheckboxesSummaryStatisticsModal[i]) {
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    case objectProperties[k] :
+
+                                                        console.log('EXTRA EXTRA EXTRA DONE');
+
+                                                    
+                                                        // console.log('OKKKKKK');
+                                                        modalSummaryStatistics[i].push(rowJsonObject[j][objectProperties[k]]);
+                                                        break;
+                                                    // default:
+                                                            
+                                                }
+
+                                                // console.log(modalSummaryStatistics);
+                
+                                            }
+                
+                                        }
+                
+                                    }
+
+                                    // console.log(modalSummaryStatistics);
+                
+                                }
+
+                                // console.log(modalSummaryStatistics);
+
+
+
+                                console.log(modalSummaryStatistics);
+
+
+
+                                let oneArrayPropertySummaryStatistics = [];
+
+                                oneArrayPropertySummaryStatistics = [].concat(...propertySummaryStatistics);
+
+                                console.log(oneArrayPropertySummaryStatistics);
+
+                                dataSummaryStatistics = {
+
+                                    labels: xAxisSummaryStatistics,
+                                    // animation: {
+                                    //     duration: 10
+                                    //     },
+                                    datasets:
+                                    checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                            label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                            data: [{
+                                                x: xAxisSummaryStatistics[i],
+                                                y: oneArrayPropertySummaryStatistics[i],
+                                                r: modalSummaryStatistics[i],
+                                            }],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorSummaryStatistics[i],
+                                            borderColor: borderColorSummaryStatistics[i]
+                                        })),
+
                                 };
 
-
-
                                 optionsSummaryStatistics = {
-                                    indexAxis: 'y',
+
                                     responsive: true,
                                     maintainAspectRatio: false,
                                     scales: {
-                                        xAxes: [{
-                                          ticks: {
-                                            callback: function(value, index, values) {
-                                                // checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
-                                                    return 'value is ' + xAxisSummaryStatistics[i];
-                                                // }))
-                                              
-                                            }
-                                          }
-                                        }]
-                                      },
-                                    plugins: {
-                                      legend: {
-                                        position: 'right',
-                                      }
-                                    }
+                                        // y: {
+                                        //     // will this create y-axis with days of week?
+                                        //     type: 'category',
+                                        //     labels: oneArrayPropertySummaryStatistics
+                                        // },
+                                        x: {
+                                            type: 'category',
+                                            labels: xAxisSummaryStatistics
+                                        },
+                                        // r: {
+                                        //     type: 'category',
+                                        //     labels: checkedCheckboxesSummaryStatisticsModal
+                                        // }
+                                    },
+
                                 };
+
+
+
+
+                            
+
+                            
+
+                            // dataSummaryStatistics = {
+                            //     labels: xAxisSummaryStatistics,
+                            //     datasets:
+                            //     checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                            //             label: checkedCheckboxesSummaryStatisticsProperties[i],
+                            //             data: [{
+                            //                 x: xAxisSummaryStatistics,
+                            //                 y: oneArrayPropertySummaryStatistics[i],
+                            //                 r: modalSummaryStatistics
+                            //             }],
+                            //             backgroundColor: '#ea5545',
+                            //             borderColor: '#e61802',
+                            //             borderWidth: 2
+                            //         })),
+                            //     };
+
+
+
+                            //     optionsSummaryStatistics = {
+                            //         // indexAxis: 'y',
+                            //         responsive: true,
+                            //         maintainAspectRatio: false,
+                            //         scales: {
+                            //             y: {
+                            //                 // will this create y-axis with days of week?
+                            //                 type: 'category',
+                            //                 labels: oneArrayPropertySummaryStatistics
+                            //             },
+                            //             x: {
+                            //                 type: 'category',
+                            //                 labels: xAxisSummaryStatistics
+                            //             },
+                            //             // r: {
+                            //             //     type: 'category',
+                            //             //     labels: checkedCheckboxesSummaryStatisticsModal
+                            //             // }
+                            //         },
+                            //         // scales: {
+                            //             // xAxes: [{
+                            //             //   ticks: {
+                            //             //     callback: function(value, index, values) {
+                            //             //         // checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                                    
+                            //             //         index = xAxisSummaryStatistics.length;
+                            //             //             for (let i = 0; i < xAxisSummaryStatistics.length; i++) {
+                            //             //                 value = xAxisSummaryStatistics[i];
+                            //             //                 return 'value is ' + xAxisSummaryStatistics;
+                            //             //             }
+
+                                                    
+                            //             //         // }))
+                                              
+                            //             //     }
+                            //             //   }
+                            //             // }]
+                            //         //   },
+                            //         plugins: {
+                            //           legend: {
+                            //             position: 'right',
+                            //           }
+                            //         }
+                            //     };
 
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Combo Bar / Line') {
                             summaryStatisticsChartType = 'bar';
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Doughnut') {
+                            
+                            // backgroundColorFunctionSecondary(xAxisSummaryStatistics, backgroundColorSummaryStatistics);
+                            // backgroundColorFunction(xAxisSummaryStatistics, propertySummaryStatistics, backgroundColorSummaryStatistics);
+
+                            // backgroundColorFunctionSecondary(propertySummaryStatistics, xAxisSummaryStatistics, backgroundColorSummaryStatistics);
+                            
+                            backgroundColorFunction(xAxisSummaryStatistics, backgroundColorSummaryStatistics, borderColorSummaryStatistics);
+
+                            console.log(xAxisSummaryStatistics);
+                            console.log(propertySummaryStatistics);
+
                             summaryStatisticsChartType = 'doughnut';
+
+                            dataSummaryStatistics = {
+
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics,
+                                        borderColor: borderColorSummaryStatistics
+                                    })),
+
+                            };
+
+                            optionsSummaryStatistics = {
+
+                                responsive: true,
+                                maintainAspectRatio: false
+
+                            };
+
                         }
-                        else if ((checkedCheckboxesSummaryStatisticsCharts[0] === 'Pie') || (checkedCheckboxesSummaryStatisticsCharts[0] === 'Multi Series Pie')) {
+                        else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Pie') {
+                            
                             summaryStatisticsChartType = 'pie';
+
+                            backgroundColorFunction(xAxisSummaryStatistics, backgroundColorSummaryStatistics, borderColorSummaryStatistics);
+
+                            dataSummaryStatistics = {
+
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics,
+                                        borderColor: borderColorSummaryStatistics
+                                    })),
+
+                            };
+
+                            optionsSummaryStatistics = {
+
+                                responsive: true,
+                                maintainAspectRatio: false
+
+                            };
+
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Polar Area') {
+                            
                             summaryStatisticsChartType = 'polarArea';
+
+                            backgroundColorFunction(xAxisSummaryStatistics, backgroundColorSummaryStatistics, borderColorSummaryStatistics);
+
+                            dataSummaryStatistics = {
+
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics,
+                                        borderColor: borderColorSummaryStatistics
+                                    })),
+
+                            };
+
+                            optionsSummaryStatistics = {
+
+                                responsive: true,
+                                maintainAspectRatio: false
+
+                            };
+
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Radar') {
+                            
                             summaryStatisticsChartType = 'radar';
+
+                            dataSummaryStatistics = {
+
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i]
+                                    })),
+
+                            };
+
+                            optionsSummaryStatistics = {
+
+                                responsive: true,
+                                maintainAspectRatio: false
+
+                            };
+
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Scatter') {
+                            
                             summaryStatisticsChartType = 'scatter';
+
+                            dataSummaryStatistics = {
+
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data: propertySummaryStatistics[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i]
+                                    })),
+
+                            };
+
+                            optionsSummaryStatistics = {
+
+                                responsive: true,
+                                maintainAspectRatio: false
+
+                            };
+
                         }
 
                         console.log(checkedCheckboxesSummaryStatisticsCharts[0]);
@@ -1597,7 +2005,7 @@ fileUpload.addEventListener('click', function() {
 
                 // }
 
-
+                
 
 
                 // if (!(checkedCheckboxesDifferentiationVersion.length === 0) && !(checkedCheckboxesDifferentiationProperties.length === 0)) {
@@ -1606,12 +2014,16 @@ fileUpload.addEventListener('click', function() {
 
                         btn.addEventListener('click', function() {
 
-
                             nameDifferentiation.length = 0;
                             propertyDifferentiation.length = 0;
                             dateDifferentiation.length = 0;
                             xAxisDifferentiation.length = 0;
                             differentiation.length = 0;
+
+                            checkedCheckboxesDifferentiationCharts.length = 0;
+
+                            backgroundColorDifferentiation.length = 0;
+                            borderColorDifferentiation.length = 0;
 
                             differentiationChartType = 'bar';
                             
@@ -1663,9 +2075,6 @@ fileUpload.addEventListener('click', function() {
                             console.log(nameDifferentiation);
                             console.log(dateDifferentiation);
                             
-    
-
-
 
                             // Array filled with selected variables
                             for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
@@ -1738,8 +2147,6 @@ fileUpload.addEventListener('click', function() {
                             console.log(differentiation);
 
 
-                            checkedCheckboxesDifferentiationCharts.length = 0;
-
                             for (let i = 0; i < checkboxesDifferentiationChartsEl.length; i++) {
         
                                 if (checkboxesDifferentiationChartsEl[i].checked) {
@@ -1755,14 +2162,138 @@ fileUpload.addEventListener('click', function() {
                             // console.log(typeof checkedCheckboxesDifferentiationCharts);
 
 
+                            backgroundColorFunction(propertyDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
 
 
+                            mergedXAxisDifferentiation = Array.from({length:xAxisDifferentiation.length-1}, (_,i)=>xAxisDifferentiation[i] + ' - ' + xAxisDifferentiation[i+1]);
 
-                            if ((checkedCheckboxesDifferentiationCharts[0] === 'Floating Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Horizontal Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Stacked Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Vertical Bar')) {
+
+                            console.log(mergedXAxisDifferentiation);
+
+
+                            if (checkedCheckboxesDifferentiationCharts[0] === 'Horizontal Bar') {
+                            
                                 differentiationChartType = 'bar';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation[i],
+                                            borderColor: borderColorDifferentiation[i]
+                                        })),
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    indexAxis: 'y',
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
+                            }
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Stacked Bar') {
+                            
+                                differentiationChartType = 'bar';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation[i],
+                                            borderColor: borderColorDifferentiation[i]
+                                        })),
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            type: 'category',
+                                            labels: mergedXAxisDifferentiation
+                                        },
+                                        y: {
+                                            stacked: true
+                                        }
+                                    }
+    
+                                };
+    
+                            }
+                            else if ((checkedCheckboxesDifferentiationCharts[0] === 'Floating Bar') || (checkedCheckboxesDifferentiationCharts[0] === 'Vertical Bar')) {
+                            
+                                differentiationChartType = 'bar';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation[i],
+                                            borderColor: borderColorDifferentiation[i]
+                                        })),
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
                             else if (checkedCheckboxesDifferentiationCharts[0] === 'Line') {
+                            
                                 differentiationChartType = 'line';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation[i],
+                                            borderColor: borderColorDifferentiation[i],
+                                            fill: true
+                                        })),
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
                             else if (checkedCheckboxesDifferentiationCharts[0] === 'Bubble') {
 
@@ -1816,20 +2347,165 @@ fileUpload.addEventListener('click', function() {
                                 differentiationChartType = 'bar';
                             }
                             else if (checkedCheckboxesDifferentiationCharts[0] === 'Doughnut') {
+                            
+                                backgroundColorFunction(xAxisDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
+    
+                                console.log(xAxisDifferentiation);
+                                console.log(propertyDifferentiation);
+    
                                 differentiationChartType = 'doughnut';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation,
+                                            borderColor: borderColorDifferentiation
+                                        })),
+    
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
-                            else if ((checkedCheckboxesDifferentiationCharts[0] === 'Pie') || (checkedCheckboxesDifferentiationCharts[0] === 'Multi Series Pie')) {
+                            else if (checkedCheckboxesDifferentiationCharts[0] === 'Pie') {
+                            
                                 differentiationChartType = 'pie';
+    
+                                backgroundColorFunction(xAxisDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation,
+                                            borderColor: borderColorDifferentiation
+                                        })),
+    
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
                             else if (checkedCheckboxesDifferentiationCharts[0] === 'Polar Area') {
+                            
                                 differentiationChartType = 'polarArea';
+    
+                                backgroundColorFunction(xAxisDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation,
+                                            borderColor: borderColorDifferentiation
+                                        })),
+    
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
                             else if (checkedCheckboxesDifferentiationCharts[0] === 'Radar') {
+                            
                                 differentiationChartType = 'radar';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation[i],
+                                            borderColor: borderColorDifferentiation[i]
+                                        })),
+    
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
                             else if (checkedCheckboxesDifferentiationCharts[0] === 'Scatter') {
+                            
                                 differentiationChartType = 'scatter';
+    
+                                dataDifferentiation = {
+    
+                                    labels: mergedXAxisDifferentiation,
+                                    datasets:
+                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
+                                            label: checkedCheckboxesDifferentiationProperties[i],
+                                            data: differentiation[i],
+                                            borderWidth: 4,
+                                            backgroundColor: backgroundColorDifferentiation[i],
+                                            borderColor: borderColorDifferentiation[i]
+                                        })),
+    
+                                };
+    
+                                optionsDifferentiation = {
+    
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    x: {
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiation
+                                    },
+    
+                                };
+    
                             }
+
     
                             console.log(checkedCheckboxesDifferentiationCharts[0]);
                             console.log(differentiationChartType);
@@ -1844,36 +2520,11 @@ fileUpload.addEventListener('click', function() {
                             // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
 
                                 const myChart_differentiation = new Chart(ctx2, {
+
                                     type: differentiationChartType,
-                                    data: {
-                                    labels: xAxisDifferentiation,
-                                    datasets:
-                                        checkedCheckboxesDifferentiationProperties.map((key, i) => ({
-                                            label: checkedCheckboxesDifferentiationProperties[i],
-                                            data: differentiation[i],
-                                            backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
-                                            borderColor: '#e61802',
-                                            borderWidth: 2
-                                        })),
-                                    },
-                                    options: {
-                                        states: {
-                                            hover: {
-                                                filter: {
-                                                    type: 'none',
-                                                }
-                                            },
-                                        },
-                                        plugins: {
-                                            tooltip: {
-                                              enabled: false // <-- this option disables tooltips
-                                            }
-                                        },
-                                        // maintainAspectRatio: false,
-                                        responsive: true,
-                                        maintainAspectRatio: false,
-                                        
-                                    }
+                                    data: dataDifferentiation,
+                                    options: optionsDifferentiation
+
                                 });
 
                                 console.log(myChart_differentiation);
@@ -1896,12 +2547,16 @@ fileUpload.addEventListener('click', function() {
 
                     btn.addEventListener('click', function() {
 
-
                         nameDifferentiationRate.length = 0;
                         propertyDifferentiationRate.length = 0;
                         dateDifferentiationRate.length = 0;
                         xAxisDifferentiationRate.length = 0;
                         differentiationRate.length = 0;
+
+                        checkedCheckboxesDifferentiationRateCharts.length = 0;
+
+                        backgroundColorDifferentiationRate.length = 0;
+                        borderColorDifferentiationRate.length = 0;
 
                         differentiationRateChartType = 'bar';
                             
@@ -2014,99 +2669,374 @@ fileUpload.addEventListener('click', function() {
 
                         checkedCheckboxesDifferentiationRateCharts.length = 0;
 
-                            for (let i = 0; i < checkboxesDifferentiationRateChartsEl.length; i++) {
+                        for (let i = 0; i < checkboxesDifferentiationRateChartsEl.length; i++) {
         
-                                if (checkboxesDifferentiationRateChartsEl[i].checked) {
+                            if (checkboxesDifferentiationRateChartsEl[i].checked) {
                                     checkedCheckboxesDifferentiationRateCharts.push(checkboxesDifferentiationRateChartsEl[i].value);
-                                }
-                                
                             }
+                                
+                        }
         
-                            // DEBUGGING
-                            // console.log(checkboxesDifferentiationRateChartsEl);
-                            // console.log(checkboxesDifferentiationRateChartsEl.length);
-                            console.log(checkedCheckboxesDifferentiationRateCharts);
-                            // console.log(typeof checkedCheckboxesDifferentiationRateCharts);
+                        // DEBUGGING
+                        // console.log(checkboxesDifferentiationRateChartsEl);
+                        // console.log(checkboxesDifferentiationRateChartsEl.length);
+                        console.log(checkedCheckboxesDifferentiationRateCharts);
+                        // console.log(typeof checkedCheckboxesDifferentiationRateCharts);
 
 
 
+                        backgroundColorFunction(propertyDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
 
 
-                            if ((checkedCheckboxesDifferentiationRateCharts[0] === 'Floating Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Horizontal Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Stacked Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Vertical Bar')) {
-                                differentiationRateChartType = 'bar';
-                            }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Line') {
-                                differentiationRateChartType = 'line';
-                            }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Bubble') {
+                        mergedXAxisDifferentiation = Array.from({length:xAxisDifferentiationRate.length-1}, (_,i)=>xAxisDifferentiationRate[i] + ' - ' + xAxisDifferentiationRate[i+1]);
 
-                                differentiationRateChartType = 'bubble';
 
-                                differentiationRateModal.style.display = "block";
-                                differentiationRateOverlay.style.display = "block";
-    
-                                deleteDivInside('differentiation-rate-z-axis-modal');
-    
-                                for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
-                                    
-                                    createRadio('differentiation-rate-z-axis-modal', 'differentiation-rate-z-axis-modal', checkedCheckboxesDifferentiationRateProperties[i], checkedCheckboxesDifferentiationRateProperties[i]);
-            
+                        console.log(mergedXAxisDifferentiation);
+
+
+                        if (checkedCheckboxesDifferentiationRateCharts[0] === 'Horizontal Bar') {
+                            
+                            differentiationRateChartType = 'bar';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate[i],
+                                        borderColor: borderColorDifferentiationRate[i]
+                                    })),
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                indexAxis: 'y',
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Stacked Bar') {
+                            
+                            differentiationRateChartType = 'bar';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate[i],
+                                        borderColor: borderColorDifferentiationRate[i]
+                                    })),
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: {
+                                        stacked: true,
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiationRate
+                                    },
+                                    y: {
+                                        stacked: true
+                                    }
                                 }
-                          
-                                createButton('differentiation-rate-z-axis-modal', 'ok', 'differentiation-rate-modal-ok-btn', 'Ok');
-    
-    
-                                differentiationRateModalOkBtn = document.getElementById('differentiation-rate-modal-ok-btn');
-    
-    
-                                differentiationRateModalOkBtn.addEventListener("click", function() {
-                
-    
-                                    differentiationRateModal.style.display = "none";
-                                    differentiationRateOverlay.style.display = "none";
-                                
-                                    checkedCheckboxesDifferentiationRateModal.length = 0;
-    
-                                        for (let i = 0; i < checkboxesDifferentiationRateModalEl.length; i++) {
-    
-                                            if (checkboxesDifferentiationRateModalEl[i].checked) {
-                                                checkedCheckboxesDifferentiationRateModal.push(checkboxesDifferentiationRateModalEl[i].value);
-                                            }
-                                            
-                                        }
-    
-                                        // DEBUGGING
-                                        // console.log(checkboxesDifferentiationRateModalEl);
-                                        // console.log(checkboxesDifferentiationRateModalEl.length);
-                                        console.log(checkedCheckboxesDifferentiationRateModal);
-                                        // console.log(typeof checkedCheckboxesDifferentiationRateModal);
-    
-                                    // });
-    
-                                });
 
+                            };
+
+                        }
+                        else if ((checkedCheckboxesDifferentiationRateCharts[0] === 'Floating Bar') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Vertical Bar')) {
+                            
+                            differentiationRateChartType = 'bar';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate[i],
+                                        borderColor: borderColorDifferentiationRate[i]
+                                    })),
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: {
+                                        stacked: true,
+                                        type: 'category',
+                                        labels: mergedXAxisDifferentiationRate
+                                    },
+                                    y: {
+                                        stacked: true
+                                    }
+                                }
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Line') {
+                            
+                            differentiationRateChartType = 'line';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate[i],
+                                        borderColor: borderColorDifferentiationRate[i],
+                                        fill: true
+                                    })),
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Bubble') {
+
+                            differentiationRateChartType = 'bubble';
+
+                            differentiationRateModal.style.display = "block";
+                            differentiationRateOverlay.style.display = "block";
+
+                            deleteDivInside('differentiation-rate-z-axis-modal');
+
+                            for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
+                                
+                                createRadio('differentiation-rate-z-axis-modal', 'differentiation-rate-z-axis-modal', checkedCheckboxesDifferentiationRateProperties[i], checkedCheckboxesDifferentiationRateProperties[i]);
+        
                             }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Combo Bar / Line') {
-                                differentiationRateChartType = 'bar';
-                            }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Doughnut') {
-                                differentiationRateChartType = 'doughnut';
-                            }
-                            else if ((checkedCheckboxesDifferentiationRateCharts[0] === 'Pie') || (checkedCheckboxesDifferentiationRateCharts[0] === 'Multi Series Pie')) {
-                                differentiationRateChartType = 'pie';
-                            }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Polar Area') {
-                                differentiationRateChartType = 'polarArea';
-                            }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Radar') {
-                                differentiationRateChartType = 'radar';
-                            }
-                            else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Scatter') {
-                                differentiationRateChartType = 'scatter';
-                            }
-    
-                            console.log(checkedCheckboxesDifferentiationRateCharts[0]);
-                            console.log(differentiationRateChartType);
+                      
+                            createButton('differentiation-rate-z-axis-modal', 'ok', 'differentiation-rate-modal-ok-btn', 'Ok');
+
+
+                            differentiationRateModalOkBtn = document.getElementById('differentiation-rate-modal-ok-btn');
+
+
+                            differentiationRateModalOkBtn.addEventListener("click", function() {
+            
+
+                                differentiationRateModal.style.display = "none";
+                                differentiationRateOverlay.style.display = "none";
+                            
+                                checkedCheckboxesDifferentiationRateModal.length = 0;
+
+                                    for (let i = 0; i < checkboxesDifferentiationRateModalEl.length; i++) {
+
+                                        if (checkboxesDifferentiationRateModalEl[i].checked) {
+                                            checkedCheckboxesDifferentiationRateModal.push(checkboxesDifferentiationRateModalEl[i].value);
+                                        }
+                                        
+                                    }
+
+                                    // DEBUGGING
+                                    // console.log(checkboxesDifferentiationRateModalEl);
+                                    // console.log(checkboxesDifferentiationRateModalEl.length);
+                                    console.log(checkedCheckboxesDifferentiationRateModal);
+                                    // console.log(typeof checkedCheckboxesDifferentiationRateModal);
+
+                                // });
+
+                            });
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Combo Bar / Line') {
+                            differentiationRateChartType = 'bar';
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Doughnut') {
+                            
+                            backgroundColorFunction(xAxisDifferentiationRate, backgroundColorDifferentiationRate, borderColorDifferentiationRate);
+
+                            console.log(xAxisDifferentiationRate);
+                            console.log(propertyDifferentiationRate);
+
+                            differentiationRateChartType = 'doughnut';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate,
+                                        borderColor: borderColorDifferentiationRate
+                                    })),
+
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Pie') {
+                            
+                            differentiationRateChartType = 'pie';
+
+                            backgroundColorFunction(xAxisDifferentiationRate, backgroundColorDifferentiationRate, borderColorDifferentiationRate);
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate,
+                                        borderColor: borderColorDifferentiationRate
+                                    })),
+
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Polar Area') {
+                            
+                            differentiationRateChartType = 'polarArea';
+
+                            backgroundColorFunction(xAxisDifferentiationRate, backgroundColorDifferentiationRate, borderColorDifferentiationRate);
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate,
+                                        borderColor: borderColorDifferentiationRate
+                                    })),
+
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Radar') {
+                            
+                            differentiationRateChartType = 'radar';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate[i],
+                                        borderColor: borderColorDifferentiationRate[i],
+                                        fill: true
+                                    })),
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+                        else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Scatter') {
+                            
+                            differentiationRateChartType = 'scatter';
+
+                            dataDifferentiationRate = {
+
+                                labels: mergedXAxisDifferentiationRate,
+                                datasets:
+                                    checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
+                                        label: checkedCheckboxesDifferentiationRateProperties[i],
+                                        data: differentiationRate[i],
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorDifferentiationRate[i],
+                                        borderColor: borderColorDifferentiationRate[i],
+                                        fill: true
+                                    })),
+                            };
+
+                            optionsDifferentiationRate = {
+
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
+
+                            };
+
+                        }
+
+                        console.log(checkedCheckboxesDifferentiationRateCharts[0]);
+                        console.log(differentiationRateChartType);
 
 
                         // Displays the chart for the variables
@@ -2116,29 +3046,11 @@ fileUpload.addEventListener('click', function() {
                         // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
 
                             const myChart_differentiationRate = new Chart(ctx3, {
+
                                 type: differentiationRateChartType,
-                                data: {
-                                labels: xAxisDifferentiationRate,
-                                datasets:
-                                checkedCheckboxesDifferentiationRateProperties.map((key, i) => ({
-                                        label: checkedCheckboxesDifferentiationRateProperties[i],
-                                        data: differentiationRate[i],
-                                        backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
-                                        borderColor: '#e61802',
-                                        borderWidth: 2
-                                    })),
-                                },
-                                options: {
-                                    plugins: {
-                                        tooltip: {
-                                            enabled: false // <-- this option disables tooltips
-                                        }
-                                    },
-                                    // maintainAspectRatio: false,
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                        
-                                }
+                                data: dataDifferentiationRate,
+                                options: optionsDifferentiationRate
+
                             });
 
                             console.log(myChart_differentiationRate);

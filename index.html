@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     
     <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Excel CDN -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
@@ -268,8 +268,32 @@
                         </div>
     
                         <div class="flip-card-back">
-    
-                            <h1>Radar</h1> 
+
+                            <p class="general_chart_info_text">
+                                A Radar Chart is a way of showing multiple data points and the variation between them.
+                            </br>In this example of Radar Chart, there are 3 Datasets :
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Comments,
+                                </li>
+
+                                <li>
+                                    Duplicated Lines,
+                                </li>
+                                <li>
+                                    Total Lines,
+                                </li>
+
+                            </ul>
+
+                            <p class="rest_chart_info_text">
+                                and 5 different Versions of a software.
+                                </br>Each dataset contains a number of values for these 5 versions.
+
+                            </p>
                             
                         </div>
     
@@ -306,44 +330,192 @@
 
                                 const ctxDBbubble = document.getElementById('dashboard-chart-bubble');
                                 
+
+                                const bubbleChartData = {
+                                    animation: {
+                                    duration: 10
+                                    },
+                                    // Documentation says the tick values tick.min & tick.max must be in the Labels array. So thats what I have below
+                                    
+                                    datasets: [{
+                                        label: "Requests and bookings",
+                                        fill: false,
+                                        lineTension: 0.1,
+                                        borderCapStyle: 'butt',
+                                        borderDash: [],
+                                        borderDashOffset: 0.0,
+                                        borderJoinStyle: 'miter',
+                                        pointBorderColor: "rgba(75,192,192,1)",
+                                        pointBackgroundColor: "#fff",
+                                        pointBorderWidth: 1,
+                                        pointHoverRadius: 5,
+                                        pointHoverBackgroundColor: "rgba(153, 102, 155, 0.2)",
+                                        pointHoverBorderColor: "rgba(153, 102, 155, 1)",
+                                        pointHoverBorderWidth: 2,
+                                        pointRadius: 1,
+                                        pointHitRadius: 10,
+                                        // how would the data change ...how can the numbers for y be replaced with strings
+                                        data:[{x: "Mon",y: "Tue",r: 15},{x: "Tue",y:  "Thu",r: 19},{x: "wed",y:  "wed",r: 50}]
+                                        }]
+                                };
+
                                 new Chart(ctxDBbubble, {
                                     type: 'bubble',
-                                    data: {
-                                        datasets: [{
-                                            label: 'First Dataset',
-                                            data: [{
-                                            x: 20,
-                                            y: 30,
-                                            r: 15
-                                            }, {
-                                            x: 40,
-                                            y: 10,
-                                            r: 10
-                                            }],
-                                            backgroundColor: 'rgb(255, 99, 132)'
-                                        }]
-                                    },
+                                    data: bubbleChartData,
                                     options: {
                                         responsive: true,
-                                        maintainAspectRatio: false,
-                                        scales: {
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
-                                            //     }
-                                            // }]
+                                        title: {
+                                            display: true,
+                                            text:'Weekly activity'
+                                        },
+                                            scales: {
+                                            y: {
+                                                // will this create y-axis with days of week?
+                                                type: 'category',
+                                                labels: ["Mon", "Tue", "wed", "Thu"]
+                                            },
+                                            x: {
+                                                type: 'category',
+                                                labels: ["Mon", "Tue", "wed", "Thu"]
+                                            }
                                         }
+                                    
                                     }
+                                    // type: 'bubble',
+                                    // data: {
+                                    //     datasets: [{
+                                    //         label: 'First Dataset',
+                                    //         data: [{
+                                    //         // x: 'string',
+                                    //         y: 30,
+                                    //         r: 15
+                                    //         }, {
+                                    //         // x: 'string',
+                                    //         y: 10,
+                                    //         r: 10
+                                    //         }],
+                                    //         backgroundColor: 'rgb(255, 99, 132)'
+                                    //     }]
+                                    // },
+                                    // options: {
+                                    //     responsive: true,
+                                    //     maintainAspectRatio: false,
+                                    //     // scales: {
+                                    //     //     x: {
+                                    //     //         ticks: {
+                                    //     //             // Include a dollar sign in the ticks
+                                    //     //             // callback: function(value, index, ticks) {
+                                    //     //             //     return '$' + value;
+                                    //     //             // }
+                                    //     //             callback: function(value, index, values) {
+                                    //     //             // checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                    //     //                 return 'value is' + value;
+                                    //     //             // }))
+                                              
+                                    //     //             }
+                                    //     //         }
+                                    //     //     }                                           
+                                    //     // },
+                                    //     scales: {
+                                    //         x: {
+                                    //             type: 'bubble',
+                                    //             labels: ['January', 'February', 'March', 'April', 'May', 'June']
+                                    //         }
+                                    //     }
+                                    // }
                                 });
+
+
+                                // new Chart(ctxDBbubble, {
+                                //     type: 'bubble',
+                                //     data: {
+                                //         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
+                                //         datasets: [{
+                                //                 label: 'Comments',
+                                //                 data: [4, 2, 3, 4, 5],
+                                //                 backgroundColor: 'rgba(84, 33, 82, 0.7)',
+                                //                 borderWidth: 2,
+                                //                 borderColor: '#660244'
+                                //             },
+                                //             // {
+                                //             //     label: 'Duplicated Lines',
+                                //             //     data: [10803, 11662, 13528, 10273, 11832],
+                                //             //     backgroundColor: 'rgba(156, 30, 150, 0.7)',
+                                //             //     borderWidth: 2,
+                                //             //     borderColor: '#940399'
+                                //             // },
+                                //             // {
+                                //             //     label: 'Total Lines',
+                                //             //     data: [19224, 17942, 22447, 20680, 24256],
+                                //             //     backgroundColor: 'rgba(250, 52, 241, 0.7)',
+                                //             //     borderWidth: 2,
+                                //             //     borderColor: '#c704be'
+                                //             // }
+                                //         ],
+                                //     },
+                                //     options: {
+                                //         responsive: true,
+                                //         maintainAspectRatio: false,
+                                //         events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+                                //         plugins: {
+                                //             tooltip: {
+                                //                 // Tooltip will only receive click events
+                                //                 events: ['click']
+                                //                 // title: {
+                                //                 //     display: true,
+                                //                 //     text: 'Custom Chart Title',
+                                //                 //     // padding: {
+                                //                 //     //     top: 10,
+                                //                 //     //     bottom: 30
+                                //                 //     // }
+                                //                 // }
+                                //             },
+                                //         },
+                                //         scales: {
+                                //             x: {
+                                //                 ticks: {
+                                //                     // Include a dollar sign in the ticks
+                                //                     callback: function(value, index, ticks) {
+                                //                         return '$' + value;
+                                //                     }
+                                //                 }
+                                //             }                                           
+                                //         },
+                                //     }
+                                // });
 
                             </script>
     
                         </div>
     
                         <div class="flip-card-back">
-    
-                            <h1>Bubble</h1> 
-                                
+
+                            <p class="general_chart_info_text">
+                                A Radar Chart is a way of showing multiple data points and the variation between them.
+                            </br>In this example of Radar Chart, there are 3 Datasets :
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Comments,
+                                </li>
+
+                                <li>
+                                    Duplicated Lines,
+                                </li>
+                                <li>
+                                    Total Lines,
+                                </li>
+
+                            </ul>
+
+                            <p class="rest_chart_info_text">
+                                and 5 different Versions of a software.
+                                </br>Each dataset contains a number of values for these 5 versions.
+
+                            </p>
+                            
                         </div>
     
                     </div>
@@ -381,21 +553,21 @@
                                         datasets: [{
                                                 label: 'NOF',
                                                 data: [793, 1263, 891],
-                                                backgroundColor: '#87bc45',
+                                                backgroundColor: ['#87bc45', '#bdcf32', '#ede15b'],
                                                 borderColor: '#488003',
                                                 borderWidth: 2
                                             },
                                             {
                                                 label: 'NOA',
                                                 data: [1368, 874, 1358],
-                                                backgroundColor: '#bdcf32',
+                                                backgroundColor: ['#87bc45', '#bdcf32', '#ede15b'],
                                                 borderColor: '#488003',
                                                 borderWidth: 2
                                             },
                                             {
                                                 label: 'NOM',
                                                 data: [674, 956, 548],
-                                                backgroundColor: '#ede15b',
+                                                backgroundColor: ['#87bc45', '#bdcf32', '#ede15b'],
                                                 borderColor: '#488003',
                                                 borderWidth: 2
                                             }
@@ -469,8 +641,32 @@
                         </div>
     
                         <div class="flip-card-back">
-    
-                            <h1>Doughnut</h1> 
+
+                            <p class="general_chart_info_text">
+                                A Doughnut Chart is divided into segments, the arc of each segment shows the proportional value of each piece of data.
+                            </br>In this example of Doughnut Chart, there are 3 Datasets :
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Comments,
+                                </li>
+
+                                <li>
+                                    Duplicated Lines,
+                                </li>
+                                <li>
+                                    Total Lines,
+                                </li>
+
+                            </ul>
+
+                            <p class="rest_chart_info_text">
+                                and 3 different Versions of a software.
+                                </br>Each Version contains a number of segments, which is equal to the number of datasets.
+
+                            </p>
                             
                         </div>
     
@@ -521,15 +717,15 @@
                                         datasets: [{
                                                 label: 'Duplicated Blocks',
                                                 data: [456, 294, 671],
-                                                backgroundColor: '#ffb55a',
-                                                borderColor: '#eb770c',
+                                                backgroundColor: ['#ffb55a', '#fa852a', '#fa9416'],
+                                                borderColor: '#fa7005',
                                                 borderWidth: 2
                                             },
                                             {
                                                 label: 'Duplicated Lines',
                                                 data: [753, 950, 1352],
-                                                backgroundColor: '#ef9b20',
-                                                borderColor: '#eb770c',
+                                                backgroundColor: ['#ffb55a', '#fa852a', '#fa9416'],
+                                                borderColor: '#fa7005',
                                                 borderWidth: 2
                                             },
                                         ],
@@ -577,9 +773,33 @@
                         </div>
     
                         <div class="flip-card-back">
-    
-                            <h1>Polar Area</h1> 
-                             
+
+                            <p class="general_chart_info_text">
+                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius depending on the value.
+                            </br>In this example of Polar Area Chart, there are 2 Datasets :
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Comments,
+                                </li>
+
+                                <li>
+                                    Duplicated Lines,
+                                </li>
+                                <li>
+                                    Total Lines,
+                                </li>
+
+                            </ul>
+
+                            <p class="rest_chart_info_text">
+                                and 3 different Versions of a software.
+                                </br>Each Version contains a number of segments, which is equal to the number of datasets.
+
+                            </p>
+                            
                         </div>
     
                     </div>
@@ -663,15 +883,15 @@
                                             //         drawOnChartArea: false
                                             //     }
                                             // },
-                                            yAxes: [{
-                                                ticks: {
-                                                    beginAtZero:true
-                                                }
-                                                // not working
-                                                // grid: {
-                                                //     drawOnChartArea: false
-                                                // }
-                                            }]
+                                            // yAxes: [{
+                                            //     ticks: {
+                                            //         beginAtZero:true
+                                            //     }
+                                            //     // not working
+                                            //     // grid: {
+                                            //     //     drawOnChartArea: false
+                                            //     // }
+                                            // }]
                                         }
                                     }
 
@@ -683,8 +903,31 @@
 
                         <div class="flip-card-back">
 
-                            <h1>Bar</h1> 
-                                    
+                            <p class="general_chart_info_text">
+                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius depending on the value.
+                            </br>In this example of Polar Area Chart, there are 2 Datasets :
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Commits,
+                                </li>
+
+                                <li>
+                                    Bugs,
+                                </li>
+                                <li>
+                                    Issues,
+                                </li>
+
+                            </ul>
+
+                            <p class="rest_chart_info_text">
+                                and 5 different Versions of a software.
+                                </br>Each Version contains a number of different bars, which is equal to the number of datasets.
+                            </p>
+                            
                         </div>
 
                     </div>
@@ -746,8 +989,31 @@
                         </div>
     
                         <div class="flip-card-back">
-    
-                            <h1>Line</h1> 
+
+                            <p class="general_chart_info_text">
+                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius depending on the value.
+                            </br>In this example of Polar Area Chart, there are 2 Datasets :
+                            </p>
+
+                            <ul>
+
+                                <li>
+                                    Comments,
+                                </li>
+
+                                <li>
+                                    Bugs,
+                                </li>
+                                <li>
+                                    Issues,
+                                </li>
+
+                            </ul>
+
+                            <p class="rest_chart_info_text">
+                                and 5 different Versions of a software.
+                                </br>Each Version contains a number of different bars, which is equal to the number of datasets.
+                            </p>
                             
                         </div>
     
