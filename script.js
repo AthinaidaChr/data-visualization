@@ -2688,10 +2688,10 @@ fileUpload.addEventListener('click', function() {
                         backgroundColorFunction(propertyDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
 
 
-                        mergedXAxisDifferentiation = Array.from({length:xAxisDifferentiationRate.length-1}, (_,i)=>xAxisDifferentiationRate[i] + ' - ' + xAxisDifferentiationRate[i+1]);
+                        mergedXAxisDifferentiationRate = Array.from({length:xAxisDifferentiationRate.length-1}, (_,i)=>xAxisDifferentiationRate[i] + ' - ' + xAxisDifferentiationRate[i+1]);
 
 
-                        console.log(mergedXAxisDifferentiation);
+                        console.log(mergedXAxisDifferentiationRate);
 
 
                         if (checkedCheckboxesDifferentiationRateCharts[0] === 'Horizontal Bar') {
@@ -2777,19 +2777,13 @@ fileUpload.addEventListener('click', function() {
                             };
 
                             optionsDifferentiationRate = {
-
+    
                                 responsive: true,
                                 maintainAspectRatio: false,
-                                scales: {
-                                    x: {
-                                        stacked: true,
-                                        type: 'category',
-                                        labels: mergedXAxisDifferentiationRate
-                                    },
-                                    y: {
-                                        stacked: true
-                                    }
-                                }
+                                x: {
+                                    type: 'category',
+                                    labels: mergedXAxisDifferentiationRate
+                                },
 
                             };
 

@@ -678,9 +678,45 @@
 
                     <div>
 
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    
+                        <h3>Instructions :</h3>
+
+                        1.	Upload your EXCEL file with the exact characteristics below :
+
+                        </br>
+
+                        <ul>
+
+                            <li>
+                                first column must be an ID number for each row of the file,
+                            </li>
+
+                            <li>
+                                second column must be the number of the software (in case there are several softwares in the EXCEL file),
+                            </li>
+
+                            <li>
+                                third column must contain the names of every existed version (Column Title : name),
+                            </li>
+
+                            <li>
+                                fourth column must contain the release date of each version (Column Title : rel_date),
+                            </li>
+
+                            <li>
+                                the next columns can contain any calculated metric of your choice.
+                            </li>
+
+                        </ul>
+
+
+                        2.	 After you  upload your EXCEL file you can do the following things :
+                        </br>
+                        In Summary Statistics section you can visualize the exact data of your EXCEL file as a function of the Software’s Versions or Dates.
+                        </br>
+                        In Evaluation section you can view the calculated differentiation between the property data of your uploaded EXCEL file as a function of the Software's Versions or Dates.
+                        </br>
+                        In Evaluation Rate section you can visualize the calculated differentiation rate between the property data of your uploaded excel file as a function of the Software's Versions or Dates.
+
                     </div>
 
                 </div>
@@ -963,22 +999,62 @@
                                 new Chart(ctxDBline, {
                                     type: 'line',
                                     data: {
-                                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                        labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
                                         datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        backgroundColor: ['#ea5545', '#f46a9b', '#ef9b20', '#edbf33', '#ede15b', '#bdcf32', '#87bc45', '#27aeef', '#b33dc6'],
-                                        borderWidth: 1
-                                        }]
+                                                label: 'Commits',
+                                                data: [3068, 1922, 768, 1859, 328],
+                                                backgroundColor: ['#1937e3', '#1937e3', '#1937e3', '#1937e3', '#1937e3'],
+                                                borderColor: '#0328ff',
+                                                borderWidth: 2
+                                            },
+                                            {
+                                                label: 'Bugs',
+                                                data: [2041, 928, 2580, 3159, 758],
+                                                backgroundColor: ['#2162ed', '#2162ed', '#2162ed', '#2162ed', '#2162ed'],
+                                                borderColor: '#0a56fa',                                                
+                                                borderWidth: 2
+                                            },
+                                            {
+                                                label: 'Issues',
+                                                data: [1223, 1187, 782, 1079, 648],
+                                                backgroundColor: ['#17b9ff', '#17b9ff', '#17b9ff', '#17b9ff', '#17b9ff'],
+                                                borderColor: '#02affa',
+                                                borderWidth: 2
+                                        }],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
+                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
+                                        plugins: {
+                                            tooltip: {
+                                                // Tooltip will only receive click events
+                                                events: ['click']
+                                                // title: {
+                                                //     display: true,
+                                                //     text: 'Custom Chart Title',
+                                                //     // padding: {
+                                                //     //     top: 10,
+                                                //     //     bottom: 30
+                                                //     // }
+                                                // }
+                                            }
+                                        },
                                         scales: {
+                                            // not working
+                                            // xAxis: {
+                                            //     grid: {
+                                            //         drawOnChartArea: false
+                                            //     }
+                                            // },
                                             // yAxes: [{
                                             //     ticks: {
                                             //         beginAtZero:true
                                             //     }
+                                            //     // not working
+                                            //     // grid: {
+                                            //     //     drawOnChartArea: false
+                                            //     // }
                                             // }]
                                         }
                                     }
