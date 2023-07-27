@@ -12,6 +12,10 @@
     --box-shadow-buttons-active: inset -10px -10px 15px rgba(255, 255, 255, 0.247), inset 10px 10px 15px rgba(70, 70, 70, 0.212);
 }
 
+/* -------------------------------------------------------------- */
+
+/* General Variables */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +23,6 @@
     border: 0;
     appearance: none;
     text-decoration: none;
-    /* list-style: none; */
     box-sizing: border-box;    
 }
 
@@ -28,16 +31,12 @@ html {
 }
 
 body {
-    /* font-size: 1rem; */
     font-family: 'Poppins', sans-serif;
     background: var(--color-background);
     color: var(--color-font);
     max-width: 100vw;
     min-height: 100vh;
-
     margin: 0 auto;
-    /* user-select: none; */
-    /* overflow-x: hidden; */
 }
 
 img {
@@ -62,49 +61,57 @@ h3 {
 
 /* -------------------------------------------------------------- */
 
+/* Main Container of the Page */
+
+/* Contains the sidebar menu and each of the main containers. */
 .container {
     display: grid;
     width: 96%;
-    /* 0px for top and bottom, auto for left and right */
-    margin: 0 auto;     /* pushses everything in the middle */
-    /* background: #672d91; */
+    /* margin -> 0px for top and bottom, auto for left and right */
+    margin: 0 auto;
     gap: 1.8rem;
-    /* 14 for the left section, auto for the right section */
+    /* space-seperated -> 14 for the left section, auto for the right section */
     grid-template-columns: 15rem auto;
     padding-bottom: 30px;
 }
 
-/* ------------------------------- */
+/* -------------------------------------------------------------- */
+
+/* Left Section of the Page - Logo / Sidebar Menu */
 
 aside {
     height: 100hv;
-    /* background: #672d91; */
 }
+
+/* -------------------------------------------------------------- */
+
+/* Logo and Title */
 
 aside .sidebar-logo {
-    /* background: white; */
     display: flex;
-    margin-top: 1.4rem;
     align-items: center;
     justify-content: space-between;
-}
-
-aside .logo {
-    display: flex;
-    gap: 0.8rem;
-}
-
-aside .logo img {
-    width: 3rem;
-    height: 3rem;
+    margin-top: 1.4rem;
 }
 
 /* ------------------------------- */
+
+aside .logo {
+    display: flex;
+    gap: 0.4rem;
+}
+
+aside .logo span {
+    font-size: 3rem;
+}
+
+/* -------------------------------------------------------------- */
+
+/* Sidebar Menu */
 
 aside .sidebar-content {
     display: flex;
     flex-direction: column;
-    /* background: white; */
     position: relative;
     height: 80vh;
     top: 0.8rem;
@@ -112,10 +119,11 @@ aside .sidebar-content {
     padding-top: 1.5rem;
 }
 
-/* olo to plaisiou tou koumpiou */
+/* ------------------------------- */
+
+/* The palce holder of every button. */
 aside .sidebar-content button {
     display: flex;
-    /* color: #7d8da1; */
     margin-top: 0.8rem;
     padding-left: 0.5rem;
     padding-top: 3.5rem;
@@ -138,26 +146,28 @@ aside .sidebar-content #sum-up-to-100-btn {
     margin-top: 1.6rem;
 }
 
-/* to sumvolo dipla apo to onoma */
+/* The icon in the left side of the button text. */
 aside .sidebar-content button span {
     font-size: 1.8rem;
-    transition: all 400ms ease;     /* make it more smooth */
+    transition: all 400ms ease;     /* more smooth */
 }
 
-/* otan einai pathmeno to koumpi - energo */
+/* When the button is active - pressed. */
 aside .sidebar-content button:focus {
-    background: #f46a9b;
+    background: #2f4454;
     color: #ffffff;
     margin-left: 0;
     box-shadow: var(--box-shadow-buttons-active);
 }
 
-/* me hover pas to eswteriko tou koumpiou pio mesa  */
+/* Hover to move the inside text of the button to the right.  */
 aside .sidebar-content button:hover span {
     margin-left: 1rem;
 }
 
 /* -------------------------------------------------------------- */
+
+/* Main / Right Section of the Page - Grid */
 
 .main-content {
     margin-top: 1.4rem;
@@ -166,32 +176,43 @@ aside .sidebar-content button:hover span {
     /* width: fit-content; */
 }
 
-/* ------------------------------- */
+/* -------------------------------------------------------------- */
 
+/* Title - Description of each Section */
+
+/* Contains the title of each section. */
 .main-content .main-title {
     display: flex;
-    margin-bottom: 1.5rem;
     flex-direction: column;
     /* flex-wrap: wrap; */
+    margin-bottom: 1.5rem;
 }
 
+/* ------------------------------- */
+
+/* The icon on the left side of each title. */
 .main-content .main-title span {
     font-size: 3rem;
 }
 
+/* The text of each title. */
 .main-content .main-title .main-title-text {
     display: flex;
     align-items: center;
 }
 
+/* The discription of each title in everu section. */
 #main-title-description {
     white-space: nowrap;
     padding-left: 1rem;
     min-width: 80rem;
 }
 
-/* ------------------------------- */
+/* -------------------------------------------------------------- */
 
+/* Grid with Cards / Charts */
+
+/* Creates the grid of every section. */
 .main-content .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -200,16 +221,19 @@ aside .sidebar-content button:hover span {
     width: fit-content;
 }
 
+/* Specifies the div elements of each grid. */
 .main-content .cards > div {
-    /* background: white; */
     padding: 1.8rem;
-    border-radius: var(--border-radius);
     margin-top: 1rem;
-    /* margin-bottom: 1rem; */
     margin-right: 0.8rem;
+    border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-cards);
     /* transition: all 300 ease; */
 }
+
+/* ------------------------------- */
+
+/* Container about the Excel File */
 
 .main-content .cards .import-download-file-container {
     display: grid;
@@ -225,45 +249,187 @@ aside .sidebar-content button:hover span {
     margin: 0;
 }
 
+/* ------------------------------- */
+
+/* Subgrid where you can upload your Excel file. */
 .main-content .cards .import-download-file-container .subgrid-file-import-container {
     grid-column: 1;
     grid-row: 1;
 
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-cards);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     padding: 0;
     margin: 0;
     margin-bottom: 0.8rem;
+    min-width: 25rem;
+
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-cards);
+}
+
+.subgrid-file-import-container .file-import-container {
+    display: grid;
+    margin: 2rem 0.5rem;
+    border-style: dashed;
+    border-color: var(--color-font);
+    border-width: 0.1rem;
+    /* padding: 0.5rem 3rem; */
+
+    /* min-width: 15rem; */
+}
+
+/* Subgrid where you can download your JSON file. */
+.main-content .cards .import-download-file-container .subgrid-file-download-container {
+    grid-column: 1;
+    grid-row: 2;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    min-width: 25rem;
-}
-
-.main-content .cards .import-download-file-container .subgrid-file-download-container {
-    /* background: crimson ; */
-    grid-column: 1;
-    grid-row: 2;
-
-    border-radius: var(--border-radius);
-    /* background-color: #222cb9; */
-    box-shadow: var(--box-shadow-cards);
 
     padding: 0;
     margin: 0;
     margin-top: 0.8rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     min-width: 25rem;
+
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-cards);
+}
+
+.min-width-container {
+    min-width: 15rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 /* ------------------------------- */
+
+.file-import-button-label {
+    margin-right: 5rem;
+    margin-left: 5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.file-import-container .folder-open-icon {
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.upload-file-text {
+    display: flex;
+    /* margin-bottom: 1rem; */
+    font-size: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.file-import-button-label {
+    margin-right: 5rem;
+    margin-left: 5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.file-import-container .folder-open-icon {
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.or-text {
+    display: flex;
+    /* margin-bottom: 1rem; */
+    font-size: 0.8rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+#file-upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#file-upload + label,
+#json-download, 
+#reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    display: inline-block;
+    background-color: #2f4454;
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    /* margin-top: 1rem;
+    margin-left: 1.6rem; */
+    box-shadow: var(--box-shadow-buttons-active);
+    transition: all 500ms ease;
+}
+
+#file-upload + label {
+    margin-left: 1rem;
+    margin-right: 0.6rem;
+    padding: 3px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#json-download {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+#reset {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#file-upload:hover + label,
+#json-download:hover, 
+#reset:hover {
+  background-color: #49677e;
+  /* color: var(--color-font); */
+}
+
+#file-chosen{
+  font-weight: 550;
+}
+
+/* -------------------------------------------------------------- */
+
+/* Container about the Charts - Instructions in Dashboard */
 
 .main-content .cards .chart {
     min-width: 25rem;
@@ -272,6 +438,7 @@ aside .sidebar-content button:hover span {
     perspective: 500px;
 }
 
+/* ------------------------------- */
 
 .main-content .cards .radar {
     grid-column: 1;
@@ -303,6 +470,13 @@ aside .sidebar-content button:hover span {
     margin: 0;
 }
 
+.main-content .cards .info-container .upload-instructions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
 .main-content .cards .polar-area {
     grid-column: 2;
     grid-row: 3;
@@ -326,6 +500,71 @@ aside .sidebar-content button:hover span {
 
 /* ------------------------------- */
 
+/* Flip Cards Display */
+
+.flip-card {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position:relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-back .general_chart_info_text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+ul {
+    padding-left: 1.3rem;
+    list-style-type: square;
+}
+
+.flip-card-back .rest_chart_info_text {
+    padding-top: 0.5rem;
+}
+
+.arrow-btn {
+    cursor: pointer;
+}
+
+.arrow-chart-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* -------------------------------------------------------------- */
+
+/* No File Yet Page Display */
+
 .main-content .no-file-yet {
     
     display: flex;
@@ -335,6 +574,8 @@ aside .sidebar-content button:hover span {
 
     padding-top: 6rem;
 }
+
+/* ------------------------------- */
 
 .main-content #no-file-yet-icon {
     color: #ffffff;
@@ -351,9 +592,9 @@ aside .sidebar-content button:hover span {
     white-space: nowrap; 
 }
 
+/* -------------------------------------------------------------- */
 
-
-/* ------------------------------- */
+/* Section about Versions / Dates */
 
 .main-content .cards .summary-statistics-versions-card,
 .main-content .cards .differentiation-versions-card,
@@ -365,22 +606,20 @@ aside .sidebar-content button:hover span {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    /* justify-content: center; */
 
     min-width: 50rem;
 }
 
+/* ------------------------------- */
 
-.blue {
-    color: blue;
-}
-
+/* Text about the Versions / Dates container */
 #description-text {
     display: flex;
     flex-direction: column;
     padding-left: 0.5rem;
 }
 
+/* Text about the primary and secondary Versions. */
 .show-color-options-text {
     display: flex;
     gap: 3rem;
@@ -396,20 +635,134 @@ aside .sidebar-content button:hover span {
     justify-content: center;
     align-items: center;
 }
- 
+
+/* Color for primary Versions. */
 .show-color-options-text .primary {
-    color: blue;
+    color: #2e151b;
     padding-right: 0.5rem;
     font-size: 2rem;
 }
 
+/* Color for secondary Versions. */
 .show-color-options-text .secondary {
-    color: pink;
+    color: #da7b93;
     padding-right: 0.5rem;
     font-size: 2rem;
 }
 
+/* ------------------------------- */
 
+/* Display Different the Primary and Secondary Versions Checkboxes */
+
+.dynamicLabelMain,
+.dynamicLabel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    float: left;
+    border-radius: var(--border-radius);
+}
+
+.dynamicLabelMain {
+    border: 0.1rem solid #2e151b;
+}
+
+.dynamicLabel {
+    border: 0.1rem solid #da7b93;
+}
+
+.dynamicLabelMain .dynamicSpanMain,
+.dynamicLabel .dynamicSpan {
+    padding: 0.5rem;
+    /* transition: .1s ease; */
+}
+
+.dynamicLabelMain input,
+.dynamicLabel input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked ~ .dynamicSpanMain {
+    background-color: #2e151b;
+    color: white;
+    border-radius: 1rem;
+}
+
+input[type=checkbox]:checked ~ .dynamicSpan,
+input[type=radio]:checked ~ .dynamicSpan {
+    background-color: #da7b93;
+    color: white;
+    border-radius: 1rem;
+}
+
+/* ------------------------------- */
+
+/* Create Custom Radio Button */
+
+.cardButtons .radio-button-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.cardButtons .radio-button-container .radio-button {
+    position: relative;
+    padding-left: 2.3rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Hide the browser's default radio button. */
+.cardButtons .radio-button-container .radio-button input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #d8d8d8;
+    border-radius: 50%;
+}
+
+.radio-button:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* Create the dot / circle - hidden when not checked. */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the dot when checked. */
+.radio-button input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the dot. */
+.radio-button .checkmark:after {
+    top: 0.5rem;
+   left: 0.5rem;
+   width: 0.83rem;
+   height: 0.83rem;
+   border-radius: 50%;
+   background: rgb(102, 97, 97);
+}
+
+/* -------------------------------------------------------------- */
+
+/* Section about Properties */
 
 .main-content .cards .summary-statistics-properties-card,
 .main-content .cards .differentiation-properties-card,
@@ -421,10 +774,13 @@ aside .sidebar-content button:hover span {
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
-    /* justify-content: center; */
 
     min-width: 30rem;
 }
+
+/* -------------------------------------------------------------- */
+
+/* Section about Chart Types */
 
 .main-content .cards .summary-statistics-charts-card,
 .main-content .cards .differentiation-charts-card,
@@ -436,10 +792,13 @@ aside .sidebar-content button:hover span {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    /* justify-content: center; */
 
     min-width: 30rem;
 }
+
+/* -------------------------------------------------------------- */
+
+/* Section about Chart Display */
 
 .main-content .cards .summary-statistics-chart-display-card,
 .main-content .cards .differentiation-chart-display-card,
@@ -448,216 +807,12 @@ aside .sidebar-content button:hover span {
     grid-column: 2 / 4;
     grid-row: 2 / 4;
 
-    /* min-width: 50rem; */
     min-height: 50rem;
 }
 
-/* ------------------------------- */
+/* -------------------------------------------------------------- */
 
-.main-content .cards .chart #ok {
-    display: flex;
-    /* flex-wrap: wrap; */
-}
-
-/* ------------------------------- */
-
-.dynamicLabelMain {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5rem;
-    /* padding: 1rem; */
-    float: left;
-    border: 0.1rem solid #49aef1;
-    border-radius: var(--border-radius);
-    /* box-sizing: border-box; */
-}
-
-.dynamicLabel {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5rem;
-    /* padding: 1rem; */
-    float: left;
-    border: 0.1rem solid #d4569c;
-    border-radius: var(--border-radius);
-    /* box-sizing: border-box; */
-}
-
-.dynamicLabelMain .dynamicSpanMain {
-    padding: 0.5rem;
-    /* transition: .1s ease; */
-}
-
-.dynamicLabel .dynamicSpan {
-    padding: 0.5rem;
-    /* transition: .1s ease; */
-}
-
-.dynamicLabelMain input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.dynamicLabelMain input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.dynamicLabel input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-input[type=checkbox]:checked ~ .dynamicSpanMain {
-    background-color: #49aef1;
-    border-radius: 1rem;
-}
-
-input[type=checkbox]:checked ~ .dynamicSpan,
-input[type=radio]:checked ~ .dynamicSpan {
-    background-color: #d4569c;
-    border-radius: 1rem;
-}
-
-/* ------------------------------- */
-
-.subgrid-file-import-container .file-import-container {
-    display: grid;
-    margin: 2rem 0.5rem;
-    border-style: dashed;
-    border-color: var(--color-font);
-    border-width: 0.1rem;
-    /* padding: 0.5rem 3rem; */
-
-    /* min-width: 15rem; */
-}
-
-.min-width-container {
-    min-width: 15rem;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-
-.file-import-button-label {
-    margin-right: 5rem;
-    margin-left: 5rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.file-import-container .folder-open-icon {
-    display: flex;
-    font-size: 3rem;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-}
-
-.drag-and-drop-text {
-    display: flex;
-    /* margin-bottom: 1rem; */
-    font-size: 1rem;
-    justify-content: center;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.or-text {
-    display: flex;
-    /* margin-bottom: 1rem; */
-    font-size: 0.8rem;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-}
-
-
-
-#file-upload {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-#file-upload + label,
-#json-download, 
-#reset,
-.ok,
-.selectDeselectAll {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 700;
-    display: inline-block;
-    background-color: #27a6e6;
-    color: white;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    /* margin-top: 1rem;
-    margin-left: 1.6rem; */
-    box-shadow: var(--box-shadow-buttons-active);
-    transition: all 500ms ease;
-}
-
-#file-upload + label {
-    margin-left: 1rem;
-    margin-right: 0.6rem;
-    padding: 3px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-#json-download {
-    padding: 1rem;
-    /* padding-top: 1.5rem;
-    padding-bottom: 1.5rem; */
-
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-
-    white-space: nowrap;
-}
-
-#reset,
-.ok,
-.selectDeselectAll {
-    padding: 1rem;
-    /* padding-top: 1.5rem;
-    padding-bottom: 1.5rem; */
-
-    /* margin-top: 1rem;
-    margin-left: 1.6rem; */
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
+/* Ok - Select / Deselect Button Container */
 
 .cardButtons {
     display: flex;
@@ -683,209 +838,64 @@ input[type=radio]:checked ~ .dynamicSpan {
     /* margin-left: auto; */
 }
 
-.cardButtons .radio-button-container {
-    display: flex;
-    gap: 2rem;
-}
-
-.cardButtons .radio-button-container .radio-button {
-    /* display: block; */
-    position: relative;
-    padding-left: 2.3rem;
-    /* margin-bottom: 12px; */
-    cursor: pointer;
-    font-size: 1.2rem;
-    /* -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none; */
-    /* user-select: none; */
-}
-
-/* Hide the browser's default radio button */
-.cardButtons .radio-button-container .radio-button input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* Create a custom radio button */
-/* .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #d8d8d8;
-    border-radius: 50%;
-} */
-
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #d8d8d8;
-    border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.radio-button:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-/* .radio-button input:checked ~ .checkmark {
-    background-color: #2196F3;
-} */
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.radio-button input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.radio-button .checkmark:after {
-    top: 0.5rem;
-   left: 0.5rem;
-   width: 0.83rem;
-   height: 0.83rem;
-   border-radius: 50%;
-   background: rgb(102, 97, 97);
-}
-
-
-
-
 .cardButtons .selectDeselectAll {
     margin-right: 1rem;
 }
 
-#file-upload:hover + label,
-#json-download:hover, 
-#reset:hover,
-.ok:hover,
-.selectDeselectAll:hover {
-  background-color: #2cb9ff;
-  color: var(--color-font);
+/* ------------------------------- */
+
+.ok,
+.selectDeselectAll {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    display: inline-block;
+    background-color: #2f4454;
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    gap: 0.5rem;
+    /* margin-top: 1rem;
+    margin-left: 1.6rem; */
+    box-shadow: var(--box-shadow-buttons-active);
+    transition: all 500ms ease;
 }
 
-#file-chosen{
-  font-weight: 550;
+.ok,
+.selectDeselectAll {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
+
+.ok:hover,
+.selectDeselectAll:hover {
+  background-color: #49677e;
+  /* color: var(--color-font); */
+}
+
+.main-content .cards .chart #ok {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+
+
+
+
+
 
 /* ------------------------------- */
 
-
-
-
-
-.flip-card {
-    display: block;
-    /* justify-content: center;
-    align-items: center; */
-    height: 100%;
-    width: 100%;
-    position:relative;
-    transition: transform 1500ms;
-    transform-style: preserve-3d;
-    /* cursor: pointer; */
-}
-
-/* .radar:hover > .flip-card,
-.bubble:hover > .flip-card,
-.doughnut:hover > .flip-card,
-.polar-area:hover > .flip-card,
-.bar:onclick > .flip-card,
-.line:hover > .flip-card {
-    cursor: pointer;
-    transform: rotateY(180deg);
-} */
-
-.flip-card.flipped {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    height: 100%;
-    width: 100%;
-    /* border-radius: 10px; */
-    position:absolute;
-    backface-visibility: hidden;
-}
-
-.flip-card-front {
-    /* background-color: #914480; */
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-
-    display: block;
-    justify-content: center;
-    align-items: center;
-}
-
-.flip-card-back .general_chart_info_text {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-}
-
-.flip-card-back ul {
-    padding-left: 1rem;
-    list-style-type: square;
-}
-
-.flip-card-back .rest_chart_info_text {
-    padding-top: 0.5rem;
-}
-
-.arrow-btn {
-    cursor: pointer;
-}
-
-.arrow-chart-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    /* position: absolute; */
-    /* backface-visibility: hidden; */
-}
-
-/* .arrow-chart-title-front .h3-title {
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-} */
-
-/* .arrow-btn {
-    cursor: pointer;
-} */
-
-
-/* .flip-card.is-flipped {
-    transform: rotateY(180deg);
-  } */
-
-
-
-
-
-
   #summary-statistics-z-axis-modal,
   #differentiation-z-axis-modal,
-  #differentiation-rate-z-axis-modal {
+  #differentiation-rate-z-axis-modal,
+  #sum-up-to-100-z-axis-modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -902,7 +912,8 @@ input[type=radio]:checked ~ .dynamicSpan {
   
   .summary-statistics-overlay,
   .differentiation-overlay,
-  .differentiation-rate-overlay {
+  .differentiation-rate-overlay
+  .sum-up-to-100-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -912,9 +923,6 @@ input[type=radio]:checked ~ .dynamicSpan {
     backdrop-filter: blur(3px);
     z-index: 5;
   }
-
-
-
 
   #modal-ok-btn {
     display: flex;

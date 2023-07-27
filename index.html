@@ -34,8 +34,9 @@
 
                <div class="logo">
 
-                    <img src="./images/logo.png">
-                    <h1>Data Vis</h1>
+                    <span class="material-icons-sharp">nest_cam_wired_stand</span>
+                    <!-- <img src="./images/logo.png"> -->
+                    <h1>Visualize It</h1>
 
                 </div>
 
@@ -119,10 +120,9 @@
     
                                 <span class="material-icons-sharp folder-open-icon">folder_open</span>
     
-                                <span class="drag-and-drop-text">Drag & Drop files here</span>
-    
-                                <span class="or-text">or</span>
-    
+                                <span class="upload-file-text">Upload your file here!</span>
+                                <span class="upload-file-text">(ex. file )</span>
+
                                 <div class="file-import-button-label">
     
                                     <!-- Upload the excel file -->
@@ -199,68 +199,70 @@
                                 const ctxDBradar = document.getElementById('dashboard-chart-radar');
                                 
                                 new Chart(ctxDBradar, {
+
                                     type: 'radar',
                                     data: {
                                         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
-                                        datasets: [{
+                                        datasets: [
+                                            {
                                                 label: 'Comments',
                                                 data: [5121, 3847, 7730, 6071, 9429],
-                                                backgroundColor: 'rgba(84, 33, 82, 0.7)',
-                                                borderWidth: 2,
-                                                borderColor: '#660244'
+                                                backgroundColor: 'rgba(82, 36, 81, 0.7)',
+                                                borderWidth: 3,
+                                                borderColor: '#301530'
                                             },
                                             {
                                                 label: 'Duplicated Lines',
                                                 data: [10803, 11662, 13528, 10273, 11832],
-                                                backgroundColor: 'rgba(156, 30, 150, 0.7)',
-                                                borderWidth: 2,
-                                                borderColor: '#940399'
+                                                backgroundColor: 'rgba(94, 19, 89, 0.7)',
+                                                borderWidth: 3,
+                                                borderColor: '#420d3e'
                                             },
                                             {
                                                 label: 'Total Lines',
                                                 data: [19224, 17942, 22447, 20680, 24256],
-                                                backgroundColor: 'rgba(250, 52, 241, 0.7)',
-                                                borderWidth: 2,
-                                                borderColor: '#c704be'
+                                                backgroundColor: 'rgba(126, 17, 128, 0.7)',
+                                                borderWidth: 3,
+                                                borderColor: '#540a57'
                                             }
                                         ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                                        plugins: {
-                                            tooltip: {
-                                                // Tooltip will only receive click events
-                                                events: ['click']
-                                                // title: {
-                                                //     display: true,
-                                                //     text: 'Custom Chart Title',
-                                                //     // padding: {
-                                                //     //     top: 10,
-                                                //     //     bottom: 30
-                                                //     // }
-                                                // }
-                                            },
-                                        },
-                                        scales: {
-                                            // not working
-                                            // xAxis: {
-                                            //     grid: {
-                                            //         drawOnChartArea: false
-                                            //     }
-                                            // },
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
-                                            //     }
-                                            //     // not working
-                                            //     // grid: {
-                                            //     //     drawOnChartArea: false
-                                            //     // }
-                                            // }]                                            
-                                        },
+                                        // plugins: {
+                                        //     tooltip: {
+                                        //         // Tooltip will only receive click events
+                                        //         events: ['click'],
+                                        //         title: {
+                                        //             display: true,
+                                        //             text: 'Custom Chart Title',
+                                        //             // padding: {
+                                        //             //     top: 10,
+                                        //             //     bottom: 30
+                                        //             // }
+                                        //         }
+                                        //     },
+                                        // // },
+                                        // scales: {
+                                        //     // not working
+                                        //     // xAxis: {
+                                        //     //     grid: {
+                                        //     //         drawOnChartArea: false
+                                        //     //     }
+                                        //     // },
+                                        //     // yAxes: [{
+                                        //     //     ticks: {
+                                        //     //         beginAtZero:true
+                                        //     //     }
+                                        //     //     // not working
+                                        //     //     // grid: {
+                                        //     //     //     drawOnChartArea: false
+                                        //     //     // }
+                                        //     // }]                                            
+                                        // },
                                     }
+                                
                                 });
 
                             </script>
@@ -270,8 +272,11 @@
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
+                                
                                 A Radar Chart is a way of showing multiple data points and the variation between them.
-                            </br>In this example of Radar Chart, there are 3 Datasets :
+                                
+                                </br>In this example of Radar Chart, there are 3 Datasets :
+                            
                             </p>
 
                             <ul>
@@ -283,6 +288,7 @@
                                 <li>
                                     Duplicated Lines,
                                 </li>
+
                                 <li>
                                     Total Lines,
                                 </li>
@@ -290,7 +296,9 @@
                             </ul>
 
                             <p class="rest_chart_info_text">
+
                                 and 5 different Versions of a software.
+
                                 </br>Each dataset contains a number of values for these 5 versions.
 
                             </p>
@@ -329,160 +337,92 @@
                             <script>
 
                                 const ctxDBbubble = document.getElementById('dashboard-chart-bubble');
-                                
-
-                                const bubbleChartData = {
-                                    animation: {
-                                    duration: 10
-                                    },
-                                    // Documentation says the tick values tick.min & tick.max must be in the Labels array. So thats what I have below
-                                    
-                                    datasets: [{
-                                        label: "Requests and bookings",
-                                        fill: false,
-                                        lineTension: 0.1,
-                                        borderCapStyle: 'butt',
-                                        borderDash: [],
-                                        borderDashOffset: 0.0,
-                                        borderJoinStyle: 'miter',
-                                        pointBorderColor: "rgba(75,192,192,1)",
-                                        pointBackgroundColor: "#fff",
-                                        pointBorderWidth: 1,
-                                        pointHoverRadius: 5,
-                                        pointHoverBackgroundColor: "rgba(153, 102, 155, 0.2)",
-                                        pointHoverBorderColor: "rgba(153, 102, 155, 1)",
-                                        pointHoverBorderWidth: 2,
-                                        pointRadius: 1,
-                                        pointHitRadius: 10,
-                                        // how would the data change ...how can the numbers for y be replaced with strings
-                                        data:[{x: "Mon",y: "Tue",r: 15},{x: "Tue",y:  "Thu",r: 19},{x: "wed",y:  "wed",r: 50}]
-                                        }]
-                                };
 
                                 new Chart(ctxDBbubble, {
+
                                     type: 'bubble',
-                                    data: bubbleChartData,
+                                    data: {
+                                        labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
+                                        datasets: [{
+                                            label: 'Total Lines',
+                                            data: [
+                                                {
+                                                    x: 'v1,0,0',
+                                                    y: 22447,
+                                                    // Comments Rate
+                                                    r: 9
+                                                }, 
+                                                {   
+                                                    x: 'v2,0,0',
+                                                    y: 21547,
+                                                    r: 15
+                                                },
+                                                {   
+                                                    x: 'v3,0,0',
+                                                    y: 23573,
+                                                    r: 10
+                                                },
+                                                {   
+                                                    x: 'v4,0,0',
+                                                    y: 23413,
+                                                    r: 8
+                                                },
+                                                {   
+                                                    x: 'v5,0,0',
+                                                    y: 25479,
+                                                    r: 13
+                                                }
+                                            ],
+                                            backgroundColor: '#2c9c73',
+                                            borderColor: '#0a4530',
+                                            borderWidth: 3
+                                        },
+                                        {
+                                            label: 'Comments',
+                                            data: [
+                                                {
+                                                    x: 'v1,0,0',
+                                                    y: 6129,
+                                                    r: 9
+                                                }, 
+                                                {   
+                                                    x: 'v2,0,0',
+                                                    y: 8475,
+                                                    r: 15
+                                                },
+                                                {   
+                                                    x: 'v3,0,0',
+                                                    y: 9452,
+                                                    r: 10
+                                                },
+                                                {   
+                                                    x: 'v4,0,0',
+                                                    y: 8451,
+                                                    r: 8
+                                                },
+                                                {   
+                                                    x: 'v5,0,0',
+                                                    y: 11254,
+                                                    r: 13
+                                                }
+                                            ],
+                                            backgroundColor: '#187051',
+                                            borderColor: '#0a4530',
+                                            borderWidth: 3
+                                        }]
+                                    },
                                     options: {
                                         responsive: true,
-                                        title: {
-                                            display: true,
-                                            text:'Weekly activity'
-                                        },
-                                            scales: {
-                                            y: {
-                                                // will this create y-axis with days of week?
-                                                type: 'category',
-                                                labels: ["Mon", "Tue", "wed", "Thu"]
-                                            },
+                                        maintainAspectRatio: false,
+                                        scales: {
                                             x: {
                                                 type: 'category',
-                                                labels: ["Mon", "Tue", "wed", "Thu"]
-                                            }
+                                                labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0']
+                                            },
                                         }
-                                    
                                     }
-                                    // type: 'bubble',
-                                    // data: {
-                                    //     datasets: [{
-                                    //         label: 'First Dataset',
-                                    //         data: [{
-                                    //         // x: 'string',
-                                    //         y: 30,
-                                    //         r: 15
-                                    //         }, {
-                                    //         // x: 'string',
-                                    //         y: 10,
-                                    //         r: 10
-                                    //         }],
-                                    //         backgroundColor: 'rgb(255, 99, 132)'
-                                    //     }]
-                                    // },
-                                    // options: {
-                                    //     responsive: true,
-                                    //     maintainAspectRatio: false,
-                                    //     // scales: {
-                                    //     //     x: {
-                                    //     //         ticks: {
-                                    //     //             // Include a dollar sign in the ticks
-                                    //     //             // callback: function(value, index, ticks) {
-                                    //     //             //     return '$' + value;
-                                    //     //             // }
-                                    //     //             callback: function(value, index, values) {
-                                    //     //             // checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
-                                    //     //                 return 'value is' + value;
-                                    //     //             // }))
-                                              
-                                    //     //             }
-                                    //     //         }
-                                    //     //     }                                           
-                                    //     // },
-                                    //     scales: {
-                                    //         x: {
-                                    //             type: 'bubble',
-                                    //             labels: ['January', 'February', 'March', 'April', 'May', 'June']
-                                    //         }
-                                    //     }
-                                    // }
+
                                 });
-
-
-                                // new Chart(ctxDBbubble, {
-                                //     type: 'bubble',
-                                //     data: {
-                                //         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
-                                //         datasets: [{
-                                //                 label: 'Comments',
-                                //                 data: [4, 2, 3, 4, 5],
-                                //                 backgroundColor: 'rgba(84, 33, 82, 0.7)',
-                                //                 borderWidth: 2,
-                                //                 borderColor: '#660244'
-                                //             },
-                                //             // {
-                                //             //     label: 'Duplicated Lines',
-                                //             //     data: [10803, 11662, 13528, 10273, 11832],
-                                //             //     backgroundColor: 'rgba(156, 30, 150, 0.7)',
-                                //             //     borderWidth: 2,
-                                //             //     borderColor: '#940399'
-                                //             // },
-                                //             // {
-                                //             //     label: 'Total Lines',
-                                //             //     data: [19224, 17942, 22447, 20680, 24256],
-                                //             //     backgroundColor: 'rgba(250, 52, 241, 0.7)',
-                                //             //     borderWidth: 2,
-                                //             //     borderColor: '#c704be'
-                                //             // }
-                                //         ],
-                                //     },
-                                //     options: {
-                                //         responsive: true,
-                                //         maintainAspectRatio: false,
-                                //         events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                                //         plugins: {
-                                //             tooltip: {
-                                //                 // Tooltip will only receive click events
-                                //                 events: ['click']
-                                //                 // title: {
-                                //                 //     display: true,
-                                //                 //     text: 'Custom Chart Title',
-                                //                 //     // padding: {
-                                //                 //     //     top: 10,
-                                //                 //     //     bottom: 30
-                                //                 //     // }
-                                //                 // }
-                                //             },
-                                //         },
-                                //         scales: {
-                                //             x: {
-                                //                 ticks: {
-                                //                     // Include a dollar sign in the ticks
-                                //                     callback: function(value, index, ticks) {
-                                //                         return '$' + value;
-                                //                     }
-                                //                 }
-                                //             }                                           
-                                //         },
-                                //     }
-                                // });
 
                             </script>
     
@@ -491,28 +431,30 @@
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
-                                A Radar Chart is a way of showing multiple data points and the variation between them.
-                            </br>In this example of Radar Chart, there are 3 Datasets :
+                                
+                                A Bubble Chart is used to display three dimensions of data at the same time.
+                                
+                                </br>In this example of Bubble Chart, there are 2 Datasets :
+                            
                             </p>
 
                             <ul>
 
                                 <li>
-                                    Comments,
+                                    Total Lines,
                                 </li>
 
                                 <li>
-                                    Duplicated Lines,
-                                </li>
-                                <li>
-                                    Total Lines,
+                                    Comments,
                                 </li>
 
                             </ul>
 
                             <p class="rest_chart_info_text">
+
                                 and 5 different Versions of a software.
-                                </br>Each dataset contains a number of values for these 5 versions.
+
+                                </br>Each dataset is described by 3 dimensions, the corresponding horizontal and vertical axes (Versions and Dataset Data), and the third dimension which is the size of the individual bubbles and represents the Comments Rate.
 
                             </p>
                             
@@ -547,93 +489,39 @@
                                 const ctxDBdoughnut = document.getElementById('dashboard-chart-doughnut');
                                 
                                 new Chart(ctxDBdoughnut, {
+
                                     type: 'doughnut',
                                     data: {
                                         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0'],
-                                        datasets: [{
+                                        datasets: [
+                                            {
                                                 label: 'NOF',
                                                 data: [793, 1263, 891],
-                                                backgroundColor: ['#87bc45', '#bdcf32', '#ede15b'],
-                                                borderColor: '#488003',
-                                                borderWidth: 2
+                                                backgroundColor: ['#638a33', '#828f22', '#acad44'],
+                                                borderColor: '#3a4f1c',
+                                                borderWidth: 3
                                             },
                                             {
                                                 label: 'NOA',
                                                 data: [1368, 874, 1358],
-                                                backgroundColor: ['#87bc45', '#bdcf32', '#ede15b'],
-                                                borderColor: '#488003',
-                                                borderWidth: 2
+                                                backgroundColor: ['#638a33', '#828f22', '#acad44'],
+                                                borderColor: '#3a4f1c',
+                                                borderWidth: 3
                                             },
                                             {
                                                 label: 'NOM',
                                                 data: [674, 956, 548],
-                                                backgroundColor: ['#87bc45', '#bdcf32', '#ede15b'],
-                                                borderColor: '#488003',
-                                                borderWidth: 2
+                                                backgroundColor: ['#638a33', '#828f22', '#acad44'],
+                                                borderColor: '#3a4f1c',
+                                                borderWidth: 3
                                             }
                                         ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                                        plugins: {
-                                            tooltip: {
-                                                // Tooltip will only receive click events
-                                                events: ['click']
-                                                // title: {
-                                                //     display: true,
-                                                //     text: 'Custom Chart Title',
-                                                //     // padding: {
-                                                //     //     top: 10,
-                                                //     //     bottom: 30
-                                                //     // }
-                                                // }
-                                            },
-                                            plugins: {
-                                                datalabels: {
-                                                    display: true,
-                                                    backgroundColor: '#ccc',
-                                                    borderRadius: 3,
-                                                    font: {
-                                                    color: 'red',
-                                                    weight: 'bold',
-                                                    },
-                                                },
-                                                doughnutlabel: {
-                                                    labels: [
-                                                    {
-                                                        text: '550',
-                                                        font: {
-                                                        size: 20,
-                                                        weight: 'bold',
-                                                        },
-                                                    },
-                                                    {
-                                                        text: 'total',
-                                                    },
-                                                    ],
-                                                },
-                                            },
-                                        },
-                                        scales: {
-                                            // not working
-                                            // xAxis: {
-                                            //     grid: {
-                                            //         drawOnChartArea: false
-                                            //     }
-                                            // },
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
-                                            //     }
-                                            //     // not working
-                                            //     // grid: {
-                                            //     //     drawOnChartArea: false
-                                            //     // }
-                                            // }]                                            
-                                        },
                                     }
+
                                 });
 
                             </script>
@@ -643,28 +531,33 @@
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
+                                
                                 A Doughnut Chart is divided into segments, the arc of each segment shows the proportional value of each piece of data.
-                            </br>In this example of Doughnut Chart, there are 3 Datasets :
+                                
+                                </br>In this example of Doughnut Chart, there are 3 Datasets :
                             </p>
 
                             <ul>
 
                                 <li>
-                                    Comments,
+                                    NOF,
                                 </li>
 
                                 <li>
-                                    Duplicated Lines,
+                                    NOA,
                                 </li>
+
                                 <li>
-                                    Total Lines,
+                                    NOM,
                                 </li>
 
                             </ul>
 
                             <p class="rest_chart_info_text">
+
                                 and 3 different Versions of a software.
-                                </br>Each Version contains a number of segments, which is equal to the number of datasets.
+                                
+                                </br>Each Version contains a number of segments, and every one of them is equal to the number of data of each dataset.
 
                             </p>
                             
@@ -680,9 +573,26 @@
 
                         <h3>Instructions :</h3>
 
-                        1.	Upload your EXCEL file with the exact characteristics below :
+                        
 
-                        </br>
+                        <p class="upload-instructions">
+                            
+                            <span>
+                                1.	Upload your EXCEL file with the exact characteristics below :
+                            </span>
+
+                            <a href="./example_software_metrics.xlsx" download>
+                            
+                                <button class="button" type="button" id="json-download">
+        
+                                    Download Example Excel
+                                    <span class="material-icons-sharp">download</span>
+        
+                                </button>                            
+                                
+                            </a>
+
+                        </p>
 
                         <ul>
 
@@ -703,19 +613,36 @@
                             </li>
 
                             <li>
-                                the next columns can contain any calculated metric of your choice.
+                                the rest columns can contain any calculated metric of your choice.
                             </li>
 
                         </ul>
 
+                        </br>
 
                         2.	 After you  upload your EXCEL file you can do the following things :
-                        </br>
-                        In Summary Statistics section you can visualize the exact data of your EXCEL file as a function of the Software’s Versions or Dates.
-                        </br>
-                        In Evaluation section you can view the calculated differentiation between the property data of your uploaded EXCEL file as a function of the Software's Versions or Dates.
-                        </br>
-                        In Evaluation Rate section you can visualize the calculated differentiation rate between the property data of your uploaded excel file as a function of the Software's Versions or Dates.
+
+                        </br></br>
+
+                        <ul>
+
+                            <li>
+                                In Summary Statistics section you can visualize the exact data of your EXCEL file as a function of the Software’s Versions or Dates.
+                            </li>
+
+                            <li>
+                                In Evaluation section you can view the calculated differentiation between the property data of your uploaded EXCEL file as a function of the Software's Versions or Dates.
+                            </li>
+
+                            <li>
+                                In Evaluation Rate section you can visualize the calculated differentiation rate between the property data of your uploaded EXCEL file as a function of the Software's Versions or Dates.
+                            </li>
+
+                            <li>
+                                In Sum up to 100% section you can visualize ...
+                            </li>
+
+                        </ul>
 
                     </div>
 
@@ -747,61 +674,32 @@
                                 const ctxDBpolarArea = document.getElementById('dashboard-chart-polar-area');
                                     
                                 new Chart(ctxDBpolarArea, {
+
                                     type: 'polarArea',
                                     data: {
                                         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0'],
-                                        datasets: [{
+                                        datasets: [
+                                            {
                                                 label: 'Duplicated Blocks',
                                                 data: [456, 294, 671],
-                                                backgroundColor: ['#ffb55a', '#fa852a', '#fa9416'],
-                                                borderColor: '#fa7005',
-                                                borderWidth: 2
+                                                backgroundColor: ['#de5e23', '#a13d0e', '#752c08'],
+                                                borderColor: '#612102',
+                                                borderWidth: 3
                                             },
                                             {
                                                 label: 'Duplicated Lines',
                                                 data: [753, 950, 1352],
-                                                backgroundColor: ['#ffb55a', '#fa852a', '#fa9416'],
-                                                borderColor: '#fa7005',
-                                                borderWidth: 2
+                                                backgroundColor: ['#de5e23', '#a13d0e', '#752c08'],
+                                                borderColor: '#612102',
+                                                borderWidth: 3
                                             },
                                         ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                                        plugins: {
-                                            tooltip: {
-                                                // Tooltip will only receive click events
-                                                events: ['click']
-                                                // title: {
-                                                //     display: true,
-                                                //     text: 'Custom Chart Title',
-                                                //     // padding: {
-                                                //     //     top: 10,
-                                                //     //     bottom: 30
-                                                //     // }
-                                                // }
-                                            }
-                                        },
-                                        scales: {
-                                            // not working
-                                            // xAxis: {
-                                            //     grid: {
-                                            //         drawOnChartArea: false
-                                            //     }
-                                            // },
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
-                                            //     }
-                                            //     // not working
-                                            //     // grid: {
-                                            //     //     drawOnChartArea: false
-                                            //     // }
-                                            // }]                                            
-                                        },
                                     }
+
                                 });
 
                             </script>
@@ -811,28 +709,30 @@
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
-                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius depending on the value.
-                            </br>In this example of Polar Area Chart, there are 2 Datasets :
+                                
+                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius is depending on the value.
+                                
+                                </br>In this example of Polar Area Chart, there are 2 Datasets :
+                            
                             </p>
 
                             <ul>
 
                                 <li>
-                                    Comments,
+                                    Duplicated Lines,
                                 </li>
 
                                 <li>
-                                    Duplicated Lines,
-                                </li>
-                                <li>
-                                    Total Lines,
+                                    Duplicated Blocks,
                                 </li>
 
                             </ul>
 
                             <p class="rest_chart_info_text">
+                                
                                 and 3 different Versions of a software.
-                                </br>Each Version contains a number of segments, which is equal to the number of datasets.
+                                
+                                </br>Each Version contains a number of segments, and every one of them is equal to the number of data of each dataset.
 
                             </p>
                             
@@ -869,66 +769,37 @@
                                 const ctxDBbar = document.getElementById('dashboard-chart-bar');
                                     
                                 new Chart(ctxDBbar, {
+
                                     type: 'bar',
                                     data: {
                                         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
-                                        datasets: [{
+                                        datasets: [
+                                            {
                                                 label: 'Commits',
                                                 data: [3068, 1922, 768, 1859, 328],
-                                                backgroundColor: ['#ea5545', '#ea5545', '#ea5545', '#ea5545', '#ea5545'],
-                                                borderColor: '#e61802',
-                                                borderWidth: 2
+                                                backgroundColor: ['#962215', '#962215', '#962215', '#962215', '#962215'],
+                                                borderColor: '#631811',
+                                                borderWidth: 3
                                             },
                                             {
                                                 label: 'Bugs',
                                                 data: [2041, 928, 2580, 3159, 758],
-                                                backgroundColor: ['#f46a9b', '#f46a9b', '#f46a9b', '#f46a9b', '#f46a9b'],
-                                                borderColor: '#f2276f',                                                
-                                                borderWidth: 2,
+                                                backgroundColor: ['#c44170', '#c44170', '#c44170', '#c44170', '#c44170'],
+                                                borderColor: '#802948',                                                
+                                                borderWidth: 3,
                                             },
                                             {
                                                 label: 'Issues',
                                                 data: [1223, 1187, 782, 1079, 648],
-                                                backgroundColor: ['#ef9b20', '#ef9b20', '#ef9b20', '#ef9b20', '#ef9b20'],
-                                                borderColor: '#eb770c',
-                                                borderWidth: 2,
-                                        }],
+                                                backgroundColor: ['#d1871f', '#d1871f', '#d1871f', '#d1871f', '#d1871f'],
+                                                borderColor: '#754b0e',
+                                                borderWidth: 3,
+                                            }
+                                        ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                                        plugins: {
-                                            tooltip: {
-                                                // Tooltip will only receive click events
-                                                events: ['click']
-                                                // title: {
-                                                //     display: true,
-                                                //     text: 'Custom Chart Title',
-                                                //     // padding: {
-                                                //     //     top: 10,
-                                                //     //     bottom: 30
-                                                //     // }
-                                                // }
-                                            }
-                                        },
-                                        scales: {
-                                            // not working
-                                            // xAxis: {
-                                            //     grid: {
-                                            //         drawOnChartArea: false
-                                            //     }
-                                            // },
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
-                                            //     }
-                                            //     // not working
-                                            //     // grid: {
-                                            //     //     drawOnChartArea: false
-                                            //     // }
-                                            // }]
-                                        }
                                     }
 
                                 });
@@ -940,8 +811,11 @@
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
-                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius depending on the value.
-                            </br>In this example of Polar Area Chart, there are 2 Datasets :
+                                
+                                A Bar Chart allows a number of properties to be specified for each dataset. These are used to set display properties for a specific dataset.
+                                
+                                </br>In this example of Bar Chart, there are 3 Datasets :
+                            
                             </p>
 
                             <ul>
@@ -953,6 +827,7 @@
                                 <li>
                                     Bugs,
                                 </li>
+
                                 <li>
                                     Issues,
                                 </li>
@@ -960,8 +835,11 @@
                             </ul>
 
                             <p class="rest_chart_info_text">
+                                
                                 and 5 different Versions of a software.
-                                </br>Each Version contains a number of different bars, which is equal to the number of datasets.
+                                
+                                </br>Each Version contains a number of different bars, which is equal to the total number of datasets.
+                            
                             </p>
                             
                         </div>
@@ -997,67 +875,39 @@
                                 const ctxDBline = document.getElementById('dashboard-chart-line');
                                 
                                 new Chart(ctxDBline, {
+
                                     type: 'line',
                                     data: {
                                         labels: ['v1,0,0', 'v2,0,0', 'v3,0,0', 'v4,0,0', 'v5,0,0'],
-                                        datasets: [{
-                                                label: 'Commits',
-                                                data: [3068, 1922, 768, 1859, 328],
-                                                backgroundColor: ['#1937e3', '#1937e3', '#1937e3', '#1937e3', '#1937e3'],
-                                                borderColor: '#0328ff',
-                                                borderWidth: 2
+                                        datasets: [
+                                            {
+                                                label: 'Analyzed Files',
+                                                data: [50, 68, 75, 53, 61],
+                                                backgroundColor: ['#243280', '#243280', '#243280', '#243280', '#243280'],
+                                                borderColor: '#151c42',
+                                                borderWidth: 3
+                                            },
+                                            {
+                                                label: 'Directories',
+                                                data: [12, 18, 15, 21, 17],
+                                                backgroundColor: ['#214ca6', '#214ca6', '#214ca6', '#214ca6', '#214ca6'],
+                                                borderColor: '#10327a',                                                
+                                                borderWidth: 3
                                             },
                                             {
                                                 label: 'Bugs',
-                                                data: [2041, 928, 2580, 3159, 758],
-                                                backgroundColor: ['#2162ed', '#2162ed', '#2162ed', '#2162ed', '#2162ed'],
-                                                borderColor: '#0a56fa',                                                
-                                                borderWidth: 2
-                                            },
-                                            {
-                                                label: 'Issues',
-                                                data: [1223, 1187, 782, 1079, 648],
-                                                backgroundColor: ['#17b9ff', '#17b9ff', '#17b9ff', '#17b9ff', '#17b9ff'],
-                                                borderColor: '#02affa',
-                                                borderWidth: 2
-                                        }],
+                                                data: [38, 51, 48, 37, 59],
+                                                backgroundColor: ['#1c8cbd', '#1c8cbd', '#1c8cbd', '#1c8cbd', '#1c8cbd'],
+                                                borderColor: '#04658f',
+                                                borderWidth: 3
+                                            }
+                                        ],
                                     },
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        events: ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove'],
-                                        plugins: {
-                                            tooltip: {
-                                                // Tooltip will only receive click events
-                                                events: ['click']
-                                                // title: {
-                                                //     display: true,
-                                                //     text: 'Custom Chart Title',
-                                                //     // padding: {
-                                                //     //     top: 10,
-                                                //     //     bottom: 30
-                                                //     // }
-                                                // }
-                                            }
-                                        },
-                                        scales: {
-                                            // not working
-                                            // xAxis: {
-                                            //     grid: {
-                                            //         drawOnChartArea: false
-                                            //     }
-                                            // },
-                                            // yAxes: [{
-                                            //     ticks: {
-                                            //         beginAtZero:true
-                                            //     }
-                                            //     // not working
-                                            //     // grid: {
-                                            //     //     drawOnChartArea: false
-                                            //     // }
-                                            // }]
-                                        }
                                     }
+
                                 });
 
                             </script>
@@ -1067,28 +917,35 @@
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
-                                A Polar Area Chart is similar to a Pie Chart, with the only difference that each segment has the same angle but the radius depending on the value.
-                            </br>In this example of Polar Area Chart, there are 2 Datasets :
+                                
+                                A Line Chart is used for plotting data points on a line.
+                                
+                                </br>In this example of Line Chart, there are 3 Datasets :
+                            
                             </p>
 
                             <ul>
 
                                 <li>
-                                    Comments,
+                                    Analyzed Files,
+                                </li>
+
+                                <li>
+                                    Directories,
                                 </li>
 
                                 <li>
                                     Bugs,
                                 </li>
-                                <li>
-                                    Issues,
-                                </li>
 
                             </ul>
 
                             <p class="rest_chart_info_text">
+                                
                                 and 5 different Versions of a software.
-                                </br>Each Version contains a number of different bars, which is equal to the number of datasets.
+                                
+                                </br>For each Version there is a point that is shown in the position of the number of data of each dataset.
+                            
                             </p>
                             
                         </div>
@@ -1720,8 +1577,22 @@
             <!-- Contains the title of each section. -->
             <div class="main-title" id="sum-up-to-100-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Sum up to 100%</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Sum up to 100%</h2>
+
+                </div>
+
+                <!-- <div id="differentiation-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Sum up to 100% Section you can view ...</p>                        
+    
+                    <!-- </div> -->
+
+                <!-- </div> -->
 
             </div>
 
@@ -1732,30 +1603,88 @@
                 <h2 class="no-file-yet-title">No excel file yet...</h2>
 
                 <span class="no-file-yet-text">Please insert an EXCEL file in the Dashboard Section to unlock this area.</span>
+            
             </div>
-
 
         </div>
 
         <!-- -------------- Sum up to 100 - Main section of the page -------------- -->
         <div class="main-content" id="sum-up-to-100" style="display: none;">
 
-            <!-- Contains the title of each section. -->
             <div class="main-title" id="sum-up-to-100-title">
 
-                <span class="material-icons-sharp">arrow_right</span>
-                <h2>Sum up to 100%</h2>
+                <div class="main-title-text">
+
+                    <span class="material-icons-sharp">arrow_right</span>
+                    <h2>Sum up to 100%</h2>
+
+                </div>
+
+                <!-- <div id="differentiation-text"> -->
+
+                    <!-- <div id="summary-statistics-text"> -->
+
+                        <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
+    
+                    <!-- </div> -->
+
+                <!-- </div> -->
 
             </div>
+
 
             <!-- Section with all the cards / charts -->
             <div class="cards">
 
                 <div class="chart sum-up-to-100-versions-card">
-                    
+
+                    <div id="description-text">
+
+                        <p>Choose between the Versions / Dates of your uploaded software :</p>
+
+
+                        <div class="show-color-options-text">
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp primary">lightbulb</span>
+                                Primary Versions
+
+                            </div>
+
+                            <div class="color-options">
+
+                                <span class="material-icons-sharp secondary">lightbulb</span>                            Secondary Versions
+                                Secondary Versions
+
+                            </div>
+                            
+
+                        </div>
+                        
+
+                    </div>
+
                     <div id="sum-up-to-100-versions"></div>
 
-                    <div class="cardButtons">
+                    <div class="cardButtons cardButtonsVersions">
+
+                        <div class="radio-button-container">
+
+                            <label class="radio-button">Version
+                                <input type="radio" checked="checked" name="radio-sum-up-to-100" id="sum-up-to-100-versions-radio">
+                                <span class="checkmark"></span>
+                            </label>
+    
+                            <label class="radio-button">Date
+                                <input type="radio" name="radio-sum-up-to-100" id="sum-up-to-100-dates-radio">
+                                <span class="checkmark"></span>
+                            </label>
+
+                        </div>
+
+
+                        <div class="cardButtons">
 
                         <button class="button selectDeselectAll" type="button" id="sum-up-to-100-versions-select-deselect-all-btn">
                                     
@@ -1772,10 +1701,18 @@
                         </button>
 
                     </div>
+
+                    </div>
                     
                 </div>
 
                 <div class="chart sum-up-to-100-properties-card">
+
+                    <div id="description-text">
+
+                        <p>Select the properties you want to display at the chart :</p>                        
+
+                    </div>
         
                     <div id="sum-up-to-100-properties"></div>
 
@@ -1799,7 +1736,13 @@
 
                 </div>
 
-                <div class="chart sum-up-to-100-charts-card">
+                <div class="chart chart sum-up-to-100-charts-card">
+
+                    <div id="description-text">
+
+                        <p>Select the type of chart you want to display for the Evaluation Rate :</p>                        
+
+                    </div>
         
                     <div id="sum-up-to-100-charts"></div>
 
@@ -1818,9 +1761,13 @@
 
                 <div class="chart sum-up-to-100-chart-display-card" id="sum-up-to-100-chart-display">
                    
-                    <canvas id="myChart_sum_up_to_100"></canvas>
+                    <canvas id="myChart_sumUpTo100"></canvas>
                 
                 </div>
+
+                <div id="sum-up-to-100-z-axis-modal" style="display: none;"></div>
+
+                <div class="sum-up-to-100-overlay" style="display: none;"></div>
         
             </div>
 
