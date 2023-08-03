@@ -784,14 +784,26 @@ input[type=radio]:checked ~ .dynamicSpan {
 
 .main-content .cards .summary-statistics-charts-card,
 .main-content .cards .differentiation-charts-card,
-.main-content .cards .differentiation-rate-charts-card,
-.main-content .cards .sum-up-to-100-charts-card {
+.main-content .cards .differentiation-rate-charts-card {
     grid-column: 3;
     grid-row: 1;
 
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
+
+    min-width: 30rem;
+}
+
+.main-content .cards .sum-up-to-100-charts-card {
+    grid-column: 3;
+    grid-row: 1;
+
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
 
     min-width: 30rem;
 }
@@ -816,7 +828,7 @@ input[type=radio]:checked ~ .dynamicSpan {
 
 .cardButtons {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     /* gap: 20rem; */
     margin-left: auto;

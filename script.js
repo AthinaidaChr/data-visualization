@@ -2210,96 +2210,96 @@ fileUpload.addEventListener('click', function() {
                         }
                         else if (checkedCheckboxesDifferentiationCharts[0] === 'Bubble') {
 
-                            modalDifferentiation.length = 0;
+                            // modalDifferentiation.length = 0;
 
                             differentiationChartType = 'bubble';
 
-                            differentiationModal.style.display = "block";
-                            differentiationOverlay.style.display = "block";
+                            // differentiationModal.style.display = "block";
+                            // differentiationOverlay.style.display = "block";
 
-                            deleteDivInside('differentiation-z-axis-modal');
+                            // deleteDivInside('differentiation-z-axis-modal');
 
-                            for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
+                            // for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
                                 
-                                createRadio('differentiation-z-axis-modal', 'differentiation-z-axis-modal', checkedCheckboxesDifferentiationProperties[i], checkedCheckboxesDifferentiationProperties[i]);
+                            //     createRadio('differentiation-z-axis-modal', 'differentiation-z-axis-modal', checkedCheckboxesDifferentiationProperties[i], checkedCheckboxesDifferentiationProperties[i]);
         
-                            }
+                            // }
                         
-                            createButton('differentiation-z-axis-modal', 'ok', 'differentiation-modal-ok-btn', 'Ok');
+                            // createButton('differentiation-z-axis-modal', 'ok', 'differentiation-modal-ok-btn', 'Ok');
 
 
-                            differentiationModalOkBtn = document.getElementById('differentiation-modal-ok-btn');
+                            // differentiationModalOkBtn = document.getElementById('differentiation-modal-ok-btn');
 
 
 
 
 
-                            differentiationModalOkBtn.addEventListener("click", function() {
+                            // differentiationModalOkBtn.addEventListener("click", function() {
             
 
-                                differentiationModal.style.display = "none";
-                                differentiationOverlay.style.display = "none";
+                            //     differentiationModal.style.display = "none";
+                            //     differentiationOverlay.style.display = "none";
 
-                            });
+                            // });
                             
-                            checkedCheckboxesDifferentiationModal.length = 0;
+                            // checkedCheckboxesDifferentiationModal.length = 0;
 
-                            for (let i = 0; i < checkboxesDifferentiationModalEl.length; i++) {
+                            // for (let i = 0; i < checkboxesDifferentiationModalEl.length; i++) {
 
-                                if (checkboxesDifferentiationModalEl[i].checked) {
-                                    checkedCheckboxesDifferentiationModal.push(checkboxesDifferentiationModalEl[i].value);
-                                }
+                            //     if (checkboxesDifferentiationModalEl[i].checked) {
+                            //         checkedCheckboxesDifferentiationModal.push(checkboxesDifferentiationModalEl[i].value);
+                            //     }
                                         
-                            }
+                            // }
 
-                            // DEBUGGING
-                            // console.log(checkboxesDifferentiationModalEl);
-                            // console.log(checkboxesDifferentiationModalEl.length);
-                            console.log(checkedCheckboxesDifferentiationModal);
-                            // console.log(typeof checkedCheckboxesDifferentiationModal);
+                            // // DEBUGGING
+                            // // console.log(checkboxesDifferentiationModalEl);
+                            // // console.log(checkboxesDifferentiationModalEl.length);
+                            // console.log(checkedCheckboxesDifferentiationModal);
+                            // // console.log(typeof checkedCheckboxesDifferentiationModal);
 
-                            console.log(checkedCheckboxesDifferentiationModal);
+                            // console.log(checkedCheckboxesDifferentiationModal);
 
 
-                            // Array filled with selected variables
+                            // // Array filled with selected variables
 
-                            // checkedCheckboxesSummaryStatisticsModal
-                            for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
+                            // // checkedCheckboxesSummaryStatisticsModal
+                            // for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
 
-                                modalDifferentiation.push(new Array());
+                            //     modalDifferentiation.push(new Array());
 
-                                for (let j = 0; j < rowJsonObject.length; j++) {
+                            //     for (let j = 0; j < rowJsonObject.length; j++) {
                                     
-                                    if (nameDifferentiation.includes(rowJsonObject[j].name) || dateDifferentiation.includes(formatedDatesArray[j])) {
+                            //         if (nameDifferentiation.includes(rowJsonObject[j].name) || dateDifferentiation.includes(formatedDatesArray[j])) {
 
-                                        // console.log(checkedCheckboxesDifferentiationProperties);
+                            //             // console.log(checkedCheckboxesDifferentiationProperties);
             
-                                        for (let k = 0; k < objectProperties.length; k++) {
+                            //             for (let k = 0; k < objectProperties.length; k++) {
             
-                                            switch(checkedCheckboxesDifferentiationModal[i]) {
+                            //                 switch(checkedCheckboxesDifferentiationModal[i]) {
             
-                                                case objectProperties[k] :
-                                                    // console.log('OKKKKKK');
-                                                    modalDifferentiation[i].push(rowJsonObject[j][objectProperties[k]]);
-                                                    break;
-                                                // default:
+                            //                     case objectProperties[k] :
+                            //                         // console.log('OKKKKKK');
+                            //                         modalDifferentiation[i].push(rowJsonObject[j][objectProperties[k]]);
+                            //                         break;
+                            //                     // default:
                                                         
-                                            }
+                            //                 }
 
-                                            // console.log(modalDifferentiation);
+                            //                 // console.log(modalDifferentiation);
             
-                                        }
+                            //             }
             
-                                    }
+                            //         }
             
-                                }
+                            //     }
 
-                                // console.log(modalDifferentiation);
+                            //     // console.log(modalDifferentiation);
             
-                            }
+                            // }
 
 
-                            console.log(modalDifferentiation);
+                            // console.log(modalDifferentiation);
 
                             // oneArrayPropertyDifferentiation = [].concat(...propertyDifferentiation);
 
@@ -2890,90 +2890,90 @@ fileUpload.addEventListener('click', function() {
                         }
                         else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Bubble') {
 
-                            modalDifferentiationRate.length = 0;
+                            // modalDifferentiationRate.length = 0;
 
                             differentiationRateChartType = 'bubble';
 
-                            differentiationRateModal.style.display = "block";
-                            differentiationRateOverlay.style.display = "block";
+                            // differentiationRateModal.style.display = "block";
+                            // differentiationRateOverlay.style.display = "block";
 
-                            deleteDivInside('differentiation-rate-z-axis-modal');
+                            // deleteDivInside('differentiation-rate-z-axis-modal');
 
-                            for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
+                            // for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
                                 
-                                createRadio('differentiation-rate-z-axis-modal', 'differentiation-rate-z-axis-modal', checkedCheckboxesDifferentiationRateProperties[i], checkedCheckboxesDifferentiationRateProperties[i]);
+                            //     createRadio('differentiation-rate-z-axis-modal', 'differentiation-rate-z-axis-modal', checkedCheckboxesDifferentiationRateProperties[i], checkedCheckboxesDifferentiationRateProperties[i]);
         
-                            }
+                            // }
                       
-                            createButton('differentiation-rate-z-axis-modal', 'ok', 'differentiation-rate-modal-ok-btn', 'Ok');
+                            // createButton('differentiation-rate-z-axis-modal', 'ok', 'differentiation-rate-modal-ok-btn', 'Ok');
 
 
-                            differentiationRateModalOkBtn = document.getElementById('differentiation-rate-modal-ok-btn');
+                            // differentiationRateModalOkBtn = document.getElementById('differentiation-rate-modal-ok-btn');
 
 
-                            differentiationRateModalOkBtn.addEventListener("click", function() {
+                            // differentiationRateModalOkBtn.addEventListener("click", function() {
             
 
-                                differentiationRateModal.style.display = "none";
-                                differentiationRateOverlay.style.display = "none";
-
-                            });
-                            
-                            checkedCheckboxesDifferentiationRateModal.length = 0;
-
-                                for (let i = 0; i < checkboxesDifferentiationRateModalEl.length; i++) {
-
-                                    if (checkboxesDifferentiationRateModalEl[i].checked) {
-                                        checkedCheckboxesDifferentiationRateModal.push(checkboxesDifferentiationRateModalEl[i].value);
-                                    }
-                                        
-                                }
-
-                                // DEBUGGING
-                                // console.log(checkboxesDifferentiationRateModalEl);
-                                // console.log(checkboxesDifferentiationRateModalEl.length);
-                                console.log(checkedCheckboxesDifferentiationRateModal);
-                                // console.log(typeof checkedCheckboxesDifferentiationRateModal);
+                            //     differentiationRateModal.style.display = "none";
+                            //     differentiationRateOverlay.style.display = "none";
 
                             // });
+                            
+                            // checkedCheckboxesDifferentiationRateModal.length = 0;
 
-                            console.log(checkedCheckboxesDifferentiationRateModal);
+                            //     for (let i = 0; i < checkboxesDifferentiationRateModalEl.length; i++) {
+
+                            //         if (checkboxesDifferentiationRateModalEl[i].checked) {
+                            //             checkedCheckboxesDifferentiationRateModal.push(checkboxesDifferentiationRateModalEl[i].value);
+                            //         }
+                                        
+                            //     }
+
+                            //     // DEBUGGING
+                            //     // console.log(checkboxesDifferentiationRateModalEl);
+                            //     // console.log(checkboxesDifferentiationRateModalEl.length);
+                            //     console.log(checkedCheckboxesDifferentiationRateModal);
+                            //     // console.log(typeof checkedCheckboxesDifferentiationRateModal);
+
+                            // // });
+
+                            // console.log(checkedCheckboxesDifferentiationRateModal);
 
 
-                            // Array filled with selected variables
+                            // // Array filled with selected variables
 
-                            // checkedCheckboxesSummaryStatisticsModal
-                            for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
+                            // // checkedCheckboxesSummaryStatisticsModal
+                            // for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
 
-                                modalDifferentiationRate.push(new Array());
+                            //     modalDifferentiationRate.push(new Array());
 
-                                for (let j = 0; j < rowJsonObject.length; j++) {
+                            //     for (let j = 0; j < rowJsonObject.length; j++) {
                                     
-                                    if (nameDifferentiationRate.includes(rowJsonObject[j].name) || dateDifferentiationRate.includes(formatedDatesArray[j])) {
+                            //         if (nameDifferentiationRate.includes(rowJsonObject[j].name) || dateDifferentiationRate.includes(formatedDatesArray[j])) {
 
-                                        // console.log(checkedCheckboxesDifferentiationRateProperties);
+                            //             // console.log(checkedCheckboxesDifferentiationRateProperties);
             
-                                        for (let k = 0; k < objectProperties.length; k++) {
+                            //             for (let k = 0; k < objectProperties.length; k++) {
             
-                                            switch(checkedCheckboxesDifferentiationRateModal[i]) {
+                            //                 switch(checkedCheckboxesDifferentiationRateModal[i]) {
             
-                                                case objectProperties[k] :
-                                                    // console.log('OKKKKKK');
-                                                    modalDifferentiationRate[i].push(rowJsonObject[j][objectProperties[k]]);
-                                                    break;
-                                                // default:
+                            //                     case objectProperties[k] :
+                            //                         // console.log('OKKKKKK');
+                            //                         modalDifferentiationRate[i].push(rowJsonObject[j][objectProperties[k]]);
+                            //                         break;
+                            //                     // default:
                                                         
-                                            }
+                            //                 }
             
-                                        }
+                            //             }
             
-                                    }
+                            //         }
             
-                                }
+                            //     }
             
-                            }
+                            // }
 
-                            console.log(modalDifferentiationRate);
+                            // console.log(modalDifferentiationRate);
 
     
                             // oneArrayPropertyDifferentiationRate = [].concat(...propertyDifferentiationRate);
@@ -3241,10 +3241,9 @@ fileUpload.addEventListener('click', function() {
                         borderColorSumUpTo100.length = 0;
 
                         sumUpTo100ChartType = 'bar';
-                            
-                        deleteCanvas('myChart_sum_up_to_100');
-                        createCanvas('sum-up-to-100-chart-display', 'myChart_sum_up_to_100');
 
+                        deleteCanvas('myChart_sumUpTo100');
+                        createCanvas('sum-up-to-100-chart-display', 'myChart_sumUpTo100');
 
                         // Array filled with selected versions
                         // Gets the values of each row and push it into arrays
@@ -3269,11 +3268,13 @@ fileUpload.addEventListener('click', function() {
 
                             }
 
+                            console.log(dateSumUpTo100);
+                            console.log(nameSumUpTo100);
+                        
                         };
                     
-                        console.log(dateSumUpTo100);
-                        console.log(nameSumUpTo100);
-
+                        // console.log(dateSumUpTo100);
+                        // console.log(nameSumUpTo100);
 
                         if (sumUpTo100VersionsRadioEl.checked) {
                                 
@@ -3324,31 +3325,6 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(propertySumUpTo100);
 
-
-                        // Calculation of the Sum Up To 100
-                        // for (let i = 0; i < propertySumUpTo100.length; i++) {
-                            
-                        //     sumUpTo100[i] = [ ];
-                            
-                        //     for (let j = 0; j < propertySumUpTo100[i].length; j++) {
-        
-                        //         if (propertyDifferentiationRate[i][j] >= propertyDifferentiationRate[i][j + 1]) {
-                        //             differentiationRate[i][j] = (propertyDifferentiationRate[i][j] - propertyDifferentiationRate[i][j + 1]) / propertyDifferentiationRate[i][j + 1];
-                                    
-                        //             differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
-                        //         } else {
-                        //             differentiationRate[i][j] = (propertyDifferentiationRate[i][j + 1] - propertyDifferentiationRate[i][j]) / propertyDifferentiationRate[i][j];
-                                    
-                        //             differentiationRate[i][j] = isFinite(differentiationRate[i][j]) ? differentiationRate[i][j] : 0.0;
-                        //         }
-                                
-                        //     }
-                            
-                        // }
-
-                        // console.log(differentiationRate);
-
-
                         checkedCheckboxesSumUpTo100Charts.length = 0;
 
                         for (let i = 0; i < checkboxesSumUpTo100ChartsEl.length; i++) {
@@ -3367,39 +3343,55 @@ fileUpload.addEventListener('click', function() {
 
 
 
-                        backgroundColorFunction(propertySumUpTo100, backgroundColorSumUpTo100, borderColorSumUpTo100);
+                        backgroundColorFunction(xAxisSumUpTo100, backgroundColorSumUpTo100, borderColorSumUpTo100);
+                        
+                        Chart.register(ChartjsPluginStacked100.default);
 
                         if (checkedCheckboxesSumUpTo100Charts[0] === 'Stacked Bar') {
                             
                             sumUpTo100ChartType = 'bar';
 
+                            // dataSumUpTo100 = {
+
+                            //     labels: xAxisSumUpTo100,
+                            //     datasets:
+                            //     checkedCheckboxesSumUpTo100Properties.map((key, i) => ({
+                            //             label: checkedCheckboxesSumUpTo100Properties[i],
+                            //             data: propertySumUpTo100[i],
+                            //             borderWidth: 4,
+                            //             backgroundColor: backgroundColorSumUpTo100[i],
+                            //             borderColor: borderColorSumUpTo100[i]
+                            //         })),
+
+                            // };
+                        
                             dataSumUpTo100 = {
 
-                                labels: xAxisSumUpTo100,
+                                labels: checkedCheckboxesSumUpTo100Properties,
                                 datasets:
-                                    checkedCheckboxesSumUpTo100Properties.map((key, i) => ({
-                                        label: checkedCheckboxesSumUpTo100Properties[i],
-                                        data: sumUpTo100[i],
+                                xAxisSumUpTo100.map((key, i) => ({
+                                        label: xAxisSumUpTo100[i],
+                                        data:
+                                        checkedCheckboxesSumUpTo100Properties.map((key, j) => ({
+                                            x: propertySumUpTo100[i],
+                                            y: propertySumUpTo100[j][i]
+                                        })),
                                         borderWidth: 4,
                                         backgroundColor: backgroundColorSumUpTo100[i],
                                         borderColor: borderColorSumUpTo100[i]
                                     })),
+
                             };
 
                             optionsSumUpTo100 = {
 
                                 responsive: true,
                                 maintainAspectRatio: false,
-                                scales: {
-                                    x: {
-                                        stacked: true,
-                                        type: 'category',
-                                        labels: xAxisSumUpTo100
-                                    },
-                                    y: {
-                                        stacked: true
+                                plugins: {
+                                    stacked100: {
+                                        enable: true
                                     }
-                                }
+                                },
 
                             };
 
