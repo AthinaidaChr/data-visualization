@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Final Grid</title>
+    <title>Data Visualization Tool</title>
  
     <link rel="stylesheet" href="style.css" />
 
@@ -25,11 +25,11 @@
 </head>
 <body>
 
-    <!-- Contains the sidebar menu and each of the main containers. -->
+    <!-- Main Container - Contains the Sidebar Menu and each of the Main Page Containers. -->
     <div class="container">
 
 
-        <!-- -------------- Left section of the page -------------- -->
+        <!-- -------------- Left Section of the Page -------------- -->
         <aside>
 
             <!-- -------------- Logo - Title -------------- -->
@@ -38,7 +38,6 @@
                <div class="logo">
 
                     <span class="material-icons-sharp">nest_cam_wired_stand</span>
-                    <!-- <img src="./images/logo.png"> -->
                     <h1>Visualize It</h1>
 
                 </div>
@@ -88,10 +87,13 @@
         </aside>
 
 
-        <!-- -------------- Dashboard - Main section of the page -------------- -->
+        <!-- -------------- Dashboard -------------- -->
+
+        <!-- -------------- Dashboard - Main Section of the Page -------------- -->
         <div class="main-content" id="dashboard" style="display: block;">
 
-            <!-- Contains the title of each section. -->
+
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="dashboard-title">
 
                 <div class="main-title-text">
@@ -101,22 +103,21 @@
 
                 </div>
 
-                <!-- <div id="dashboard-text"> -->
-
-                    <p id="main-title-description">In the Dashboard Section you can upload your excel file and you can find all the chart information you need.</p>                        
-
-                <!-- </div> -->
+                <p id="main-title-description">In the Dashboard Section you can upload your excel file and you can find all the chart information you need.</p>
 
             </div>
+
     
-            <!-- Section with all the cards / charts -->
+            <!-- -------------- Grid - Contains all the Cards / Charts. -------------- -->
             <div class="cards">
     
+
+                <!-- -------------- Grid - Contains the Browse / Download File & Reset Buttons. -------------- -->
                 <div class="import-download-file-container" id="import-download-file">
     
+                    <!-- Subgrid - Contains the Browse File Button.-->
                     <div class="subgrid-file-import-container">
     
-                        <!-- pedio pou dexetai to arxeio excel -->
                         <div class="file-import-container">
     
                             <div class="min-width-container">
@@ -124,19 +125,18 @@
                                 <span class="material-icons-sharp folder-open-icon">folder_open</span>
     
                                 <span class="upload-file-text">Upload your file here!</span>
-                                <span class="upload-file-text">(ex. file )</span>
+                                <span class="upload-file-text">(only Excel file)</span>
 
+                                <!-- Browse File Button / Section -->
                                 <div class="file-import-button-label">
     
-                                    <!-- Upload the excel file -->
+                                    <!-- Upload the Excel File Section -->
                                     <input class="button" type="file" id="file-upload" accept=".xls,.xlsx" multiple>
-                                    <!-- Choose between options based on the selected excel file -->
-                                    <!-- <button class="button" type="button" id="options-selection">Show Options</button> -->
     
-                                    <!-- our custom upload button -->
+                                    <!-- Customized upload button -->
                                     <label for="file-upload">Browse File</label>
     
-                                    <!-- name of file chosen -->
+                                    <!-- Name of the Chosen File -->
                                     <span id="file-chosen">No file chosen</span>
     
                                 </div>
@@ -146,39 +146,37 @@
                         </div>
     
                     </div>
-    
+                    
+                    <!-- Subgrid - Contains the Download File & Reset Buttons. -->
                     <div class="subgrid-file-download-container">
     
-                        <!-- <div class="min-width-container"> -->
-    
-                            <pre id="json-data"></pre>
-                                        
-                            <!-- Download the json file with the json data -->
-                            <button class="button" type="button" id="json-download">
-    
-                                Download JSON
-                                <span class="material-icons-sharp">download</span>
-    
-                            </button>
-    
-                            <button class="button" type="button" id="reset">
-                                
-                                RESET
-                                <span class="material-icons-sharp">restart_alt</span>
-    
-                            </button>
-    
-                        <!-- </div> -->
+                        <pre id="json-data"></pre>
+                                    
+                        <!-- Download the JSON File Button -->
+                        <button class="button" type="button" id="json-download">
+
+                            Download JSON
+                            <span class="material-icons-sharp">download</span>
+
+                        </button>
+
+                        <!-- Reset Button -->
+                        <button class="button" type="button" id="reset">
+                            
+                            RESET
+                            <span class="material-icons-sharp">restart_alt</span>
+
+                        </button>
     
                     </div>
     
                 </div>
-    
-                
 
 
+                <!-- -------------- Radar Chart -------------- -->
                 <div class="chart radar" id="radar-chart">
     
+                    <!-- Chart Title -->
                     <div class="arrow-chart-title">
 
                         <h3>Radar Chart</h3>
@@ -191,12 +189,15 @@
 
                     </div>
     
+
                     <div class="flip-card" id="flip-card-radar">
     
+                        <!-- Front Side of Flip Card - Chart Example -->
                         <div class="flip-card-front">
                         
                             <canvas id="dashboard-chart-radar"></canvas>
                         
+                            <!-- Chart Creation with Chart.js -->
                             <script>
 
                                 const ctxDBradar = document.getElementById('dashboard-chart-radar');
@@ -233,37 +234,6 @@
                                     options: {
                                         responsive: true,
                                         maintainAspectRatio: false,
-                                        // plugins: {
-                                        //     tooltip: {
-                                        //         // Tooltip will only receive click events
-                                        //         events: ['click'],
-                                        //         title: {
-                                        //             display: true,
-                                        //             text: 'Custom Chart Title',
-                                        //             // padding: {
-                                        //             //     top: 10,
-                                        //             //     bottom: 30
-                                        //             // }
-                                        //         }
-                                        //     },
-                                        // // },
-                                        // scales: {
-                                        //     // not working
-                                        //     // xAxis: {
-                                        //     //     grid: {
-                                        //     //         drawOnChartArea: false
-                                        //     //     }
-                                        //     // },
-                                        //     // yAxes: [{
-                                        //     //     ticks: {
-                                        //     //         beginAtZero:true
-                                        //     //     }
-                                        //     //     // not working
-                                        //     //     // grid: {
-                                        //     //     //     drawOnChartArea: false
-                                        //     //     // }
-                                        //     // }]                                            
-                                        // },
                                     }
                                 
                                 });
@@ -272,6 +242,7 @@
     
                         </div>
     
+                        <!-- Back Side of Flip Card - Description Example -->
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
@@ -313,12 +284,10 @@
                 </div>
 
 
-
-
-
-    
+                <!-- -------------- Bubble Chart -------------- -->
                 <div class="chart bubble" id="bubble-chart">
 
+                    <!-- Chart Title -->
                     <div class="arrow-chart-title">
 
                         <h3>Bubble Chart</h3>
@@ -333,10 +302,12 @@
 
                     <div class="flip-card" id="flip-card-bubble">
     
+                        <!-- Front Side of Flip Card - Chart Example -->
                         <div class="flip-card-front">
                         
                             <canvas id="dashboard-chart-bubble"></canvas>
                         
+                            <!-- Chart Creation with Chart.js -->
                             <script>
 
                                 const ctxDBbubble = document.getElementById('dashboard-chart-bubble');
@@ -431,6 +402,7 @@
     
                         </div>
     
+                        <!-- Back Side of Flip Card - Description Example -->
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
@@ -467,8 +439,11 @@
     
                 </div>
     
+
+                <!-- -------------- Doughnut Chart -------------- -->
                 <div class="chart doughnut" id="doughnut-chart">
 
+                    <!-- Chart Title -->
                     <div class="arrow-chart-title">
 
                         <h3>Doughnut Chart</h3>
@@ -483,10 +458,12 @@
     
                     <div class="flip-card" id="flip-card-doughnut">
     
+                        <!-- Front Side of Flip Card - Chart Example -->
                         <div class="flip-card-front">
                         
                             <canvas id="dashboard-chart-doughnut"></canvas>
                         
+                            <!-- Chart Creation with Chart.js -->
                             <script>
 
                                 const ctxDBdoughnut = document.getElementById('dashboard-chart-doughnut');
@@ -531,6 +508,7 @@
     
                         </div>
     
+                        <!-- Back Side of Flip Card - Description Example -->
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
@@ -538,6 +516,7 @@
                                 A Doughnut Chart is divided into segments, the arc of each segment shows the proportional value of each piece of data.
                                 
                                 </br>In this example of Doughnut Chart, there are 3 Datasets :
+
                             </p>
 
                             <ul>
@@ -570,13 +549,13 @@
     
                 </div>
     
+
+                <!-- -------------- Info Card -------------- -->
                 <div class="info-container" id="info">
 
                     <div>
 
                         <h3>Instructions :</h3>
-
-                        
 
                         <p class="upload-instructions">
                             
@@ -584,11 +563,12 @@
                                 1.	Upload your EXCEL file with the exact characteristics below :
                             </span>
 
+                            <!-- Download Excel Example Button -->
                             <a href="./example_software_metrics.xlsx" download>
                             
                                 <button class="button" type="button" id="json-download">
         
-                                    Download Example Excel
+                                    Download Excel Example
                                     <span class="material-icons-sharp">download</span>
         
                                 </button>                            
@@ -652,8 +632,10 @@
                 </div>
 
 
+                <!-- -------------- Polar Area Chart -------------- -->
                 <div class="chart polar-area" id="polar-area-chart">
 
+                    <!-- Chart Title -->
                     <div class="arrow-chart-title">
 
                         <h3>Polar Area Chart</h3>
@@ -668,10 +650,12 @@
     
                     <div class="flip-card" id="flip-card-polar-area">
     
+                        <!-- Front Side of Flip Card - Chart Example -->
                         <div class="flip-card-front">
     
                             <canvas id="dashboard-chart-polar-area"></canvas>
                             
+                            <!-- Chart Creation with Chart.js -->
                             <script>
                                 
                                 const ctxDBpolarArea = document.getElementById('dashboard-chart-polar-area');
@@ -709,6 +693,7 @@
 
                         </div>
     
+                        <!-- Back Side of Flip Card - Description Example -->
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
@@ -746,9 +731,10 @@
                 </div>
     
                 
-    
+                <!-- -------------- Bar Chart -------------- -->
                 <div class="chart bar" id="bar-chart">
 
+                    <!-- Chart Title -->
                     <div class="arrow-chart-title">
 
                         <h3>Bar Chart</h3>
@@ -763,10 +749,13 @@
         
                     <div class="flip-card" id="flip-card-bar">
 
+                        <!-- Front Side of Flip Card - Chart Example -->
                         <div class="flip-card-front">
                             
                             <canvas id="dashboard-chart-bar"></canvas>
                             
+                            
+                            <!-- Chart Creation with Chart.js -->
                             <script>
 
                                 const ctxDBbar = document.getElementById('dashboard-chart-bar');
@@ -811,6 +800,7 @@
         
                         </div>
 
+                        <!-- Back Side of Flip Card - Description Example -->
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
@@ -848,13 +838,14 @@
                         </div>
 
                     </div>
-
-                    
     
                 </div>
+
     
+                <!-- -------------- Line Chart -------------- -->
                 <div class="chart line" id="line-chart">
 
+                    <!-- Chart Title -->
                     <div class="arrow-chart-title">
 
                         <h3>Line Chart</h3>
@@ -866,13 +857,15 @@
                         </button>
 
                     </div>
-    
+
                     <div class="flip-card" id="flip-card-line">
     
+                        <!-- Front Side of Flip Card - Chart Example -->
                         <div class="flip-card-front">
                         
                             <canvas id="dashboard-chart-line"></canvas>
                         
+                            <!-- Chart Creation with Chart.js -->
                             <script>
 
                                 const ctxDBline = document.getElementById('dashboard-chart-line');
@@ -916,7 +909,8 @@
                             </script>
     
                         </div>
-    
+
+                        <!-- Back Side of Flip Card - Description Example -->
                         <div class="flip-card-back">
 
                             <p class="general_chart_info_text">
@@ -956,6 +950,7 @@
                     </div>
     
                 </div>
+
     
             </div>
 
@@ -964,10 +959,10 @@
 
         <!-- -------------- Summary Statistics -------------- -->
 
-        <!-- -------------- Summary Statistics - Main section of the page -------------- -->
+        <!-- -------------- Summary Statistics (No File Yet) - Main Section of the Page -------------- -->
         <div class="main-content" id="summary-statistics-no-file-yet" style="display: none;">
 
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="summary-statistics-title">
 
                 <div class="main-title-text">
@@ -977,14 +972,11 @@
 
                 </div>
 
-                <!-- <div id="summary-statistics-text"> -->
-
-                    <p id="main-title-description">In the Summary Statistics Section you can view all the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
-
-                <!-- </div> -->
+                <p id="main-title-description">In the Summary Statistics Section you can view all the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>
 
             </div>
-
+            
+            <!-- -------------- No File Yet Section -------------- -->
             <div class="no-file-yet">
                 
                 <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
@@ -997,11 +989,10 @@
 
         </div>
 
-        <!-- -------------- Summary Statistics - Main section of the page -------------- -->
+        <!-- -------------- Summary Statistics - Main Section of the Page -------------- -->
         <div class="main-content" id="summary-statistics" style="display:none;">
 
-
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="summary-statistics-title">
 
                 <div class="main-title-text">
@@ -1011,26 +1002,21 @@
 
                 </div>
 
-                <!-- <div id="summary-statistics-text"> -->
+                <p id="main-title-description">In the Summary Statistics Section you can view all the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>
 
-                    <!-- <div id="summary-statistics-text"> -->
+            </div>  
 
-                        <p id="main-title-description">In the Summary Statistics Section you can view all the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
-    
-                    <!-- </div> -->
-                <!-- </div> -->
-
-            </div>           
-
-            <!-- Section with all the cards / charts -->
+            <!-- -------------- Grid - Contains all the Cards / Charts. -------------- -->
             <div class="cards">
 
+
+                <!-- -------------- Summary Statistics Versions Card -------------- -->
                 <div class="chart summary-statistics-versions-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Choose between the Versions / Dates of your uploaded software :</p>
-
 
                         <div class="show-color-options-text">
 
@@ -1047,15 +1033,15 @@
                                 Secondary Versions
 
                             </div>
-                            
 
                         </div>
-                        
 
                     </div>
                     
+                    <!-- Versions Checkboxes Container -->
                     <div id="summary-statistics-versions"></div>
 
+                    <!-- Versions Buttons Container -->
                     <div class="cardButtons cardButtonsVersions">
 
                         <div class="radio-button-container">
@@ -1094,16 +1080,21 @@
                     
                 </div>
 
+
+                <!-- -------------- Summary Statistics Properties Card -------------- -->
                 <div class="chart summary-statistics-properties-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the properties you want to display at the chart :</p>                        
 
                     </div>
         
+                    <!-- Properties Checkboxes Container -->
                     <div id="summary-statistics-properties"></div>
 
+                    <!-- Properties Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button selectDeselectAll" type="button" id="summary-statistics-properties-select-deselect-all-btn">
@@ -1124,16 +1115,21 @@
 
                 </div>
 
+
+                <!-- -------------- Summary Statistics Charts Card -------------- -->
                 <div class="chart summary-statistics-charts-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the type of chart you want to display for the Summary Statistics :</p>                        
 
                     </div>
         
+                    <!-- Charts Radio Buttons Container -->
                     <div id="summary-statistics-charts"></div>
 
+                    <!-- Charts Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button ok" type="button" id="summary-statistics-charts-ok-btn">
@@ -1147,16 +1143,16 @@
 
                 </div>
 
+
+                <!-- -------------- Summary Statistics Chart Display Card -------------- -->
                 <div class="chart summary-statistics-chart-display-card" id="summary-statistics-chart-display">
                    
+                    <!-- Chart Creation with Chart.js -->
                     <canvas id="myChart_summaryStatistics"></canvas>
                 
                 </div>
 
-                <div id="summary-statistics-z-axis-modal" style="display: none;"></div>
-
-                <div class="summary-statistics-overlay" style="display: none;"></div>
-        
+            
             </div>
 
         </div>
@@ -1164,10 +1160,10 @@
 
         <!-- -------------- Differentiation -------------- -->
 
-        <!-- -------------- Differentiation - Main section of the page -------------- -->
+        <!-- -------------- Differentiation (No File Yet) - Main Section of the Page -------------- -->
         <div class="main-content" id="differentiation-no-file-yet" style="display: none;">
 
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="differentiation-title">
 
                 <div class="main-title-text">
@@ -1177,17 +1173,11 @@
 
                 </div>
 
-                <!-- <div id="differentiation-text"> -->
-
-                    <!-- <div id="summary-statistics-text"> -->
-
-                        <p id="main-title-description">In the Evaluation Section you can view all the calculated differentiation between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
-    
-                    <!-- </div> -->
-                <!-- </div> -->
+                <p id="main-title-description">In the Evaluation Section you can view all the calculated differentiation between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>
 
             </div>
 
+            <!-- -------------- No File Yet Section -------------- -->
             <div class="no-file-yet">
                 
                 <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
@@ -1200,10 +1190,10 @@
 
         </div>
 
-        <!-- -------------- Differentiation - Main section of the page -------------- -->
+        <!-- -------------- Differentiation - Main Section of the Page -------------- -->
         <div class="main-content" id="differentiation" style="display: none;">
 
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="differentiation-title">
 
                 <div class="main-title-text">
@@ -1213,23 +1203,18 @@
 
                 </div>
 
-                <!-- <div id="differentiation-text"> -->
-
-                    <!-- <div id="summary-statistics-text"> -->
-
-                        <p id="main-title-description">In the Evaluation Section you can view all the calculated differentiation between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
-    
-                    <!-- </div> -->
-
-                <!-- </div> -->
-
+                <p id="main-title-description">In the Evaluation Section you can view all the calculated differentiation between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>
+            
             </div>
 
-            <!-- Section with all the cards / charts -->
+            <!-- -------------- Grid - Contains all the Cards / Charts. -------------- -->
             <div class="cards">
 
+
+                <!-- -------------- Differentiation Versions Card -------------- -->
                 <div class="chart differentiation-versions-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Choose between the Versions / Dates of your uploaded software :</p>
@@ -1250,15 +1235,15 @@
                                 Secondary Versions
 
                             </div>
-                            
 
                         </div>
-                        
 
                     </div>
                     
+                    <!-- Versions Checkboxes Container -->
                     <div id="differentiation-versions"></div>
 
+                    <!-- Versions Buttons Container -->
                     <div class="cardButtons cardButtonsVersions">
 
                         <div class="radio-button-container">
@@ -1297,16 +1282,21 @@
                     
                 </div>
 
+
+                <!-- -------------- Differentiation Properties Card -------------- -->
                 <div class="chart differentiation-properties-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the properties you want to display at the chart :</p>                        
 
                     </div>
         
+                    <!-- Properties Checkboxes Container -->
                     <div id="differentiation-properties"></div>
 
+                    <!-- Properties Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button selectDeselectAll" type="button" id="differentiation-properties-select-deselect-all-btn">
@@ -1327,14 +1317,18 @@
 
                 </div>
 
+
+                <!-- -------------- Differentiation Charts Card -------------- -->
                 <div class="chart differentiation-charts-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the type of chart you want to display for the Evaluation :</p>                        
 
                     </div>
-        
+
+                    <!-- Charts Radio Buttons Container -->
                     <div id="differentiation-charts"></div>
 
                     <div class="cardButtons">
@@ -1350,16 +1344,16 @@
 
                 </div>
 
+
+                <!-- -------------- Differentiation Chart Display Card -------------- -->
                 <div class="chart differentiation-chart-display-card" id="differentiation-chart-display">
-                   
+                    
+                    <!-- Chart Creation with Chart.js -->
                     <canvas id="myChart_differentiation"></canvas>
                 
                 </div>
 
-                <div id="differentiation-z-axis-modal" style="display: none;"></div>
 
-                <div class="differentiation-overlay" style="display: none;"></div>
-        
             </div>
 
         </div>
@@ -1367,10 +1361,10 @@
 
         <!-- -------------- Differentiation Rate -------------- -->
 
-        <!-- -------------- Differentiation Rate - Main section of the page -------------- -->
+        <!-- -------------- Differentiation Rate (No File Yet) - Main Section of the Page -------------- -->
         <div class="main-content" id="differentiation-rate-no-file-yet" style="display: none;">
 
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="differentiation-rate-title">
 
                 <div class="main-title-text">
@@ -1380,18 +1374,11 @@
 
                 </div>
 
-                <!-- <div id="differentiation-text"> -->
-
-                    <!-- <div id="summary-statistics-text"> -->
-
-                        <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
-    
-                    <!-- </div> -->
-
-                <!-- </div> -->
+                <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>
 
             </div>
 
+            <!-- -------------- No File Yet Section -------------- -->
             <div class="no-file-yet">
                 
                 <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
@@ -1408,7 +1395,7 @@
         <!-- -------------- Differentiation Rate - Main section of the page -------------- -->
         <div class="main-content" id="differentiation-rate" style="display: none;">
 
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="differentiation-rate-title">
 
                 <div class="main-title-text">
@@ -1418,27 +1405,21 @@
 
                 </div>
 
-                <!-- <div id="differentiation-text"> -->
-
-                    <!-- <div id="summary-statistics-text"> -->
-
-                        <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>                        
-    
-                    <!-- </div> -->
-
-                <!-- </div> -->
+                    <p id="main-title-description">In the Evaluation Rate Section you can view all the calculated differentiation rate between the property values of your uploaded excel file as a function of the Software's Versions or Dates.</p>
 
             </div>
 
-            <!-- Section with all the cards / charts -->
+            <!-- -------------- Grid - Contains all the Cards / Charts. -------------- -->
             <div class="cards">
 
+
+                <!-- -------------- Differentiation Rate Versions Card -------------- -->
                 <div class="chart differentiation-rate-versions-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Choose between the Versions / Dates of your uploaded software :</p>
-
 
                         <div class="show-color-options-text">
 
@@ -1455,15 +1436,15 @@
                                 Secondary Versions
 
                             </div>
-                            
 
                         </div>
-                        
 
                     </div>
                     
+                    <!-- Versions Checkboxes Container -->
                     <div id="differentiation-rate-versions"></div>
 
+                    <!-- Versions Buttons Container -->
                     <div class="cardButtons cardButtonsVersions">
 
                         <div class="radio-button-container">
@@ -1479,7 +1460,6 @@
                             </label>
 
                         </div>
-
 
                         <div class="ok-select-all-button-container">
 
@@ -1503,16 +1483,21 @@
                     
                 </div>
 
+
+                <!-- -------------- Differentiation Rate Properties Card -------------- -->
                 <div class="chart differentiation-rate-properties-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the properties you want to display at the chart :</p>                        
 
                     </div>
         
+                    <!-- Properties Checkboxes Container -->
                     <div id="differentiation-rate-properties"></div>
 
+                    <!-- Properties Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button selectDeselectAll" type="button" id="differentiation-rate-properties-select-deselect-all-btn">
@@ -1533,16 +1518,21 @@
 
                 </div>
 
+
+                <!-- -------------- Differentiation Rate Charts Card -------------- -->
                 <div class="chart differentiation-rate-charts-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the type of chart you want to display for the Evaluation Rate :</p>                        
 
                     </div>
         
+                    <!-- Charts Radio Buttons Container -->
                     <div id="differentiation-rate-charts"></div>
 
+                    <!-- Charts Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button ok" type="button" id="differentiation-rate-charts-ok-btn">
@@ -1556,16 +1546,15 @@
 
                 </div>
 
+
+                <!-- -------------- Differentiation Rate Chart Display Card -------------- -->
                 <div class="chart differentiation-rate-chart-display-card" id="differentiation-rate-chart-display">
-                   
+                
+                    <!-- Chart Creation with Chart.js -->
                     <canvas id="myChart_differentiationRate"></canvas>
                 
                 </div>
 
-                <div id="differentiation-rate-z-axis-modal" style="display: none;"></div>
-
-                <div class="differentiation-rate-overlay" style="display: none;"></div>
-        
         
             </div>
 
@@ -1574,10 +1563,10 @@
 
         <!-- -------------- Sum up to 100 -------------- -->
 
-        <!-- -------------- Sum up to 100 - Main section of the page -------------- -->
+        <!-- -------------- Sum up to 100 (No File Yet) - Main Section of the Page -------------- -->
         <div class="main-content" id="sum-up-to-100-no-file-yet" style="display: none;">
 
-            <!-- Contains the title of each section. -->
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="sum-up-to-100-title">
 
                 <div class="main-title-text">
@@ -1587,17 +1576,11 @@
 
                 </div>
 
-                <!-- <div id="differentiation-text"> -->
-
-                    <!-- <div id="summary-statistics-text"> -->
-
-                        <p id="main-title-description">In the Sum up to 100% Section you can view the values of each Version or Date of your uploaded excel file that add up to 100% as a function of the Software's Properties.
-                    <!-- </div> -->
-
-                <!-- </div> -->
-
+                <p id="main-title-description">In the Sum up to 100% Section you can view the values of each Version or Date of your uploaded excel file that add up to 100% as a function of the Software's Properties.</p>
+            
             </div>
 
+            <!-- -------------- No File Yet Section -------------- -->
             <div class="no-file-yet">
                 
                 <span class="material-icons-sharp" id="no-file-yet-icon">find_in_page</span>
@@ -1613,6 +1596,7 @@
         <!-- -------------- Sum up to 100 - Main section of the page -------------- -->
         <div class="main-content" id="sum-up-to-100" style="display: none;">
 
+            <!-- -------------- Title & Description of each Section -------------- -->
             <div class="main-title" id="sum-up-to-100-title">
 
                 <div class="main-title-text">
@@ -1622,28 +1606,21 @@
 
                 </div>
 
-                <!-- <div id="differentiation-text"> -->
-
-                    <!-- <div id="summary-statistics-text"> -->
-
-                        <p id="main-title-description">In the Sum up to 100% Section you can view the values of each Version or Date of your uploaded excel file that add up to 100% as a function of the Software's Properties.</p>                        
-    
-                    <!-- </div> -->
-
-                <!-- </div> -->
-
+                <p id="main-title-description">In the Sum up to 100% Section you can view the values of each Version or Date of your uploaded excel file that add up to 100% as a function of the Software's Properties.</p>
+            
             </div>
 
-
-            <!-- Section with all the cards / charts -->
+            <!-- -------------- Grid - Contains all the Cards / Charts. -------------- -->
             <div class="cards">
 
+
+                <!-- -------------- Sum up to 100 Versions Card -------------- -->
                 <div class="chart sum-up-to-100-versions-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Choose between the Versions / Dates of your uploaded software :</p>
-
 
                         <div class="show-color-options-text">
 
@@ -1661,14 +1638,14 @@
 
                             </div>
                             
-
                         </div>
-                        
 
                     </div>
 
+                    <!-- Versions Checkboxes Container -->
                     <div id="sum-up-to-100-versions"></div>
 
+                    <!-- Versions Buttons Container -->
                     <div class="cardButtons cardButtonsVersions">
 
                         <div class="radio-button-container">
@@ -1685,39 +1662,43 @@
 
                         </div>
 
-
                         <div class="cardButtons">
 
-                        <button class="button selectDeselectAll" type="button" id="sum-up-to-100-versions-select-deselect-all-btn">
+                            <button class="button selectDeselectAll" type="button" id="sum-up-to-100-versions-select-deselect-all-btn">
+                                        
+                                Select all
+                                <span class="material-icons-sharp">done_all</span>
+        
+                            </button>
+
+                            <button class="button ok" type="button" id="sum-up-to-100-versions-ok-btn">
                                     
-                            Select all
-                            <span class="material-icons-sharp">done_all</span>
-    
-                        </button>
+                                OK
+                                <span class="material-icons-sharp">check</span>
+        
+                            </button>
 
-                        <button class="button ok" type="button" id="sum-up-to-100-versions-ok-btn">
-                                
-                            OK
-                            <span class="material-icons-sharp">check</span>
-    
-                        </button>
-
-                    </div>
+                        </div>
 
                     </div>
                     
                 </div>
 
+
+                <!-- -------------- Sum up to 100 Properties Card -------------- -->
                 <div class="chart sum-up-to-100-properties-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the properties you want to display at the chart :</p>                        
 
                     </div>
         
+                    <!-- Properties Checkboxes Container -->
                     <div id="sum-up-to-100-properties"></div>
 
+                    <!-- Properties Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button selectDeselectAll" type="button" id="sum-up-to-100-properties-select-deselect-all-btn">
@@ -1738,16 +1719,21 @@
 
                 </div>
 
+
+                <!-- -------------- Sum up to 100 Charts Card -------------- -->
                 <div class="chart chart sum-up-to-100-charts-card">
 
+                    <!-- Description of each Card -->
                     <div id="description-text">
 
                         <p>Select the type of chart you want to display for the Evaluation Rate :</p>                        
 
                     </div>
         
+                    <!-- Charts Radio Buttons Container -->
                     <div id="sum-up-to-100-charts"></div>
 
+                    <!-- Charts Buttons Container -->
                     <div class="cardButtons">
 
                         <button class="button ok" type="button" id="sum-up-to-100-charts-ok-btn">
@@ -1761,21 +1747,21 @@
 
                 </div>
 
+
+                <!-- -------------- Sum up to 100 Chart Display Card -------------- -->
                 <div class="chart sum-up-to-100-chart-display-card" id="sum-up-to-100-chart-display">
                    
+                    <!-- Chart Creation with Chart.js -->
                     <canvas id="myChart_sumUpTo100"></canvas>
                 
                 </div>
 
-                <div id="sum-up-to-100-z-axis-modal" style="display: none;"></div>
-
-                <div class="sum-up-to-100-overlay" style="display: none;"></div>
-        
+              
             </div>
 
         </div>
     
-    
+        
     </div>
 
 

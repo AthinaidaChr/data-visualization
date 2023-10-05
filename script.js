@@ -1,5 +1,9 @@
 'use strict';
 
+// Variables
+
+// -------------------------------------------
+
 // Sidebar Menu Buttons Elements
 const dashboardBtn = document.getElementById('dashboard-btn');
 const summaryStatisticsBtn = document.getElementById('summary-statistics-btn');
@@ -11,37 +15,37 @@ const sumUpTo100Btn = document.getElementById('sum-up-to-100-btn');
 // -----------------------------------------------------------------------------------
 
 
-// Element Variables for input and download excel files
-// const fileImportContainer = document.querySelector('.file-import-container');
+// Element Variables for Browse and Download Excel Files
 const fileUpload = document.getElementById('file-upload');
 const fileChosenEl = document.getElementById('file-chosen');
 const jsonData = document.getElementById('json-data');
 const jsonDownload = document.getElementById('json-download');
 
-// Variables for reading excel and converting it to json
+// Variables for Reading Excel File & Converting It to JSON
 let data;
 let workbook;
-let selectedFile;       // file pou anevase o xrhsths kai to epilegei to susthma na ton epeksergastei
-let rowJsonObject;      // array of objects me antikeimena thn kathe grammh tou excel arxeiou
+let selectedFile;       // User's Excel File
+let rowJsonObject;      // Array of Objects (each object is one row of the excel file)
 
 
 // -----------------------------------------------------------------------------------
 
 
+// Element Variable for Reseting System
 const resetBtn = document.getElementById("reset");
 
 
 // -----------------------------------------------------------------------------------
 
 
-// Array filled with property names of rowJsonObject array of objects
+// Array filled with Property Names of rowJsonObject Array of Objects
 let objectProperties = [];
 
 
 // -----------------------------------------------------------------------------------
 
 
-// Array filled with the formated dates from the rowJsonObject array of objects
+// Array filled with the Formated Dates from the rowJsonObject Array of Objects.
 let formatedDatesArray = [];
 // let formatedDatesArraySummaryStatistics = [];
 // let formatedDatesArrayDifferentiation = [];
@@ -51,7 +55,7 @@ let formatedDatesArray = [];
 // -----------------------------------------------------------------------------------
 
 
-// Element Variables for radio buttons
+// Element Variables for Radio Buttons
 const summaryStatisticsVersionsRadioEl = document.getElementById('summary-statistics-versions-radio');
 const summaryStatisticsDatesRadioEl = document.getElementById('summary-statistics-dates-radio');
 
@@ -76,7 +80,7 @@ const sumUpTo100VersionsOkBtn = document.getElementById('sum-up-to-100-versions-
 
 // -------------------------------------------
 
-// Version variables for creating dynamicaly checkboxes
+// Version Variables for creating Dynamicaly Checkboxes
 const checkboxesSummaryStatisticsVersionEl = document.getElementsByName('summary-statistics-versions');
 // let checkedCheckboxesSummaryStatisticsVersion = [];      // array filled with checked versions
 
@@ -87,11 +91,11 @@ const checkboxesDifferentiationRateVersionEl = document.getElementsByName('diffe
 // let checkedCheckboxesDifferentiationRateVersion = [];      // array filled with checked versions
 
 const checkboxesSumUpTo100VersionEl = document.getElementsByName('sum-up-to-100-versions');
-let checkedCheckboxesSumUpTo100Version = [];      // array filled with checked versions
+// let checkedCheckboxesSumUpTo100Version = [];      // array filled with checked versions
 
 // -------------------------------------------
 
-// Date variables for creating dynamicaly checkboxes
+// Date Variables for creating Dynamicaly Checkboxes
 const checkboxesSummaryStatisticsDateEl = document.getElementsByName('summary-statistics-dates');
 // let checkedCheckboxesSummaryStatisticsDate = [];      // array filled with checked dates
 
@@ -116,7 +120,7 @@ const sumUpTo100PropertiesOkBtn = document.getElementById('sum-up-to-100-propert
 
 // -------------------------------------------
 
-// Property variables for creating dynamicaly checkboxes
+// Property Variables for creating Dynamicaly Checkboxes
 const checkboxesSummaryStatisticsPropertiesEl = document.getElementsByName('summary-statistics-properties');
 let checkedCheckboxesSummaryStatisticsProperties = [];      // array filled with checked versions
 
@@ -139,9 +143,9 @@ const differentiationChartsOkBtn = document.getElementById('differentiation-char
 const differentiationRateChartsOkBtn = document.getElementById('differentiation-rate-charts-ok-btn');
 const sumUpTo100ChartsOkBtn = document.getElementById('sum-up-to-100-charts-ok-btn');
 
-// -------------------------------------------ent
+// -------------------------------------------
 
-// Chart type variables for creating dynamicaly checkboxes
+// Chart Type Variables for creating Dynamicaly Checkboxes
 const checkboxesSummaryStatisticsChartsEl = document.getElementsByName('summary-statistics-charts');
 let checkedCheckboxesSummaryStatisticsCharts = [];      // array filled with checked versions
 
@@ -158,47 +162,7 @@ let checkedCheckboxesSumUpTo100Charts = [];      // array filled with checked ve
 // -----------------------------------------------------------------------------------
 
 
-// Ok Buttons for Modal Cards - z axis
-let summaryStatisticsModalOkBtn;
-let differentiationModalOkBtn;
-let differentiationRateModalOkBtn;
-let sumUpTo100ModalOkBtn;
-
-// -------------------------------------------
-
-// Element Variables for Modals and Overlays
-const summaryStatisticsModal = document.getElementById('summary-statistics-z-axis-modal');
-const summaryStatisticsOverlay = document.querySelector('.summary-statistics-overlay');
-
-const differentiationModal = document.getElementById('differentiation-z-axis-modal');
-const differentiationOverlay = document.querySelector('.differentiation-overlay');
-
-const differentiationRateModal = document.getElementById('differentiation-rate-z-axis-modal');
-const differentiationRateOverlay = document.querySelector('.differentiation-rate-overlay');
-
-const sumUpTo100Modal = document.getElementById('sum-up-to-100-z-axis-modal');
-const sumUpTo100Overlay = document.querySelector('.sum-up-to-100-overlay');
-
-// -------------------------------------------
-
-// Property variables for creating dynamicaly checkboxes inside modal cards
-const checkboxesSummaryStatisticsModalEl = document.getElementsByName('summary-statistics-z-axis-modal');
-let checkedCheckboxesSummaryStatisticsModal = [];      // array filled with checked versions
-
-const checkboxesDifferentiationModalEl = document.getElementsByName('differentiation-z-axis-modal');
-let checkedCheckboxesDifferentiationModal = [];      // array filled with checked versions
-
-const checkboxesDifferentiationRateModalEl = document.getElementsByName('differentiation-rate-z-axis-modal');
-let checkedCheckboxesDifferentiationRateModal = [];      // array filled with checked versions
-
-const checkboxesSumUpTo100ModalEl = document.getElementsByName('sum-up-to-100-z-axis-modal');
-let checkedCheckboxesSumUpTo100Modal = [];      // array filled with checked versions
-
-
-// -----------------------------------------------------------------------------------
-
-
-// Arrays that contain Ok Buttons for each selection
+// Arrays that contain Ok Buttons for each selection.
 const summaryStatisticsOkBtnsArray = [summaryStatisticsVersionsOkBtn, summaryStatisticsPropertiesOkBtn, summaryStatisticsChartsOkBtn];
 const differentiationOkBtnsArray = [differentiationVersionsOkBtn, differentiationPropertiesOkBtn, differentiationChartsOkBtn];
 const differentiationRateOkBtnsArray = [differentiationRateVersionsOkBtn, differentiationRatePropertiesOkBtn, differentiationRateChartsOkBtn];
@@ -208,7 +172,7 @@ const sumUpTo100OkBtnsArray = [sumUpTo100VersionsOkBtn, sumUpTo100PropertiesOkBt
 // -----------------------------------------------------------------------------------
 
 
-// New arrays to fill with variables for the chart display
+// New Arrays to fill with variables for the chart display.
 let nameSummaryStatistics = [], propertySummaryStatistics = [], dateSummaryStatistics = [], xAxisSummaryStatistics = [];
 let nameDifferentiation = [], propertyDifferentiation = [], dateDifferentiation = [], xAxisDifferentiation = [], mergedXAxisDifferentiation = [];
 let nameDifferentiationRate = [], propertyDifferentiationRate = [], dateDifferentiationRate = [], xAxisDifferentiationRate = [], mergedXAxisDifferentiationRate = [];
@@ -218,20 +182,23 @@ let nameSumUpTo100 = [], propertySumUpTo100 = [], dateSumUpTo100 = [], xAxisSumU
 // -----------------------------------------------------------------------------------
 
 
-// Variables that set the type of each chart
+// Variables that set the type of each chart.
 let summaryStatisticsChartType;
 let differentiationChartType;
 let differentiationRateChartType;
 let sumUpTo100ChartType;
 
+// -------------------------------------------
+
 let chartNamesSummaryStatisticsArray = ['Horizontal Bar', 'Stacked Bar', 'Vertical Bar', 'Line', 'Bubble', 'Doughnut', 'Pie', 'Polar Area', 'Radar', 'Scatter'];
 let chartNamesDifferentiationArray = ['Horizontal Bar', 'Stacked Bar', 'Vertical Bar', 'Line', 'Bubble', 'Doughnut', 'Pie', 'Polar Area', 'Radar', 'Scatter'];
 let chartNamesSumUpTo100Array = ['Stacked Bar'];
 
+
 // -----------------------------------------------------------------------------------
 
 
-// Arrays filled with final data for each calculation
+// Arrays filled with final data for each calculation.
 let summaryStatistics = [];
 let differentiation = [];
 let differentiationRate = [];
@@ -240,22 +207,25 @@ let sumUpTo100 = [];
 // -----------------------------------------------------------------------------------
 
 
-// Variables that set the data and options of each chart
+// Variables that set the data and options of each chart.
 let dataSummaryStatistics, optionsSummaryStatistics;
 let dataDifferentiation, optionsDifferentiation;
 let dataDifferentiationRate, optionsDifferentiationRate;
 let dataSumUpTo100, optionsSumUpTo100;
 
-// Arrays filled with background and border color of each chart
+// -------------------------------------------
+
+// Arrays filled with background and border color of each chart.
 const backgroundColorSummaryStatistics = [], borderColorSummaryStatistics = [];
 const backgroundColorDifferentiation = [], borderColorDifferentiation = [];
 const backgroundColorDifferentiationRate = [], borderColorDifferentiationRate = [];
 const backgroundColorSumUpTo100 = [], borderColorSumUpTo100 = [];
 
 
+// -----------------------------------------------------------------------------------
 
 
-let modalSummaryStatistics = [], modalDifferentiation = [], modalDifferentiationRate = [], modalSumUpTo100 = [];
+// let modalSummaryStatistics = [], modalDifferentiation = [], modalDifferentiationRate = [], modalSumUpTo100 = [];
 
 // let oneArrayPropertySummaryStatistics = [], oneArrayPropertyDifferentiation = [], oneArrayPropertySumUpTo100 = [];
 
@@ -265,10 +235,9 @@ let modalSummaryStatistics = [], modalDifferentiation = [], modalDifferentiation
 
 // Functions
 
-
 // -------------------------------------------
 
-// Function to flip a card using a button
+// Function to flip a card using a button.
 const flipCard = function(arrowBtnId, cardFlipId) {
 
     const btnEl = document.getElementById(arrowBtnId);
@@ -286,30 +255,33 @@ const flipCard = function(arrowBtnId, cardFlipId) {
 
 };
 
+
 // -------------------------------------------
 
-// Function for creating checkbox element dynamically with label and span
+
+// Function for creating checkbox element dynamically with label and span.
 const createCheckBox = function(elementID, name, value, innerText) {
 
-    // Get the container which will contain the checkboxes
+    // Getting the element which will contain the checkboxes.
     const checkboxEl = document.getElementById(elementID);
 
-    // creating label element
+    // Creating label element.
     const label = document.createElement('label');
 
-    // creating checkbox element
+    // Creating checkbox element.
     const checkbox = document.createElement('input');
 
-    // Assigning the attributes to created checkbox
+    // Assigning the attributes to the created checkboxes.
     checkbox.type = "checkbox";
     checkbox.name = name;
     checkbox.value = value;
 
-    // creating span element
+    // Creating span element.
     const span = document.createElement('span');
 
     span.innerHTML = innerText;
 
+    // Separating the classes and the ids for the main and the secondary versions.
     if (value.includes('0,0')) {
         label.className = 'dynamicLabelMain';
         label.id = 'dynamic-label-main';
@@ -331,49 +303,52 @@ const createCheckBox = function(elementID, name, value, innerText) {
         span.id = 'dynamic-span';
     }
     
-    // appending the checkbox and span to label and then the label to div element checkboxEl
+    // Appending the checkbox and span to label and then the label to div element checkboxEl.
     label.appendChild(checkbox);
     label.appendChild(span);
     checkboxEl.appendChild(label);
     
 };
 
+
 // -------------------------------------------
 
-// Function for creating checkbox element dynamically with label and span
+
+// Function (for Dates) for creating checkbox element dynamically with label and span.
 const createCheckBoxDates = function(elementID, name, value, innerText) {
 
-    // Get the container which will contain the checkboxes
+    // Getting the element which will contain the checkboxes.
     const checkboxEl = document.getElementById(elementID);
 
-    // creating label element
+    // Creating label element.
     const label = document.createElement('label');
 
-    // creating checkbox element
+    // Creating checkbox element.
     const checkbox = document.createElement('input');
 
-    // creating span element
+    // Creating span element.
     const span = document.createElement('span');
 
+    // Assigning class and id to the labels.
     label.className = 'dynamicLabel';
     label.id = 'dynamic-label'
 
-    // Assigning the attributes to created checkbox
+    // Assigning the attributes to the created checkboxes.
     checkbox.type = "checkbox";
     checkbox.name = name;
     checkbox.value = value;
 
-    // dateFormation(value);
-
+    // Assigning class and id to the created checkboxes.
     checkbox.className = 'dynamicCheckbox';
     checkbox.id = 'dynamic-checkbox';
 
     span.innerHTML = innerText;
 
+    // Assigning class and id to the spans.
     span.className = 'dynamicSpan';
     span.id = 'dynamic-span';
     
-    // appending the checkbox and span to label and then the label to div element checkboxEl
+    // Appending the checkbox and span to label and then the label to div element checkboxEl.
     label.appendChild(checkbox);
     label.appendChild(span);
     checkboxEl.appendChild(label);
@@ -381,50 +356,44 @@ const createCheckBoxDates = function(elementID, name, value, innerText) {
 };
 
 
+// -------------------------------------------
 
 
-
-
-
-
-// Function for creating checkbox element dynamically with label and span
+// Function for creating radio button element dynamically with label and span.
 const createRadio = function(elementID, name, value, innerText) {
     
-    // Get the container which will contain the checkboxes
+    // Getting the element which will contain the checkboxes.
     const checkboxEl = document.getElementById(elementID);
 
-    // creating label element
+    // Creating label element.
     const label = document.createElement('label');
 
+    // Assigning class and id to the labels.
+    label.className = 'dynamicLabel';
+    label.id = 'dynamic-label';
 
-        label.className = 'dynamicLabel';
-        label.id = 'dynamic-label'
-
-
-    // creating checkbox element
+    // Creating checkbox element.
     const checkbox = document.createElement('input');
 
-    // Assigning the attributes to created checkbox
+    // Assigning the attributes to the created checkboxes.
     checkbox.type = "radio";
     checkbox.name = name;
     checkbox.value = value;
-
-
-        checkbox.className = 'dynamicCheckbox';
-        checkbox.id = 'dynamic-checkbox';
     
+    // Assigning class and id to the created checkboxes.
+    checkbox.className = 'dynamicCheckbox';
+    checkbox.id = 'dynamic-checkbox';
 
-    // creating span element
+    // Creating span element.
     const span = document.createElement('span');
 
     span.innerHTML = innerText;
 
+    // Assigning class and id to the spans.
+    span.className = 'dynamicSpan';
+    span.id = 'dynamic-span';
 
-        span.className = 'dynamicSpan';
-        span.id = 'dynamic-span';
-
-    
-    // appending the checkbox and span to label and then the label to div element checkboxEl
+    // Appending the checkbox and span to label and then the label to div element checkboxEl.
     label.appendChild(checkbox);
     label.appendChild(span);
     checkboxEl.appendChild(label);
@@ -432,27 +401,10 @@ const createRadio = function(elementID, name, value, innerText) {
 };
 
 
-
-
 // -------------------------------------------
 
 
-// const createText = function(elementID, innerText) {
-
-//     const divText = document.getElementById(elementID);
-//     // Create element:
-//     const paragraph = document.createElement("p");
-//     paragraph.innerText = innerText;
-
-//     // Append to body:
-//     divText.appendChild(paragraph);
-// }
-
-
-
-
-// -------------------------------------------
-
+// Function to delete a div element.
 const deleteDivInside = function(elementID) {
 
     const divSum = document.getElementById(elementID);
@@ -463,9 +415,11 @@ const deleteDivInside = function(elementID) {
 
 };
 
+
 // -------------------------------------------
 
-// Function to delete a checkbox elements
+
+// Function to delete a checkbox element.
 const deleteCheckBox = function(elementID) {
 
     const checkboxs = document.querySelectorAll(elementID);
@@ -476,9 +430,11 @@ const deleteCheckBox = function(elementID) {
 
 };
 
+
 // -------------------------------------------
 
-// Function to select and deselect all checkboxes at once
+
+// Function to select and deselect all checkboxes at once.
 const selectAll = function(elementID, allCheckboxesArray) {
 
     const btn = document.getElementById(elementID);
@@ -507,21 +463,24 @@ const selectAll = function(elementID, allCheckboxesArray) {
 
 };
 
+
 // -------------------------------------------
 
-// Function to delete a canvas element
+
+// Function to delete a canvas element.
 const deleteCanvas = function(elementID) {
     const canvas = document.getElementById(elementID);
 
     canvas.remove();
 };
 
+
 // -------------------------------------------
 
-// Function to create a canvas element
+
+// Function to create a canvas element.
 const createCanvas = function(elementID, canvasID) {
-    
-    // Get the container which will contain the checkboxes
+
     const divCanvasEl = document.getElementById(elementID);
 
     const canvas = document.createElement('canvas');
@@ -536,7 +495,7 @@ const createCanvas = function(elementID, canvasID) {
 // -------------------------------------------
 
 
-// Create button element for versions dynamically
+// Create a button element for versions dynamically.
 const createButton = function(elementID, buttonClass, buttonID, innerText) {
     const button = document.createElement("button");
     const element = document.getElementById(elementID);
@@ -546,6 +505,7 @@ const createButton = function(elementID, buttonClass, buttonID, innerText) {
     button.innerHTML = innerText;
 
     element.appendChild(button);
+
 };
 
 
@@ -565,16 +525,10 @@ const backgroundColorFunction = function(xAxisArray, backgroundColorArray, borde
         g = Math.floor(Math.random() * 255);
         b = Math.floor(Math.random() * 255);
 
-        // for (let j = 0; j < yAxisArray.length; j++) {
+        backgroundColorArray.push('rgba('+r+', '+g+', '+b+', 0.7)');
+        borderColor.push('rgba('+r+', '+g+', '+b+', 1)');
 
-            // console.log('rgba('+r+', '+g+', '+b+', 0.2)');
-                                    
-            backgroundColorArray.push('rgba('+r+', '+g+', '+b+', 0.7)');
-            borderColor.push('rgba('+r+', '+g+', '+b+', 1)');
-
-            console.log(backgroundColorArray);
-
-        // }
+        console.log(backgroundColorArray);
                                 
     }
 
@@ -597,24 +551,15 @@ const downloadObjectAsJson = function(exportObj, exportName) {
     downloadAnchorNode.remove();
 }
 
-// -------------------------------------------
-
-// const displayDiv = function(btnPressed, elementID1, elementID2, elementID3, elementID4, status) {
-
-//     btnPressed.addEventListener('click', function() {
-
-//         document.getElementById(elementID1).style.display = status;
-//         document.getElementById(elementID2).style.display = status;
-//         document.getElementById(elementID3).style.display = status;
-//         document.getElementById(elementID4).style.display = status;
-
-//     });
-
-// }
-
-// displayDiv(dashboardBtn, 'dashboard', 'differentiation-no-file-yet', 'differentiation-rate-no-file-yet', 'sum-up-to-100-no-file-yet', 'block');
 
 // -----------------------------------------------------------------------------------
+
+
+// Code
+
+// -------------------------------------------
+
+// -------------- Flipping cards in Dashboard Section using a button. --------------
 
 flipCard('arrow-btn-radar', 'flip-card-radar');
 flipCard('arrow-btn-bubble', 'flip-card-bubble');
@@ -622,6 +567,12 @@ flipCard('arrow-btn-doughnut', 'flip-card-doughnut');
 flipCard('arrow-btn-polar-area', 'flip-card-polar-area');
 flipCard('arrow-btn-bar', 'flip-card-bar');
 flipCard('arrow-btn-line', 'flip-card-line');
+
+
+// -----------------------------------------------------------------------------------
+
+
+// -------------- Show and hide sections. --------------
 
 dashboardBtn.addEventListener('click', function() {
 
@@ -677,6 +628,8 @@ sumUpTo100Btn.addEventListener('click', function() {
 // -----------------------------------------------------------------------------------
 
 
+// -------------- Reseting the system. --------------
+
 resetBtn.addEventListener('click', function() {
 
     window.location.reload();
@@ -686,59 +639,59 @@ resetBtn.addEventListener('click', function() {
 // -----------------------------------------------------------------------------------
 
 
+// -------------- Upload File. --------------
+
 fileUpload.addEventListener('click', function() {
 
-    // -----------------------------------------------------------------------------------
+    // -------------------------------------------
 
-    // allazei to label me to neo onoma tou arxeiou
+    // Changing the label with the name of the Excel File.
     fileUpload.addEventListener('change', function(){
 
         fileChosenEl.textContent = this.files[0].name;
         
     });
 
-    // -----------------------------------------------------------------------------------
+    // -------------------------------------------
 
     fileUpload.addEventListener('change', function(event) {
         console.log(event);
 
-        // Get selected file
+        // Getting selected file (user's excel file).
         selectedFile = event.target.files[0];
         // console.log(selectedFile);
 
-    // -----------------------------------------------------------------------------------
+    // -------------------------------------------
 
         if (selectedFile) {
 
             let fileReader = new FileReader();
 
-            // Read the data from the excel file, using a file reader as a binary string
+            // Reading the data from the Excel file, using a file reader as a binary string.
             fileReader.readAsBinaryString(selectedFile);
             // console.log(fileReader);
 
-            // Setting an event handler property for load event
+            // Setting an event handler property for load event.
             fileReader.onload = function(event) {
-                // logs the file's text
+
+                // Logs the file's text
                 //console.log(event.target.result);
                 
-                // Data variable contains the file's text
+                // Variable that contains the file's text.
                 data = event.target.result;
 
-                // With read method you can read whatever data you want to, and after comma you have
-                // to write the type of data that you put before.
+                // Reading the data, the binary is the type of the previous data
                 workbook = XLSX.read(data,{type:"binary"});
                 // console.log(workbook);
 
-                // Iterate through sheets
+                // Iterating through sheets.
                 workbook.SheetNames.forEach(sheet => {
 
-                    // The sheet_to_row_object_array() method creates json objects in a single row.
+                    // The sheet_to_row_object_array() method creates JSON objects in a single row.
                     rowJsonObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
                     // console.log(rowJsonObject);
-
-                    // Displaing inide HTML page the json objects as a total string
-                    // jsonData.innerHTML = JSON.stringify(rowJsonObject, undefined, 4);
                     
+                    // Function for downloading the JSON File.
                     jsonDownload.onclick = function() {
                         const json_str = rowJsonObject;
                         console.log(json_str);
@@ -748,13 +701,16 @@ fileUpload.addEventListener('click', function() {
                     
                 });
     
-                // Logs the array of objects
+                // Logs the array of objects.
                 console.log(rowJsonObject);
 
                 // Disabling the fileUpload button after it is pressed one time.
                 fileUpload.disabled = true;
 
                 // -----------------------------------------------------------------------------------
+
+
+                // -------------- Show and hide sections. --------------
 
                 dashboardBtn.addEventListener('click', function() {
 
@@ -767,8 +723,6 @@ fileUpload.addEventListener('click', function() {
                 });
 
                 summaryStatisticsBtn.addEventListener('click', function() {
-
-                    // document.getElementById('dashboard').style.display = "none";
                     
                     document.getElementById('summary-statistics-no-file-yet').style.display = "none";
                     document.getElementById('summary-statistics').style.display = "block";
@@ -820,9 +774,11 @@ fileUpload.addEventListener('click', function() {
 
                 });
 
+
                 // -----------------------------------------------------------------------------------
 
-                // Create array filled with the properties of the array of objects
+
+                // Creating array filled with the properties of the Array of Objects.
                 rowJsonObject.forEach(function(o) {
 
                     Object.keys(o).forEach(function(property) {
@@ -836,99 +792,37 @@ fileUpload.addEventListener('click', function() {
                 });
                 console.log(objectProperties);
 
-                // -----------------------------------------------------------------------------------
-
-                // Array filled with formated dates
-                // const dateFormation = function(arrayOfObjects, formatedArray) {
-                    for (let i = 0; i < rowJsonObject.length; i++) {
-                        // console.log(arrayOfObjects[i].property);
-                        const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
-                        
-                        const year = num_date.toLocaleString("default", { year: "numeric" });
-                        const month = num_date.toLocaleString("default", { month: "2-digit" });
-                        const day = num_date.toLocaleString("default", { day: "2-digit" });
-
-                        const dateFormat = month + "/" + day + "/" + year;
-                        // const dateFormat2 = month + "/" + day + "/" + year;
-
-                        formatedDatesArray.push(dateFormat);
-                        // formatedDatesArrayDifferentiation.push(dateFormat);
-                        // formatedDatesArrayDifferentiationRate.push(dateFormat);
-
-                    };
-                // };
-                
-                // console.log(formatedDatesArraySummaryStatistics);
-                // console.log(formatedDatesArrayDifferentiation);
-                // console.log(formatedDatesArrayDifferentiationRate);
 
                 // -----------------------------------------------------------------------------------
 
-                // Create Versions / Dates checkboxes for Summary Statistics
 
-                // if (summaryStatisticsVersionsRadioEl.checked) {
+                // Array filled with formated dates.
+                for (let i = 0; i < rowJsonObject.length; i++) {
 
-                    // Creating checkboxes for versions
-                    for (let i = 0; i < rowJsonObject.length; i++) {
+                    const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
+                    
+                    const year = num_date.toLocaleString("default", { year: "numeric" });
+                    const month = num_date.toLocaleString("default", { month: "2-digit" });
+                    const day = num_date.toLocaleString("default", { day: "2-digit" });
 
-                        createCheckBox('summary-statistics-versions', 'summary-statistics-versions', rowJsonObject[i].name, rowJsonObject[i].name);
-                        
-                    }
+                    const dateFormat = month + "/" + day + "/" + year;
 
-                    // selectAll('summary-statistics-versions-select-deselect-all-btn', checkboxesSummaryStatisticsVersionEl);
+                    formatedDatesArray.push(dateFormat);
 
-                    // summaryStatisticsVersionsOkBtn.addEventListener('click', function() {
-                        
-                    //     checkedCheckboxesSummaryStatisticsVersion.length = 0;
+                };
 
-                    //     for (let i = 0; i < checkboxesSummaryStatisticsVersionEl.length; i++) {
 
-                    //         if (checkboxesSummaryStatisticsVersionEl[i].checked) {
-                    //             checkedCheckboxesSummaryStatisticsVersion.push(checkboxesSummaryStatisticsVersionEl[i].value);
-                    //         }
-                            
-                    //     }
+                // -----------------------------------------------------------------------------------
 
-                    //     // DEBUGGING
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl);
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl.length);
-                    //     console.log(checkedCheckboxesSummaryStatisticsVersion);
-                    //     // console.log(typeof checkedCheckboxesSummaryStatisticsVersion);
 
-                    // });
+                // -------------- Creating Versions / Dates checkboxes for Summary Statistics --------------
 
-                // }
-                // else if (summaryStatisticsDatesRadioEl.checked) {
+                // Creating checkboxes for versions.
+                for (let i = 0; i < rowJsonObject.length; i++) {
 
-                //     for (let i = 0; i < rowJsonObject.length; i++) {
-
-                //         createCheckBoxDates('summary-statistics-versions', 'summary-statistics-dates', formatedDatesArraySummaryStatistics[i], formatedDatesArraySummaryStatistics[i]);
-                        
-                //     }
-
-                //     // selectAll('summary-statistics-versions-select-deselect-all-btn', checkboxesSummaryStatisticsDateEl);
-
-                //     // summaryStatisticsVersionsOkBtn.addEventListener('click', function() {
-                        
-                //     //     checkedCheckboxesSummaryStatisticsVersion.length = 0;
-
-                //     //     for (let i = 0; i < checkboxesSummaryStatisticsVersionEl.length; i++) {
-
-                //     //         if (checkboxesSummaryStatisticsVersionEl[i].checked) {
-                //     //             checkedCheckboxesSummaryStatisticsVersion.push(checkboxesSummaryStatisticsVersionEl[i].value);
-                //     //         }
-                            
-                //     //     }
-
-                //     //     // DEBUGGING
-                //     //     // console.log(checkboxesSummaryStatisticsVersionEl);
-                //     //     // console.log(checkboxesSummaryStatisticsVersionEl.length);
-                //     //     console.log(checkedCheckboxesSummaryStatisticsVersion);
-                //     //     // console.log(typeof checkedCheckboxesSummaryStatisticsVersion);
-
-                //     // });
-
-                // }
+                    createCheckBox('summary-statistics-versions', 'summary-statistics-versions', rowJsonObject[i].name, rowJsonObject[i].name);
+                    
+                }
 
                 summaryStatisticsDatesRadioEl.addEventListener("change", function() {
 
@@ -958,42 +852,16 @@ fileUpload.addEventListener('click', function() {
 
                 selectAll('summary-statistics-versions-select-deselect-all-btn', checkboxesSummaryStatisticsVersionEl);
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
-                // Create Versions / Dates checkboxes for Differentiation
+                // -------------- Creating Versions / Dates checkboxes for Differentiation --------------
                 
-                // if (differentiationVersionsRadioEl.checked) {
+                // Creating checkboxes for versions.
+                for (let i = 0; i < rowJsonObject.length; i++) {
 
-                    // Creating checkboxes for versions
-                    for (let i = 0; i < rowJsonObject.length; i++) {
-
-                        createCheckBox('differentiation-versions', 'differentiation-versions', rowJsonObject[i].name, rowJsonObject[i].name);
-                        
-                    }
-
-                    // selectAll('summary-statistics-versions-select-deselect-all-btn', checkboxesSummaryStatisticsVersionEl);
-
-                    // summaryStatisticsVersionsOkBtn.addEventListener('click', function() {
-                        
-                    //     checkedCheckboxesSummaryStatisticsVersion.length = 0;
-
-                    //     for (let i = 0; i < checkboxesSummaryStatisticsVersionEl.length; i++) {
-
-                    //         if (checkboxesSummaryStatisticsVersionEl[i].checked) {
-                    //             checkedCheckboxesSummaryStatisticsVersion.push(checkboxesSummaryStatisticsVersionEl[i].value);
-                    //         }
-                            
-                    //     }
-
-                    //     // DEBUGGING
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl);
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl.length);
-                    //     console.log(checkedCheckboxesSummaryStatisticsVersion);
-                    //     // console.log(typeof checkedCheckboxesSummaryStatisticsVersion);
-
-                    // });
-
-                // }
+                    createCheckBox('differentiation-versions', 'differentiation-versions', rowJsonObject[i].name, rowJsonObject[i].name);
+                    
+                }
 
                 differentiationDatesRadioEl.addEventListener("change", function() {
 
@@ -1023,41 +891,15 @@ fileUpload.addEventListener('click', function() {
 
                 selectAll('differentiation-versions-select-deselect-all-btn', checkboxesDifferentiationVersionEl);
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
-                // Create Versions / Dates checkboxes for Differentiation Rate
+                // -------------- Creating Versions / Dates checkboxes for Differentiation Rate --------------
                 
-                // if (differentiationVersionsRadioEl.checked) {
+                // Creating checkboxes for versions.
+                for (let i = 0; i < rowJsonObject.length; i++) {
 
-                    // Creating checkboxes for versions
-                    for (let i = 0; i < rowJsonObject.length; i++) {
-
-                        createCheckBox('differentiation-rate-versions', 'differentiation-rate-versions', rowJsonObject[i].name, rowJsonObject[i].name);                        
-                    }
-
-                    // selectAll('summary-statistics-versions-select-deselect-all-btn', checkboxesSummaryStatisticsVersionEl);
-
-                    // summaryStatisticsVersionsOkBtn.addEventListener('click', function() {
-                        
-                    //     checkedCheckboxesSummaryStatisticsVersion.length = 0;
-
-                    //     for (let i = 0; i < checkboxesSummaryStatisticsVersionEl.length; i++) {
-
-                    //         if (checkboxesSummaryStatisticsVersionEl[i].checked) {
-                    //             checkedCheckboxesSummaryStatisticsVersion.push(checkboxesSummaryStatisticsVersionEl[i].value);
-                    //         }
-                            
-                    //     }
-
-                    //     // DEBUGGING
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl);
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl.length);
-                    //     console.log(checkedCheckboxesSummaryStatisticsVersion);
-                    //     // console.log(typeof checkedCheckboxesSummaryStatisticsVersion);
-
-                    // });
-
-                // }
+                    createCheckBox('differentiation-rate-versions', 'differentiation-rate-versions', rowJsonObject[i].name, rowJsonObject[i].name);                        
+                }
 
                 differentiationRateDatesRadioEl.addEventListener("change", function() {
 
@@ -1087,41 +929,15 @@ fileUpload.addEventListener('click', function() {
 
                 selectAll('differentiation-rate-versions-select-deselect-all-btn', checkboxesDifferentiationRateVersionEl);
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
-                // Create Versions / Dates checkboxes for Sum Up To 100
+                // -------------- Creating Versions / Dates checkboxes for Sum Up To 100 --------------
                 
-                // if (differentiationVersionsRadioEl.checked) {
+                // Creating checkboxes for versions.
+                for (let i = 0; i < rowJsonObject.length; i++) {
 
-                    // Creating checkboxes for versions
-                    for (let i = 0; i < rowJsonObject.length; i++) {
-
-                        createCheckBox('sum-up-to-100-versions', 'sum-up-to-100-versions', rowJsonObject[i].name, rowJsonObject[i].name);                        
-                    }
-
-                    // selectAll('summary-statistics-versions-select-deselect-all-btn', checkboxesSummaryStatisticsVersionEl);
-
-                    // summaryStatisticsVersionsOkBtn.addEventListener('click', function() {
-                        
-                    //     checkedCheckboxesSummaryStatisticsVersion.length = 0;
-
-                    //     for (let i = 0; i < checkboxesSummaryStatisticsVersionEl.length; i++) {
-
-                    //         if (checkboxesSummaryStatisticsVersionEl[i].checked) {
-                    //             checkedCheckboxesSummaryStatisticsVersion.push(checkboxesSummaryStatisticsVersionEl[i].value);
-                    //         }
-                            
-                    //     }
-
-                    //     // DEBUGGING
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl);
-                    //     // console.log(checkboxesSummaryStatisticsVersionEl.length);
-                    //     console.log(checkedCheckboxesSummaryStatisticsVersion);
-                    //     // console.log(typeof checkedCheckboxesSummaryStatisticsVersion);
-
-                    // });
-
-                // }
+                    createCheckBox('sum-up-to-100-versions', 'sum-up-to-100-versions', rowJsonObject[i].name, rowJsonObject[i].name);                        
+                }
 
                 sumUpTo100DatesRadioEl.addEventListener("change", function() {
 
@@ -1155,7 +971,8 @@ fileUpload.addEventListener('click', function() {
                 // -----------------------------------------------------------------------------------
 
 
-                // Creating checkboxes for properties
+                // -------------- Creating checkboxes for properties --------------
+                
                 for (let i = 4; i < objectProperties.length; i++) {
 
                     createCheckBox('summary-statistics-properties', 'summary-statistics-properties', objectProperties[i], objectProperties[i]);
@@ -1165,7 +982,7 @@ fileUpload.addEventListener('click', function() {
 
                 }
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
                 selectAll('summary-statistics-properties-select-deselect-all-btn', checkboxesSummaryStatisticsPropertiesEl);
 
@@ -1189,7 +1006,7 @@ fileUpload.addEventListener('click', function() {
 
                 });
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
                 selectAll('differentiation-properties-select-deselect-all-btn', checkboxesDifferentiationPropertiesEl);
 
@@ -1213,7 +1030,7 @@ fileUpload.addEventListener('click', function() {
 
                 });
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
                 selectAll('differentiation-rate-properties-select-deselect-all-btn', checkboxesDifferentiationRatePropertiesEl);
 
@@ -1237,7 +1054,7 @@ fileUpload.addEventListener('click', function() {
 
                 });
 
-                // -----------------------------------------------------------------------------------
+                // -------------------------------------------
 
                 selectAll('sum-up-to-100-properties-select-deselect-all-btn', checkboxesSumUpTo100PropertiesEl);
 
@@ -1261,11 +1078,8 @@ fileUpload.addEventListener('click', function() {
 
                 });
 
+                // -------------------------------------------
 
-                // -----------------------------------------------------------------------------------
-
-
-                // Creating checkboxes for properties
                 for (let i = 0; i < chartNamesSummaryStatisticsArray.length; i++) {
 
                     createRadio('summary-statistics-charts', 'summary-statistics-charts', chartNamesSummaryStatisticsArray[i], chartNamesSummaryStatisticsArray[i]);
@@ -1289,8 +1103,6 @@ fileUpload.addEventListener('click', function() {
                 // -----------------------------------------------------------------------------------
 
 
-                // if (!(checkedCheckboxesSummaryStatisticsVersion.length === 0) && !(checkedCheckboxesSummaryStatisticsProperties.length === 0)) {
-
                 summaryStatisticsOkBtnsArray.forEach(btn => {
 
                     btn.addEventListener('click', function() {
@@ -1311,16 +1123,17 @@ fileUpload.addEventListener('click', function() {
                         deleteCanvas('myChart_summaryStatistics');
                         createCanvas('summary-statistics-chart-display', 'myChart_summaryStatistics');
 
+                        // -------------------------------------------
 
-                        // Array filled with selected versions
-                        // Gets the values of each row and push it into arrays
+                        // Array filled with selected versions.
+                        // Gets the values of each row and push it into arrays.
                         for (let i = 0; i < rowJsonObject.length; i++) {
 
                             if (summaryStatisticsVersionsRadioEl.checked) {
                                 
                                 if (checkboxesSummaryStatisticsVersionEl[i].checked && checkboxesSummaryStatisticsVersionEl[i].value === rowJsonObject[i].name) {
                                     nameSummaryStatistics.push(rowJsonObject[i].name);
-                                        // console.log(nameSummaryStatistics); 
+                                    // console.log(nameSummaryStatistics); 
                                 }
 
                             }
@@ -1339,7 +1152,8 @@ fileUpload.addEventListener('click', function() {
                         console.log(dateSummaryStatistics);
                         console.log(nameSummaryStatistics);
 
-
+                        // -------------------------------------------
+                        
                         if (summaryStatisticsVersionsRadioEl.checked) {
                                 
                             xAxisSummaryStatistics = [...nameSummaryStatistics];
@@ -1355,8 +1169,9 @@ fileUpload.addEventListener('click', function() {
                         console.log(nameSummaryStatistics);
                         console.log(dateSummaryStatistics);
                         
+                        // -------------------------------------------
 
-                        // Array filled with selected variables
+                        // Array filled with selected variables.
                         for (let i = 0; i < checkedCheckboxesSummaryStatisticsProperties.length; i++) {
 
                             propertySummaryStatistics.push(new Array());
@@ -1372,10 +1187,8 @@ fileUpload.addEventListener('click', function() {
                                         switch(checkedCheckboxesSummaryStatisticsProperties[i]) {
         
                                             case objectProperties[k] :
-                                                // console.log('OKKKKKK');
                                                 propertySummaryStatistics[i].push(rowJsonObject[j][objectProperties[k]]);
                                                 break;
-                                            // default:
                                                     
                                         }
         
@@ -1389,6 +1202,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(propertySummaryStatistics);
 
+                        // -------------------------------------------
 
                         for (let i = 0; i < checkboxesSummaryStatisticsChartsEl.length; i++) {
     
@@ -1403,9 +1217,12 @@ fileUpload.addEventListener('click', function() {
                         // console.log(checkboxesSummaryStatisticsChartsEl.length);
                         console.log(checkedCheckboxesSummaryStatisticsCharts);
                         // console.log(typeof checkedCheckboxesSummaryStatisticsCharts);
-                   
+                    
+                        // -------------------------------------------
 
                         backgroundColorFunction(propertySummaryStatistics, backgroundColorSummaryStatistics, borderColorSummaryStatistics);
+
+                        // -------------------------------------------
 
                         if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Horizontal Bar') {
                             
@@ -1428,13 +1245,7 @@ fileUpload.addEventListener('click', function() {
 
                                 indexAxis: 'y',
                                 responsive: true,
-                                maintainAspectRatio: false,
-                                // plugins: {
-                                //   legend: {
-                                //     position: 'right',
-                                //   }
-                                // }
-
+                                maintainAspectRatio: false
                             };
 
                         }
@@ -1479,9 +1290,6 @@ fileUpload.addEventListener('click', function() {
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
@@ -1496,12 +1304,7 @@ fileUpload.addEventListener('click', function() {
                             optionsSummaryStatistics = {
 
                                 responsive: true,
-                                maintainAspectRatio: false,
-                                // plugins: {
-                                //   legend: {
-                                //     position: 'right',
-                                //   }
-                                // },
+                                maintainAspectRatio: false
 
                             };
 
@@ -1513,9 +1316,6 @@ fileUpload.addEventListener('click', function() {
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
@@ -1537,180 +1337,59 @@ fileUpload.addEventListener('click', function() {
 
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Bubble') {
-                            
-                            // modalSummaryStatistics.length = 0;
 
                             summaryStatisticsChartType = 'bubble';
 
-                            // summaryStatisticsModal.style.display = "block";
-                            // summaryStatisticsOverlay.style.display = "block";
+                            dataSummaryStatistics = {
 
-                            // deleteDivInside('summary-statistics-z-axis-modal');
-
-                            // for (let i = 0; i < checkedCheckboxesSummaryStatisticsProperties.length; i++) {
-                                
-                            //     createRadio('summary-statistics-z-axis-modal', 'summary-statistics-z-axis-modal', checkedCheckboxesSummaryStatisticsProperties[i], checkedCheckboxesSummaryStatisticsProperties[i]);
-        
-                            // }
-                      
-                            // createButton('summary-statistics-z-axis-modal', 'ok', 'summary-statistics-modal-ok-btn', 'Ok');
-
-
-                            // summaryStatisticsModalOkBtn = document.getElementById('summary-statistics-modal-ok-btn');
-
-
-                            // summaryStatisticsModalOkBtn.addEventListener("click", function() {
-            
-
-                            //     summaryStatisticsModal.style.display = "none";
-                            //     summaryStatisticsOverlay.style.display = "none";
-                            // });
-                                // checkedCheckboxesSummaryStatisticsModal.length = 0;
-
-                                //     for (let i = 0; i < checkboxesSummaryStatisticsModalEl.length; i++) {
-
-                                //         if (checkboxesSummaryStatisticsModalEl[i].checked) {
-                                //             checkedCheckboxesSummaryStatisticsModal.push(checkboxesSummaryStatisticsModalEl[i].value);
-                                //         }
-                                        
-                                //     }
-
-                                //     // DEBUGGING
-                                //     // console.log(checkboxesSummaryStatisticsModalEl);
-                                //     // console.log(checkboxesSummaryStatisticsModalEl.length);
-                                //     console.log(checkedCheckboxesSummaryStatisticsModal);
-                                //     // console.log(typeof checkedCheckboxesSummaryStatisticsModal);
-
-                                // // });
-
-                            
-                            
-
-                            // console.log(checkedCheckboxesSummaryStatisticsModal);
-
-
-                                // // Array filled with selected variables
-                                // for (let i = 0; i < checkedCheckboxesSummaryStatisticsModal.length; i++) {
-
-                                //     modalSummaryStatistics.push(new Array());
-
-                                //     console.log('DONE');
-
-                                //     for (let j = 0; j < rowJsonObject.length; j++) {
-                                        
-                                //         if (nameSummaryStatistics.includes(rowJsonObject[j].name) || dateSummaryStatistics.includes(formatedDatesArray[j])) {
-
-                                //             console.log(nameSummaryStatistics.includes(rowJsonObject[j].name));
-                                //             // console.log(checkedCheckboxesSummaryStatisticsModal);
-                                            
-                                            
-                                            
-                                //             console.log('EXTRA DONE');
-                                            
-                                            
-                                            
-                                //             for (let k = 0; k < objectProperties.length; k++) {
-                
-                                //                 switch(checkedCheckboxesSummaryStatisticsModal[i]) {
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                //                     case objectProperties[k] :
-
-                                //                         console.log('EXTRA EXTRA EXTRA DONE');
-
-                                                    
-                                //                         // console.log('OKKKKKK');
-                                //                         modalSummaryStatistics[i].push(rowJsonObject[j][objectProperties[k]]);
-                                //                         break;
-                                //                     // default:
-                                                            
-                                //                 }
-
-                                //                 console.log(modalSummaryStatistics);
-                
-                                //             }
-                
-                                //         }
-                
-                                //     }
-
-                                    // console.log(modalSummaryStatistics);
-                
-                                // }
-
-                                // console.log(modalSummaryStatistics);
-
-                            
-
-                                // console.log(modalSummaryStatistics);
-
-                                // const arrayNewExample = [12, 15, 18];
-
-
-
-
-                                // oneArrayPropertySummaryStatistics = [].concat(...propertySummaryStatistics);
-
-                                // console.log(oneArrayPropertySummaryStatistics);
-
-                                dataSummaryStatistics = {
-
-                                    labels: xAxisSummaryStatistics,
-                                    // animation: {
-                                    //     duration: 10
-                                    //     },
-                                    datasets:
-                                    checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
-                                            label: checkedCheckboxesSummaryStatisticsProperties[i],
-                                            data:
-                                            xAxisSummaryStatistics.map((key, j) => ({
-                                                x: xAxisSummaryStatistics[j],
-                                                y: propertySummaryStatistics[i][j],
-                                                r: propertySummaryStatistics[i][j]
-                                                // r: 20,
-                                            })),
-                                            // data:
-                                            // xAxisSummaryStatistics.map((key, j) => ({
-                                            //     x: xAxisSummaryStatistics[i],
-                                            //     y: oneArrayPropertySummaryStatistics[j],
-                                            //     r: modalSummaryStatistics[i],
-                                            // })),
-                                            borderWidth: 4,
-                                            backgroundColor: backgroundColorSummaryStatistics[i],
-                                            borderColor: borderColorSummaryStatistics[i]
+                                labels: xAxisSummaryStatistics,
+                                // animation: {
+                                //     duration: 10
+                                //     },
+                                datasets:
+                                checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
+                                        label: checkedCheckboxesSummaryStatisticsProperties[i],
+                                        data:
+                                        xAxisSummaryStatistics.map((key, j) => ({
+                                            x: xAxisSummaryStatistics[j],
+                                            y: propertySummaryStatistics[i][j],
+                                            r: propertySummaryStatistics[i][j]
+                                            // r: 20,
                                         })),
-                                        
+                                        // data:
+                                        // xAxisSummaryStatistics.map((key, j) => ({
+                                        //     x: xAxisSummaryStatistics[i],
+                                        //     y: oneArrayPropertySummaryStatistics[j],
+                                        //     r: modalSummaryStatistics[i],
+                                        // })),
+                                        borderWidth: 4,
+                                        backgroundColor: backgroundColorSummaryStatistics[i],
+                                        borderColor: borderColorSummaryStatistics[i]
+                                    })),
+                                    
 
-                                };
+                            };
 
-                                optionsSummaryStatistics = {
+                            optionsSummaryStatistics = {
 
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    scales: {
-                                        // y: {
-                                        //     type: 'category',
-                                        //     labels: oneArrayPropertySummaryStatistics
-                                        // },
-                                        x: {
-                                            type: 'category',
-                                            labels: xAxisSummaryStatistics
-                                        },
-                                    //     r: {
-                                    //         type: 'category',
-                                    //         labels: checkedCheckboxesSummaryStatisticsModal
-                                    //     }
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    // y: {
+                                    //     type: 'category',
+                                    //     labels: oneArrayPropertySummaryStatistics
+                                    // },
+                                    x: {
+                                        type: 'category',
+                                        labels: xAxisSummaryStatistics
                                     },
+                                //     r: {
+                                //         type: 'category',
+                                //         labels: checkedCheckboxesSummaryStatisticsModal
+                                //     }
+                                },
 
-                                };
-
-
-                            
-                            
-                            
+                            };
 
                         }
                         else if (checkedCheckboxesSummaryStatisticsCharts[0] === 'Doughnut') {
@@ -1725,9 +1404,6 @@ fileUpload.addEventListener('click', function() {
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
@@ -1756,9 +1432,6 @@ fileUpload.addEventListener('click', function() {
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
@@ -1787,9 +1460,6 @@ fileUpload.addEventListener('click', function() {
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
@@ -1816,9 +1486,6 @@ fileUpload.addEventListener('click', function() {
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
                                         label: checkedCheckboxesSummaryStatisticsProperties[i],
@@ -1842,8 +1509,6 @@ fileUpload.addEventListener('click', function() {
                             
                             summaryStatisticsChartType = 'scatter';
 
-
-
                             dataSummaryStatistics = {
 
                                 labels: xAxisSummaryStatistics,
@@ -1859,7 +1524,6 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorSummaryStatistics[i],
                                         borderColor: borderColorSummaryStatistics[i]
                                     })),
-                                    
 
                             };
 
@@ -1876,52 +1540,31 @@ fileUpload.addEventListener('click', function() {
 
                             };
 
-
-
-
                         }
 
                         console.log(checkedCheckboxesSummaryStatisticsCharts[0]);
                         console.log(summaryStatisticsChartType);
 
+                        // -------------------------------------------
 
-
-                        // Displays the chart for the variables
+                        // Displays the chart for the variables.
                         const ctx1= document.getElementById('myChart_summaryStatistics').getContext('2d');
 
-                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+                        const myChart_summaryStatistics = new Chart(ctx1, {
+                            type: summaryStatisticsChartType,
+                            data: dataSummaryStatistics,
+                            options: optionsSummaryStatistics
+                        });
 
-                            const myChart_summaryStatistics = new Chart(ctx1, {
-                                type: summaryStatisticsChartType,
-                                data: dataSummaryStatistics,
-                                options: optionsSummaryStatistics
-                                // options: {
-                                //     plugins: {
-                                //         tooltip: {
-                                //             enabled: false // <-- this option disables tooltips
-                                //         }
-                                //     },
-                                //     // maintainAspectRatio: false,
-                                //     responsive: true,
-                                //     maintainAspectRatio: false,
-                                        
-                                // }
-                            });
-
-                            console.log(myChart_summaryStatistics);
-                        // }
+                        console.log(myChart_summaryStatistics);
                         
                     });
                  
                 });
 
-                // }
-
 
                 // -----------------------------------------------------------------------------------
 
-
-                // if (!(checkedCheckboxesDifferentiationVersion.length === 0) && !(checkedCheckboxesDifferentiationProperties.length === 0)) {
 
                 differentiationOkBtnsArray.forEach(btn => {
 
@@ -1943,9 +1586,10 @@ fileUpload.addEventListener('click', function() {
                         deleteCanvas('myChart_differentiation');
                         createCanvas('differentiation-chart-display', 'myChart_differentiation');
 
+                        // -------------------------------------------
 
-                        // Array filled with selected versions
-                        // Gets the values of each row and push it into arrays
+                        // Array filled with selected versions.
+                        // Gets the values of each row and push it into arrays.
                         for (let i = 0; i < rowJsonObject.length; i++) {
 
                             if (differentiationVersionsRadioEl.checked) {
@@ -1972,6 +1616,7 @@ fileUpload.addEventListener('click', function() {
                         console.log(dateDifferentiation);
                         console.log(nameDifferentiation);
 
+                        // -------------------------------------------
 
                         if (differentiationVersionsRadioEl.checked) {
                             
@@ -1987,7 +1632,8 @@ fileUpload.addEventListener('click', function() {
                         console.log(xAxisDifferentiation);
                         console.log(nameDifferentiation);
                         console.log(dateDifferentiation);
-                        
+
+                        // -------------------------------------------
 
                         // Array filled with selected variables
                         for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
@@ -2005,10 +1651,8 @@ fileUpload.addEventListener('click', function() {
                                         switch(checkedCheckboxesDifferentiationProperties[i]) {
         
                                             case objectProperties[k] :
-                                                // console.log('OKKKKKK');
                                                 propertyDifferentiation[i].push(rowJsonObject[j][objectProperties[k]]);
                                                 break;
-                                            // default:
                                                     
                                         }
         
@@ -2022,23 +1666,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(propertyDifferentiation);
                         
-
-                        // Array filled with formated dates
-                        // for (let i = 0; i < rowJsonObject.length; i++) {
-                        //     // console.log(rowJsonObject[i].rel_date);
-                        //     const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
-                            
-                        //     const year = num_date.toLocaleString("default", { year: "numeric" });
-                        //     const month = num_date.toLocaleString("default", { month: "2-digit" });
-                        //     const day = num_date.toLocaleString("default", { day: "2-digit" });
-        
-                        //     const dateFormat = month + "/" + day + "/" + year;
-        
-                        //     dateDifferentiation.push(dateFormat);
-                        // };
-
-                        // console.log(dateDifferentiation);
-
+                        // -------------------------------------------
 
                         // Calculation of the Differentiation
                         for (let i = 0; i < propertyDifferentiation.length; i++) {
@@ -2059,6 +1687,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(differentiation);
 
+                        // -------------------------------------------
 
                         for (let i = 0; i < checkboxesDifferentiationChartsEl.length; i++) {
     
@@ -2074,6 +1703,7 @@ fileUpload.addEventListener('click', function() {
                         console.log(checkedCheckboxesDifferentiationCharts);
                         // console.log(typeof checkedCheckboxesDifferentiationCharts);
 
+                        // -------------------------------------------
 
                         backgroundColorFunction(propertyDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
 
@@ -2083,6 +1713,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(mergedXAxisDifferentiation);
 
+                        // -------------------------------------------
 
                         if (checkedCheckboxesDifferentiationCharts[0] === 'Horizontal Bar') {
                         
@@ -2099,6 +1730,7 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorDifferentiation[i],
                                         borderColor: borderColorDifferentiation[i]
                                     })),
+
                             };
 
                             optionsDifferentiation = {
@@ -2129,6 +1761,7 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorDifferentiation[i],
                                         borderColor: borderColorDifferentiation[i]
                                     })),
+
                             };
 
                             optionsDifferentiation = {
@@ -2164,6 +1797,7 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorDifferentiation[i],
                                         borderColor: borderColorDifferentiation[i]
                                     })),
+
                             };
 
                             optionsDifferentiation = {
@@ -2210,100 +1844,7 @@ fileUpload.addEventListener('click', function() {
                         }
                         else if (checkedCheckboxesDifferentiationCharts[0] === 'Bubble') {
 
-                            // modalDifferentiation.length = 0;
-
                             differentiationChartType = 'bubble';
-
-                            // differentiationModal.style.display = "block";
-                            // differentiationOverlay.style.display = "block";
-
-                            // deleteDivInside('differentiation-z-axis-modal');
-
-                            // for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
-                                
-                            //     createRadio('differentiation-z-axis-modal', 'differentiation-z-axis-modal', checkedCheckboxesDifferentiationProperties[i], checkedCheckboxesDifferentiationProperties[i]);
-        
-                            // }
-                        
-                            // createButton('differentiation-z-axis-modal', 'ok', 'differentiation-modal-ok-btn', 'Ok');
-
-
-                            // differentiationModalOkBtn = document.getElementById('differentiation-modal-ok-btn');
-
-
-
-
-
-                            // differentiationModalOkBtn.addEventListener("click", function() {
-            
-
-                            //     differentiationModal.style.display = "none";
-                            //     differentiationOverlay.style.display = "none";
-
-                            // });
-                            
-                            // checkedCheckboxesDifferentiationModal.length = 0;
-
-                            // for (let i = 0; i < checkboxesDifferentiationModalEl.length; i++) {
-
-                            //     if (checkboxesDifferentiationModalEl[i].checked) {
-                            //         checkedCheckboxesDifferentiationModal.push(checkboxesDifferentiationModalEl[i].value);
-                            //     }
-                                        
-                            // }
-
-                            // // DEBUGGING
-                            // // console.log(checkboxesDifferentiationModalEl);
-                            // // console.log(checkboxesDifferentiationModalEl.length);
-                            // console.log(checkedCheckboxesDifferentiationModal);
-                            // // console.log(typeof checkedCheckboxesDifferentiationModal);
-
-                            // console.log(checkedCheckboxesDifferentiationModal);
-
-
-                            // // Array filled with selected variables
-
-                            // // checkedCheckboxesSummaryStatisticsModal
-                            // for (let i = 0; i < checkedCheckboxesDifferentiationProperties.length; i++) {
-
-                            //     modalDifferentiation.push(new Array());
-
-                            //     for (let j = 0; j < rowJsonObject.length; j++) {
-                                    
-                            //         if (nameDifferentiation.includes(rowJsonObject[j].name) || dateDifferentiation.includes(formatedDatesArray[j])) {
-
-                            //             // console.log(checkedCheckboxesDifferentiationProperties);
-            
-                            //             for (let k = 0; k < objectProperties.length; k++) {
-            
-                            //                 switch(checkedCheckboxesDifferentiationModal[i]) {
-            
-                            //                     case objectProperties[k] :
-                            //                         // console.log('OKKKKKK');
-                            //                         modalDifferentiation[i].push(rowJsonObject[j][objectProperties[k]]);
-                            //                         break;
-                            //                     // default:
-                                                        
-                            //                 }
-
-                            //                 // console.log(modalDifferentiation);
-            
-                            //             }
-            
-                            //         }
-            
-                            //     }
-
-                            //     // console.log(modalDifferentiation);
-            
-                            // }
-
-
-                            // console.log(modalDifferentiation);
-
-                            // oneArrayPropertyDifferentiation = [].concat(...propertyDifferentiation);
-
-                            // console.log(oneArrayPropertyDifferentiation);
 
                             dataDifferentiation = {
 
@@ -2317,11 +1858,6 @@ fileUpload.addEventListener('click', function() {
                                                 y: differentiation[i][j],
                                                 r: differentiation[i][j],
                                             })),
-                                            // mergedXAxisDifferentiation.map((key, j) => ({
-                                            //     x: mergedXAxisDifferentiation[j],
-                                            //     y: differentiation[i][j],
-                                            //     r: 20,
-                                            // })),
                                         borderWidth: 4,
                                         backgroundColor: backgroundColorDifferentiation[i],
                                         borderColor: borderColorDifferentiation[i]
@@ -2343,45 +1879,6 @@ fileUpload.addEventListener('click', function() {
                             };
 
                         }
-                        // else if (checkedCheckboxesDifferentiationCharts[0] === 'Combo Bar / Line') {
-                            
-                        //     differentiationChartType = 'bar';
-
-                            // dataDifferentiation = {
-
-                            //     labels: mergedXAxisDifferentiation,
-                            //     datasets:
-                            //         checkedCheckboxesDifferentiationProperties.map((key, i) => ({
-                            //             label: checkedCheckboxesDifferentiationProperties[i],
-                            //             data: differentiation[i],
-                            //             borderWidth: 4,
-                            //             backgroundColor: backgroundColorDifferentiation[i],
-                            //             borderColor: borderColorDifferentiation[i]
-                            //         })),
-                                    
-                            //             // checkedCheckboxesSummaryStatisticsProperties.map((key, i) => ({
-                            //             //     type: 'line',
-                            //             //     label: checkedCheckboxesSummaryStatisticsProperties[i],
-                            //             //     data: propertySummaryStatistics[i],
-                            //             //     borderWidth: 4,
-                            //             //     backgroundColor: backgroundColorDifferentiation[i],
-                            //             //     borderColor: borderColorDifferentiation[i],
-                            //             //     fill: true
-                            //             // })),
-                                    
-                            // };
-
-                            // optionsDifferentiation = {
-
-                            //     responsive: true,
-                            //     maintainAspectRatio: false,
-                            //     x: {
-                            //         type: 'category',
-                            //         labels: mergedXAxisDifferentiation
-                            //     },
-
-                            // };
-                        // }
                         else if (checkedCheckboxesDifferentiationCharts[0] === 'Doughnut') {
                         
                             backgroundColorFunction(xAxisDifferentiation, backgroundColorDifferentiation, borderColorDifferentiation);
@@ -2488,9 +1985,6 @@ fileUpload.addEventListener('click', function() {
                             dataDifferentiation = {
 
                                 labels: mergedXAxisDifferentiation,
-                                // animation: {
-                                //     duration: 10
-                                //     },
                                 datasets:
                                 checkedCheckboxesDifferentiationProperties.map((key, i) => ({
                                         label: checkedCheckboxesDifferentiationProperties[i],
@@ -2512,31 +2006,6 @@ fileUpload.addEventListener('click', function() {
                                 }
 
                             };
-
-                            // dataDifferentiation = {
-
-                            // labels: mergedXAxisDifferentiation,
-                            // datasets:
-                            //     checkedCheckboxesDifferentiationProperties.map((key, i) => ({
-                            //         label: checkedCheckboxesDifferentiationProperties[i],
-                            //         data: differentiation[i],
-                            //         borderWidth: 4,
-                            //         backgroundColor: backgroundColorDifferentiation[i],
-                            //         borderColor: borderColorDifferentiation[i]
-                            //     })),
-
-                            // };
-
-                            // optionsDifferentiation = {
-
-                            //     responsive: true,
-                            //     maintainAspectRatio: false,
-                            //     x: {
-                            //         type: 'category',
-                            //         labels: mergedXAxisDifferentiation
-                            //     },
-
-                            // };
 
                         }
                         else if (checkedCheckboxesDifferentiationCharts[0] === 'Scatter') {
@@ -2576,18 +2045,13 @@ fileUpload.addEventListener('click', function() {
 
                         }
 
-
                         console.log(checkedCheckboxesDifferentiationCharts[0]);
                         console.log(differentiationChartType);
 
+                        // -------------------------------------------
 
-
-
-
-                        // Displays the chart for the variables
+                        // Displays the chart for the variables.
                         const ctx2 = document.getElementById('myChart_differentiation').getContext('2d');
-
-                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
 
                             const myChart_differentiation = new Chart(ctx2, {
 
@@ -2599,20 +2063,14 @@ fileUpload.addEventListener('click', function() {
 
                             console.log(myChart_differentiation);
 
-                        // }
-
                     });
 
                 });
 
-                // }
-
-
+                
                 // -----------------------------------------------------------------------------------
 
-
-                // if (!(checkedCheckboxesDifferentiationRateVersion.length === 0) && !(checkedCheckboxesDifferentiationRateProperties.length === 0)) {
-
+                
                 differentiationRateOkBtnsArray.forEach(btn => {
 
                     btn.addEventListener('click', function() {
@@ -2633,9 +2091,10 @@ fileUpload.addEventListener('click', function() {
                         deleteCanvas('myChart_differentiationRate');
                         createCanvas('differentiation-rate-chart-display', 'myChart_differentiationRate');
 
+                        // -------------------------------------------
 
-                        // Array filled with selected versions
-                        // Gets the values of each row and push it into arrays
+                        // Array filled with selected versions.
+                        // Gets the values of each row and push it into arrays.
                         for (let i = 0; i < rowJsonObject.length; i++) {
 
                             if (differentiationRateVersionsRadioEl.checked) {
@@ -2662,6 +2121,7 @@ fileUpload.addEventListener('click', function() {
                         console.log(dateDifferentiationRate);
                         console.log(nameDifferentiationRate);
 
+                        // -------------------------------------------
 
                         if (differentiationRateVersionsRadioEl.checked) {
                                 
@@ -2678,6 +2138,7 @@ fileUpload.addEventListener('click', function() {
                         console.log(nameDifferentiationRate);
                         console.log(dateDifferentiationRate);
 
+                        // -------------------------------------------
 
                         // Array filled with selected variables
                         for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
@@ -2695,10 +2156,8 @@ fileUpload.addEventListener('click', function() {
                                         switch(checkedCheckboxesDifferentiationRateProperties[i]) {
         
                                             case objectProperties[k] :
-                                                // console.log('OKKKKKK');
                                                 propertyDifferentiationRate[i].push(rowJsonObject[j][objectProperties[k]]);
                                                 break;
-                                            // default:
                                                     
                                         }
         
@@ -2712,6 +2171,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(propertyDifferentiationRate);
 
+                        // -------------------------------------------
 
                         // Calculation of the Differentiation Rate
                         for (let i = 0; i < propertyDifferentiationRate.length; i++) {
@@ -2736,6 +2196,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(differentiationRate);
 
+                        // -------------------------------------------
 
                         checkedCheckboxesDifferentiationRateCharts.length = 0;
 
@@ -2753,7 +2214,7 @@ fileUpload.addEventListener('click', function() {
                         console.log(checkedCheckboxesDifferentiationRateCharts);
                         // console.log(typeof checkedCheckboxesDifferentiationRateCharts);
 
-
+                        // -------------------------------------------
 
                         backgroundColorFunction(propertyDifferentiationRate, backgroundColorDifferentiationRate, borderColorDifferentiationRate);
 
@@ -2763,6 +2224,7 @@ fileUpload.addEventListener('click', function() {
 
                         console.log(mergedXAxisDifferentiationRate);
 
+                        // -------------------------------------------
 
                         if (checkedCheckboxesDifferentiationRateCharts[0] === 'Horizontal Bar') {
                             
@@ -2779,6 +2241,7 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorDifferentiationRate[i],
                                         borderColor: borderColorDifferentiationRate[i]
                                     })),
+                                    
                             };
 
                             optionsDifferentiationRate = {
@@ -2809,6 +2272,7 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorDifferentiationRate[i],
                                         borderColor: borderColorDifferentiationRate[i]
                                     })),
+
                             };
 
                             optionsDifferentiationRate = {
@@ -2844,6 +2308,7 @@ fileUpload.addEventListener('click', function() {
                                         backgroundColor: backgroundColorDifferentiationRate[i],
                                         borderColor: borderColorDifferentiationRate[i]
                                     })),
+
                             };
 
                             optionsDifferentiationRate = {
@@ -2874,6 +2339,7 @@ fileUpload.addEventListener('click', function() {
                                         borderColor: borderColorDifferentiationRate[i],
                                         fill: true
                                     })),
+
                             };
 
                             optionsDifferentiationRate = {
@@ -2890,95 +2356,7 @@ fileUpload.addEventListener('click', function() {
                         }
                         else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Bubble') {
 
-                            // modalDifferentiationRate.length = 0;
-
                             differentiationRateChartType = 'bubble';
-
-                            // differentiationRateModal.style.display = "block";
-                            // differentiationRateOverlay.style.display = "block";
-
-                            // deleteDivInside('differentiation-rate-z-axis-modal');
-
-                            // for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
-                                
-                            //     createRadio('differentiation-rate-z-axis-modal', 'differentiation-rate-z-axis-modal', checkedCheckboxesDifferentiationRateProperties[i], checkedCheckboxesDifferentiationRateProperties[i]);
-        
-                            // }
-                      
-                            // createButton('differentiation-rate-z-axis-modal', 'ok', 'differentiation-rate-modal-ok-btn', 'Ok');
-
-
-                            // differentiationRateModalOkBtn = document.getElementById('differentiation-rate-modal-ok-btn');
-
-
-                            // differentiationRateModalOkBtn.addEventListener("click", function() {
-            
-
-                            //     differentiationRateModal.style.display = "none";
-                            //     differentiationRateOverlay.style.display = "none";
-
-                            // });
-                            
-                            // checkedCheckboxesDifferentiationRateModal.length = 0;
-
-                            //     for (let i = 0; i < checkboxesDifferentiationRateModalEl.length; i++) {
-
-                            //         if (checkboxesDifferentiationRateModalEl[i].checked) {
-                            //             checkedCheckboxesDifferentiationRateModal.push(checkboxesDifferentiationRateModalEl[i].value);
-                            //         }
-                                        
-                            //     }
-
-                            //     // DEBUGGING
-                            //     // console.log(checkboxesDifferentiationRateModalEl);
-                            //     // console.log(checkboxesDifferentiationRateModalEl.length);
-                            //     console.log(checkedCheckboxesDifferentiationRateModal);
-                            //     // console.log(typeof checkedCheckboxesDifferentiationRateModal);
-
-                            // // });
-
-                            // console.log(checkedCheckboxesDifferentiationRateModal);
-
-
-                            // // Array filled with selected variables
-
-                            // // checkedCheckboxesSummaryStatisticsModal
-                            // for (let i = 0; i < checkedCheckboxesDifferentiationRateProperties.length; i++) {
-
-                            //     modalDifferentiationRate.push(new Array());
-
-                            //     for (let j = 0; j < rowJsonObject.length; j++) {
-                                    
-                            //         if (nameDifferentiationRate.includes(rowJsonObject[j].name) || dateDifferentiationRate.includes(formatedDatesArray[j])) {
-
-                            //             // console.log(checkedCheckboxesDifferentiationRateProperties);
-            
-                            //             for (let k = 0; k < objectProperties.length; k++) {
-            
-                            //                 switch(checkedCheckboxesDifferentiationRateModal[i]) {
-            
-                            //                     case objectProperties[k] :
-                            //                         // console.log('OKKKKKK');
-                            //                         modalDifferentiationRate[i].push(rowJsonObject[j][objectProperties[k]]);
-                            //                         break;
-                            //                     // default:
-                                                        
-                            //                 }
-            
-                            //             }
-            
-                            //         }
-            
-                            //     }
-            
-                            // }
-
-                            // console.log(modalDifferentiationRate);
-
-    
-                            // oneArrayPropertyDifferentiationRate = [].concat(...propertyDifferentiationRate);
-    
-                            // console.log(oneArrayPropertyDifferentiationRate);
     
                             dataDifferentiationRate = {
     
@@ -2992,11 +2370,6 @@ fileUpload.addEventListener('click', function() {
                                                 y: differentiationRate[i][j],
                                                 r: differentiationRate[i][j],
                                             })),
-                                            // mergedXAxisDifferentiationRate.map((key, j) => ({
-                                            //     x: mergedXAxisDifferentiationRate[j],
-                                            //     y: differentiationRate[i][j],
-                                            //     r: 20,
-                                            // })),
                                         borderWidth: 4,
                                         backgroundColor: backgroundColorDifferentiationRate[i],
                                         borderColor: borderColorDifferentiationRate[i]
@@ -3018,9 +2391,6 @@ fileUpload.addEventListener('click', function() {
                             };
 
                         }
-                        // else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Combo Bar / Line') {
-                        //     differentiationRateChartType = 'bar';
-                        // }
                         else if (checkedCheckboxesDifferentiationRateCharts[0] === 'Doughnut') {
                             
                             backgroundColorFunction(xAxisDifferentiationRate, backgroundColorDifferentiationRate, borderColorDifferentiationRate);
@@ -3191,39 +2561,28 @@ fileUpload.addEventListener('click', function() {
                         console.log(checkedCheckboxesDifferentiationRateCharts[0]);
                         console.log(differentiationRateChartType);
 
+                        // -------------------------------------------
 
-                        // Displays the chart for the variables
+                        // Displays the chart for the variables.
                         const ctx3= document.getElementById('myChart_differentiationRate').getContext('2d');
-                        // const ctx4= document.getElementById('myChart_sum_100').getContext('2d');
 
-                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+                        const myChart_differentiationRate = new Chart(ctx3, {
 
-                            const myChart_differentiationRate = new Chart(ctx3, {
+                            type: differentiationRateChartType,
+                            data: dataDifferentiationRate,
+                            options: optionsDifferentiationRate
 
-                                type: differentiationRateChartType,
-                                data: dataDifferentiationRate,
-                                options: optionsDifferentiationRate
+                        });
 
-                            });
-
-                            console.log(myChart_differentiationRate);
-
-                        // }
+                        console.log(myChart_differentiationRate);
                         
                     });
                  
                 });
 
-                // }
-
-
-
-
 
                 // -----------------------------------------------------------------------------------
 
-                
-                // if (!(checkedCheckboxesDifferentiationRateVersion.length === 0) && !(checkedCheckboxesDifferentiationRateProperties.length === 0)) {
 
                 sumUpTo100OkBtnsArray.forEach(btn => {
 
@@ -3245,8 +2604,10 @@ fileUpload.addEventListener('click', function() {
                         deleteCanvas('myChart_sumUpTo100');
                         createCanvas('sum-up-to-100-chart-display', 'myChart_sumUpTo100');
 
-                        // Array filled with selected versions
-                        // Gets the values of each row and push it into arrays
+                        // -------------------------------------------
+
+                        // Array filled with selected versions.
+                        // Gets the values of each row and push it into arrays.
                         for (let i = 0; i < rowJsonObject.length; i++) {
 
                             if (sumUpTo100VersionsRadioEl.checked) {
@@ -3272,9 +2633,8 @@ fileUpload.addEventListener('click', function() {
                             console.log(nameSumUpTo100);
                         
                         };
-                    
-                        // console.log(dateSumUpTo100);
-                        // console.log(nameSumUpTo100);
+
+                        // -------------------------------------------
 
                         if (sumUpTo100VersionsRadioEl.checked) {
                                 
@@ -3291,6 +2651,7 @@ fileUpload.addEventListener('click', function() {
                         console.log(nameSumUpTo100);
                         console.log(dateSumUpTo100);
 
+                        // -------------------------------------------
 
                         // Array filled with selected variables
                         for (let i = 0; i < checkedCheckboxesSumUpTo100Properties.length; i++) {
@@ -3324,6 +2685,8 @@ fileUpload.addEventListener('click', function() {
                         }
 
                         console.log(propertySumUpTo100);
+                        
+                        // -------------------------------------------
 
                         checkedCheckboxesSumUpTo100Charts.length = 0;
 
@@ -3341,29 +2704,17 @@ fileUpload.addEventListener('click', function() {
                         console.log(checkedCheckboxesSumUpTo100Charts);
                         // console.log(typeof checkedCheckboxesSumUpTo100Charts);
 
-
+                        // -------------------------------------------
 
                         backgroundColorFunction(xAxisSumUpTo100, backgroundColorSumUpTo100, borderColorSumUpTo100);
                         
                         Chart.register(ChartjsPluginStacked100.default);
 
+                        // -------------------------------------------
+
                         if (checkedCheckboxesSumUpTo100Charts[0] === 'Stacked Bar') {
                             
                             sumUpTo100ChartType = 'bar';
-
-                            // dataSumUpTo100 = {
-
-                            //     labels: xAxisSumUpTo100,
-                            //     datasets:
-                            //     checkedCheckboxesSumUpTo100Properties.map((key, i) => ({
-                            //             label: checkedCheckboxesSumUpTo100Properties[i],
-                            //             data: propertySumUpTo100[i],
-                            //             borderWidth: 4,
-                            //             backgroundColor: backgroundColorSumUpTo100[i],
-                            //             borderColor: borderColorSumUpTo100[i]
-                            //         })),
-
-                            // };
                         
                             dataSumUpTo100 = {
 
@@ -3400,142 +2751,24 @@ fileUpload.addEventListener('click', function() {
                         console.log(checkedCheckboxesSumUpTo100Charts[0]);
                         console.log(sumUpTo100ChartType);
 
+                        // -------------------------------------------
 
-                        // Displays the chart for the variables
+                        // Displays the chart for the variables.
                         const ctx4= document.getElementById('myChart_sumUpTo100').getContext('2d');
 
-                        // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
+                        const myChart_sumUpTo100 = new Chart(ctx4, {
 
-                            const myChart_sumUpTo100 = new Chart(ctx4, {
+                            type: sumUpTo100ChartType,
+                            data: dataSumUpTo100,
+                            options: optionsSumUpTo100
 
-                                type: sumUpTo100ChartType,
-                                data: dataSumUpTo100,
-                                options: optionsSumUpTo100
+                        });
 
-                            });
+                        console.log(myChart_sumUpTo100);
 
-                            console.log(myChart_sumUpTo100);
-
-                        // }
-                        
                     });
                  
                 });
-
-                // }
-
-
-
-
-
-                // -----------------------------------------------------------------------------------
-
-                // if (!(checkedCheckboxesSumUpTo100Version.length === 0) && !(checkedCheckboxesSumUpTo100Properties.length === 0)) {
-
-                // sumUpTo100OkBtnsArray.forEach(btn => {
-
-                //     btn.addEventListener('click', function() {
-
-                //         nameSumUpTo100.length = 0;
-                //         propertySumUpTo100.length = 0;
-                //         dateSumUpTo100.length = 0;
-                     
-                //         // Array filled with selected versions
-                //         // Gets the values of each row and push it into arrays
-                //         for (let i = 0; i < rowJsonObject.length; i++) {
-        
-                //             // console.log(checkboxesSumUpTo100VersionEl[i].checked);
-        
-                //             if (checkboxesSumUpTo100VersionEl[i].checked && checkboxesSumUpTo100VersionEl[i].value === rowJsonObject[i].name) {
-                //                 nameSumUpTo100.push(rowJsonObject[i].name);
-                //                     // console.log(nameSumUpTo100); 
-                //             }
-                            
-                //         };
-
-                //         console.log(nameSumUpTo100);
-
-                //         // Array filled with selected variables
-                //         for (let i = 0; i < checkedCheckboxesSumUpTo100Properties.length; i++) {
-
-                //             propertySumUpTo100.push(new Array());
-
-                //             for (let j = 0; j < rowJsonObject.length; j++) {
-                                
-                //                 if (nameSumUpTo100.includes(rowJsonObject[j].name)) {
-
-                //                     // console.log(checkedCheckboxesSumUpTo100Properties);
-        
-                //                     for (let k = 0; k < objectProperties.length; k++) {
-        
-                //                         switch(checkedCheckboxesSumUpTo100Properties[i]) {
-        
-                //                             case objectProperties[k] :
-                //                                 // console.log('OKKKKKK');
-                //                                 propertySumUpTo100[i].push(rowJsonObject[j][objectProperties[k]]);
-                //                                 break;
-                //                             // default:
-                                                    
-                //                         }
-        
-                //                     }
-        
-                //                 }
-        
-                //             }
-        
-                //         }
-
-                //         console.log(propertySumUpTo100);
-                        
-                //         // Array filled with formated dates
-                //         for (let i = 0; i < rowJsonObject.length; i++) {
-                //             // console.log(rowJsonObject[i].rel_date);
-                //             const num_date = new Date(Math.round((rowJsonObject[i].rel_date - 25569) * 86400 * 1000));
-                            
-                //             const year = num_date.toLocaleString("default", { year: "numeric" });
-                //             const month = num_date.toLocaleString("default", { month: "2-digit" });
-                //             const day = num_date.toLocaleString("default", { day: "2-digit" });
-        
-                //             const dateFormat = month + "/" + day + "/" + year;
-        
-                //             dateSumUpTo100.push(dateFormat);
-                //         };
-
-                //         console.log(dateSumUpTo100);
-                        
-                //     });
-                 
-                // });
-
-                // }
-
-
-
-
-
-
-                
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             }
 
@@ -3544,18 +2777,3 @@ fileUpload.addEventListener('click', function() {
     });
     
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
